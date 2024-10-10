@@ -1,28 +1,43 @@
 extends CharacterBody3D
+ 
+const FORWARD_SPEED = 7.5
+const BACKWARD_SPEED = 5
+const TURNING_SPEED = 0.035
 
+var input = Vector3.ZERO
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-
+func _ready() -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if Input.is_action_pressed("move_forwards") and Input.is_action_pressed("move_backards"):
+		velocity.x = 0
+		velocity.z = 0
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	elif Input.is_action_pressed("move_forwards"):
+		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
+		velocity = -forwardVector * FORWARD_SPEED
+		
+	elif Input.is_action_pressed("move_backwards"):
+		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
+		velocity = -backwardVector * BACKWARD_SPEED
+	
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = 0
+		velocity.z = 0
+	
+	# If moving back while turning left, turn right
+	if Input.is_action_pressed("turn_left") and Input.is_action_pressed("move_backwards"):
+		rotation.y -= input.y + TURNING_SPEED 
+	
+	elif Input.is_action_pressed("turn_left"):
+		rotation.y += input.y + TURNING_SPEED 
 
+	# If moving back while turning right, turn left
+	if Input.is_action_pressed("turn_right") and Input.is_action_pressed("move_backwards"):
+		rotation.y += input.y + TURNING_SPEED 
+		
+	elif Input.is_action_pressed("turn_right"):
+		rotation.y -= input.y + TURNING_SPEED 
+	
 	move_and_slide()
