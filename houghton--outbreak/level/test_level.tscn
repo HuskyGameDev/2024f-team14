@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwpsls5jnk4qd"]
+
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
+[ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
+[ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jyhb"]
+albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_278v1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klieq"]
+
+[node name="Test Level" type="Node3D"]
+
+[node name="Test Player" parent="." instance=ExtResource("1_lg7yx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Map Compenents" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, 0, 0, 0)
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1.227)
+size = Vector3(121, 1, 121)
+material = SubResource("StandardMaterial3D_5jyhb")
+
+[node name="wall" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -9)
+size = Vector3(16, 12.3475, 1)
+
+[node name="wall2" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 9)
+size = Vector3(16, 12.3475, 1)
+
+[node name="wall3" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.22877, 6.7072, -0.0996094)
+size = Vector3(17.416, 12.3475, 1)
+
+[node name="wall4" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.77123, 6.7072, -5.52664)
+size = Vector3(6.56195, 12.3475, 1)
+
+[node name="wall5" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.77123, 6.81389, 5.09748)
+size = Vector3(6.78058, 12.3475, 1)
+
+[node name="wall6" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.77123, 9.83307, -0.281666)
+size = Vector3(3.94813, 6, 1)
+
+[node name="roof" type="CSGBox3D" parent="Map Compenents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269116, 13.4204, -0.0507884)
+size = Vector3(14.9521, 0.450195, 17.4457)
+
+[node name="Lighting" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.07987, -0.0402107)
+omni_range = 21.0098
+
+[node name="Camera1(inside)" type="Camera3D" parent="."]
+transform = Transform3D(0.518748, 0.633136, -0.57449, -0.100113, 0.712339, 0.694658, 0.849045, -0.302839, 0.43291, -6.28505, 11.0273, 7.3548)
+
+[node name="Area3D" type="Area3D" parent="Camera1(inside)"]
+transform = Transform3D(-1.00202, -8.93246, -6.34091, 7.68728, 3.96281, -6.7972, 7.80396, -5.05048, 5.8814, -2.81341, 3.2158, -9.41504)
+script = ExtResource("2_2r25l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera1(inside)/Area3D"]
+shape = SubResource("BoxShape3D_278v1")
+
+[node name="Camera2(outside)" type="Camera3D" parent="."]
+transform = Transform3D(0.99573, 0.0223663, -0.0895619, -0.0146705, 0.996215, 0.0856816, 0.0911392, -0.0840018, 0.992289, -11.285, 4.27501, 9.27179)
+
+[node name="Area3D" type="Area3D" parent="Camera2(outside)"]
+transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, -2.894, 2.48101, -10.1237)
+script = ExtResource("2_2r25l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera2(outside)/Area3D"]
+shape = SubResource("BoxShape3D_klieq")
+
+[node name="Camera3(outside)" type="Camera3D" parent="."]
+transform = Transform3D(0.0181011, 0.0859414, -0.996136, -0.0146705, 0.996215, 0.0856816, 0.999729, 0.0130629, 0.0192934, -10.1856, 4.12584, 10.65)
+
+[node name="Area3D" type="Area3D" parent="Camera3(outside)"]
+transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, 3.41673, 2.52898, -9.93269)
+script = ExtResource("2_2r25l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3(outside)/Area3D"]
+shape = SubResource("BoxShape3D_klieq")
+
+[node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
+
+[connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="exit_trigger"]
+[connection signal="body_entered" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="exit_trigger"]
+[connection signal="body_entered" from="Camera3(outside)/Area3D" to="Camera3(outside)/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Camera3(outside)/Area3D" to="Camera3(outside)/Area3D" method="exit_trigger"]

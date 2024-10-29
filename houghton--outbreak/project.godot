@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Houghton: Outbreak"
-run/main_scene="res://level/test_area.tscn"
+run/main_scene="res://level/test_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
