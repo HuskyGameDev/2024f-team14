@@ -11,7 +11,7 @@ albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klieq"]
 
-[node name="Test Level" type="Node3D"]
+[node name="Test Level" type="Node3D" groups=["levels"]]
 
 [node name="Test Player" parent="." instance=ExtResource("1_lg7yx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
