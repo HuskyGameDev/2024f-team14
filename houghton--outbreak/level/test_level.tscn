@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=11 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
+[ext_resource type="Script" path="res://level/game_manager.gd" id="1_m0mky"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
+[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_vv285"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
+[ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jyhb"]
 albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
@@ -13,8 +17,52 @@ albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 
 [node name="Test Level" type="Node3D" groups=["levels"]]
 
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("1_m0mky")
+
 [node name="Test Player" parent="." instance=ExtResource("1_lg7yx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+invenItems = ExtResource("2_vv285")
+
+[node name="InventoryUI" type="Control" parent="Test Player"]
+process_mode = 3
+custom_minimum_size = Vector2(112, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 112.0
+offset_bottom = 160.0
+script = ExtResource("5_nuyci")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Test Player/InventoryUI"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 162.0
+
+[node name="GridContainer" type="GridContainer" parent="Test Player/InventoryUI/NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 159.0
+columns = 2
+
+[node name="InvSlots" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
+
+[node name="InvSlots2" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
+
+[node name="InvSlots3" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
+
+[node name="InvSlots4" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
+
+[node name="InvSlots5" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
+
+[node name="InvSlots6" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
+layout_mode = 2
 
 [node name="Map Compenents" type="CSGCombiner3D" parent="."]
 transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, 0, 0, 0)
@@ -89,6 +137,8 @@ shape = SubResource("BoxShape3D_klieq")
 
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
 
+[connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
+[connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="enter_trigger"]

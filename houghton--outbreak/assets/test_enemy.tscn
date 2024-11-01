@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjqi0f3r118nc"]
+
+[ext_resource type="Script" path="res://scripts/test_enemy.gd" id="1_xt1y5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kltcf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xhg3"]
+albedo_color = Color(1, 0.231373, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n8yo3"]
+material = SubResource("StandardMaterial3D_6xhg3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwx2v"]
+albedo_color = Color(0.301961, 0.427451, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bvgc4"]
+material = SubResource("StandardMaterial3D_xwx2v")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.75
+
+[node name="test enemy" type="CharacterBody3D"]
+script = ExtResource("1_xt1y5")
+player_path = NodePath(".")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kltcf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_n8yo3")
+
+[node name="forward_indicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0377747, 0.411911, -0.859635)
+mesh = SubResource("CylinderMesh_bvgc4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
