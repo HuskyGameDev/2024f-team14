@@ -1,5 +1,7 @@
 extends CharacterBody3D
  
+@export var invenItems: inventory
+
 const FORWARD_SPEED = 7.5
 const BACKWARD_SPEED = 5
 const TURNING_SPEED = 0.035
