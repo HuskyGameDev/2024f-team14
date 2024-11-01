@@ -21,15 +21,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("P"):
 		if paused:
 			close()
-
-		else:
-			open()
+			paused = false
 			resumeSignal.emit()
-			print('resume')
 		else:
 			open()
+			paused = true
 			pauseSignal.emit()
-			print('pause')
 
 
 func open():
