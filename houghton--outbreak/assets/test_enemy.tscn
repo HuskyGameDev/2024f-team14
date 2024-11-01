@@ -19,7 +19,7 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 0.75
 
-[node name="test enemy" type="CharacterBody3D"]
+[node name="test enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_xt1y5")
 player_path = NodePath(".")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=12 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://level/game_manager.gd" id="1_m0mky"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
+[ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jyhb"]
 albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
@@ -136,6 +137,9 @@ script = ExtResource("2_2r25l")
 shape = SubResource("BoxShape3D_klieq")
 
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
+
+[node name="test enemy" parent="." instance=ExtResource("8_ke2hr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8608, 2.06051, 0.246483)
 
 [connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
