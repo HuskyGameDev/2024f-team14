@@ -6,6 +6,9 @@ extends Control
 
 var paused = false
 
+signal pauseSignal
+signal resumeSignal
+
 func _ready():
 	update_slots()
 	close()
@@ -18,8 +21,16 @@ func _process(delta):
 	if Input.is_action_just_pressed("P"):
 		if paused:
 			close()
+
 		else:
 			open()
+			resumeSignal.emit()
+			print('resume')
+		else:
+			open()
+			pauseSignal.emit()
+			print('pause')
+
 
 func open():
 	visible = true
