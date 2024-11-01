@@ -2,12 +2,15 @@ extends CharacterBody3D
  
 @export var invenItems: inventory
 
+
 const FORWARD_SPEED = 7.5
 const BACKWARD_SPEED = 5
 const TURNING_SPEED = 0.035
 const GRAVITY_CONSTANT = 100
 
 var input = Vector3.ZERO
+
+signal player_hit
 
 func _ready() -> void:
 	pass
@@ -55,3 +58,6 @@ func character_movement(delta: float):
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
 	move_and_slide()
+
+func hit():
+	emit_signal("player_hit")
