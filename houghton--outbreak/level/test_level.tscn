@@ -15,7 +15,7 @@ albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klieq"]
 
-[node name="Test Level" type="Node3D"]
+[node name="Test Level" type="Node3D" groups=["levels"]]
 
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("1_m0mky")
