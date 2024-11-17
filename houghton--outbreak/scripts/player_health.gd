@@ -10,8 +10,8 @@ func _process(delta):
 	var hp = "%d hp" % [health]
 	text = hp
 
-func hit(health, dmgTaken):
-	health -= dmgTaken
-	
 func heal(health, healthHealed):
 	health += healthHealed
+
+func _on_test_player_player_hit():
+	health -= dmgTaken

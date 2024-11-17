@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://djmqij828p3ey"]
+[gd_scene load_steps=8 format=3 uid="uid://djmqij828p3ey"]
 
 [ext_resource type="Script" path="res://scripts/test_player.gd" id="1_ysei2"]
+[ext_resource type="PackedScene" path="res://assets/pistol.tscn" id="2_s1o4x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kltcf"]
 
@@ -19,7 +20,7 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 0.75
 
-[node name="test player" type="CharacterBody3D"]
+[node name="test player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ysei2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -31,3 +32,6 @@ mesh = SubResource("CapsuleMesh_n8yo3")
 [node name="forward_indicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0377747, 0.411911, -0.859635)
 mesh = SubResource("CylinderMesh_bvgc4")
+
+[node name="pistol" parent="." instance=ExtResource("2_s1o4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311446, 0.244172, -0.609676)
