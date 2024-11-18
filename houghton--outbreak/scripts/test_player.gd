@@ -1,7 +1,8 @@
 extends CharacterBody3D
  
 @export var invenItems: inventory
-
+@onready var animtree = $AnimationTree
+@onready var states = animtree["parameters/playback"]
 
 const FORWARD_SPEED = 7.5
 const BACKWARD_SPEED = 5
@@ -28,6 +29,7 @@ func character_movement(delta: float):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -forwardVector * FORWARD_SPEED
 		velocity.y -= delta*GRAVITY_CONSTANT
+		states.travel("walkNoGun")
 		
 	elif Input.is_action_pressed("move_backwards"):
 		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
@@ -38,6 +40,7 @@ func character_movement(delta: float):
 		velocity.x = 0
 		velocity.z = 0
 		velocity.y -= delta*GRAVITY_CONSTANT
+		states.travel("idlepose")
 	
 	# If moving back while turning left, turn right
 	if Input.is_action_pressed("turn_left") and Input.is_action_pressed("move_backwards"):

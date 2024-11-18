@@ -14,6 +14,9 @@ const FORWARD_SPEED = 3
 
 @onready var nav_agent = $NavigationAgent3D
 
+@onready var animtree = $AnimationTree
+@onready var states = animtree["parameters/playback"]
+
 func _ready():
 	player = get_node(player_path)
 	health = max_health
