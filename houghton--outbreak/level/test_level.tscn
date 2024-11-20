@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
-[ext_resource type="Script" path="res://level/game_manager.gd" id="1_m0mky"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_vv285"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
@@ -19,6 +19,7 @@ albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 [node name="Test Level" type="Node3D" groups=["levels"]]
 
 [node name="Game Manager" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("1_m0mky")
 
 [node name="Test Player" parent="." instance=ExtResource("1_lg7yx")]

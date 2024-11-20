@@ -4,7 +4,6 @@ extends Control
 @onready var invSlots: Array = $NinePatchRect/GridContainer.get_children()
 
 
-var paused = false
 
 signal pauseSignal
 signal resumeSignal
@@ -18,21 +17,22 @@ func update_slots():
 		invSlots[i].update(invent1.inven[i])
 
 func _process(delta):
-	if Input.is_action_just_pressed("P"):
-		if paused:
-			close()
-			paused = false
-			resumeSignal.emit()
-		else:
-			open()
-			paused = true
-			pauseSignal.emit()
+	if Input.is_action_just_released("P"):
+		if GameManager.debugLog:
+			if GameManager.STATE==GameManager.PAUSE:
+				close()
+				if GameManager.debugLog: print("emitting resume")
+				GameManager.STATE = GameManager.PLAY
+				resumeSignal.emit()
+			elif GameManager.STATE==GameManager.PLAY:
+				open()
+				if GameManager.debugLog: print("emitting pause")
+				GameManager.STATE = GameManager.PAUSE
+				pauseSignal.emit()
 
 
 func open():
 	visible = true
-	paused = true
 
 func close():
 	visible = false
-	paused = false
