@@ -13,5 +13,10 @@ func _process(delta):
 func heal(health, healthHealed):
 	health += healthHealed
 
+<<<<<<< Updated upstream
 func _on_test_player_player_hit():
+=======
+
+func _on_test_player_player_hit() -> void:
+>>>>>>> Stashed changes
 	health -= dmgTaken
