@@ -1,0 +1,12 @@
+# Blender 4.2.3 LTS MTL File: 'actual9mm.blend'
+# www.blender.org
+
+newmtl Material
+Ns 278.280457
+Ka 0.174312 0.174312 0.174312
+Kd 0.014676 0.014676 0.014676
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
