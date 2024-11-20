@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl7sjdflmufvw"]
 
 [ext_resource type="Script" path="res://scripts/pistol.gd" id="1_fnodl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ux0tt"]
-size = Vector3(0.2, 0.2, 1)
+[ext_resource type="ArrayMesh" uid="uid://421pgj2y8dg2" path="res://Models/pistol_model.obj" id="2_p3qul"]
 
 [node name="pistol" type="Node3D" groups=["weapons"]]
 script = ExtResource("1_fnodl")
@@ -11,9 +9,10 @@ script = ExtResource("1_fnodl")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -30)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_ux0tt")
-
 [node name="shoot_timer" type="Timer" parent="."]
 
 [node name="reload_timer" type="Timer" parent="."]
+
+[node name="PistolModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.00875507, -0.130785, 0.285513)
+mesh = ExtResource("2_p3qul")
