@@ -5,6 +5,10 @@ var DEBUG = false
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
 
+@onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
+var current_ammo: int
+var reserve_ammo: int
+
 const FORWARD_SPEED = 4.5
 const BACKWARD_SPEED = 4.5
 const TURNING_SPEED = 0.035
@@ -31,6 +35,8 @@ func _physics_process(delta: float) -> void:
 
 func character_movement(delta: float):
 	var current_y_velocity = velocity.y
+	var current_ammo = pistol.current_ammo
+	var reserve_ammo = pistol.reserve_ammo
 	
 	if Input.is_action_pressed("move_forwards") and Input.is_action_pressed("move_backwards"):
 		velocity.x = 0
@@ -55,7 +61,7 @@ func character_movement(delta: float):
 		velocity.x = 0
 		velocity.z = 0
 		states.travel("PistolActionAim")
-		if Input.is_action_pressed("attack_or_shoot"):
+		if Input.is_action_pressed("attack_or_shoot") && current_ammo != 0:
 			states.travel("pistolActionShootTimer")
 	else:
 		velocity.x = 0
