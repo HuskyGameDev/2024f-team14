@@ -9,8 +9,9 @@ offset_bottom = 50.0
 script = ExtResource("1_8rafy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -1.00001)
+position = Vector2(28, 25)
 scale = Vector2(0.0270833, 0.0481481)
 centered = false
 
 [node name="ItemView" type="Sprite2D" parent="."]
+position = Vector2(28, 25)
