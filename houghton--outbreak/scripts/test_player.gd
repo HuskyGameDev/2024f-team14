@@ -1,5 +1,6 @@
 extends CharacterBody3D
- 
+var DEBUG = false
+
 @export var invenItems: inventory
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
@@ -27,9 +28,6 @@ func _physics_process(delta: float) -> void:
 	
 	#Gets movement inputs
 	character_movement(delta)
-	
-	
-	
 
 func character_movement(delta: float):
 	var current_y_velocity = velocity.y
@@ -41,11 +39,18 @@ func character_movement(delta: float):
 	elif Input.is_action_pressed("move_forwards"):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -forwardVector * FORWARD_SPEED
-		states.travel("walkNoGun")
+		if(DEBUG):
+			states.travel("walkNoGun")
+		else:
+			states.travel("walkGun")
 		
 	elif Input.is_action_pressed("move_backwards"):
 		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -backwardVector * BACKWARD_SPEED
+		if(DEBUG):
+			states.travel("walkNoGunBackwards")
+		else:
+			states.travel("walkGunBackwards")
 	
 	else:
 		velocity.x = 0
