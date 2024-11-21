@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=9 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="4_1ydlv"]
-[ext_resource type="Script" path="res://level/test_area.gd" id="4_eq5rt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278v1"]
 
@@ -62,7 +61,6 @@ script = ExtResource("2_2r25l")
 shape = SubResource("BoxShape3D_klieq")
 
 [node name="UI Scene" parent="." instance=ExtResource("3_wh8uq")]
-script = ExtResource("4_eq5rt")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_bo7y1")

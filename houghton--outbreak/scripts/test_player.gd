@@ -5,8 +5,8 @@ var DEBUG = false
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
 
-const FORWARD_SPEED = 7.5
-const BACKWARD_SPEED = 5
+const FORWARD_SPEED = 4.5
+const BACKWARD_SPEED = 4.5
 const TURNING_SPEED = 0.035
 const GRAVITY_CONSTANT = 100
 @export var turning_sensitivity: float = 1.0
@@ -51,7 +51,12 @@ func character_movement(delta: float):
 			states.travel("walkNoGunBackwards")
 		else:
 			states.travel("walkGunBackwards")
-	
+	elif Input.is_action_pressed("aim"):
+		velocity.x = 0
+		velocity.z = 0
+		states.travel("PistolActionAim")
+		if Input.is_action_pressed("attack_or_shoot"):
+			states.travel("pistolActionShootTimer")
 	else:
 		velocity.x = 0
 		velocity.z = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://djmqij828p3ey"]
+[gd_scene load_steps=49 format=3 uid="uid://djmqij828p3ey"]
 
 [ext_resource type="Script" path="res://scripts/test_player.gd" id="1_ysei2"]
 [ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://assets/pistol.tscn" id="2_s1o4x"]
@@ -432,6 +432,20 @@ animation = &"idlepose"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_65c2w"]
 animation = &"pistolActionShoot"
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fana3"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4lvy"]
+animation = &"pistolActionShoot"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l6alj"]
+graph_offset = Vector2(-106.437, -35.562)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fana3")
+nodes/TimeScale/position = Vector2(540, 40)
+nodes/output/position = Vector2(740, 60)
+nodes/shooting/node = SubResource("AnimationNodeAnimation_c4lvy")
+nodes/shooting/position = Vector2(240, 60)
+node_connections = [&"TimeScale", 0, &"shooting", &"output", 0, &"TimeScale"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ppu8"]
 animation = &"walkGun"
 
@@ -508,6 +522,11 @@ xfade_time = 0.4
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_802lo"]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p66ar"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewk5n"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s80q0"]
 states/End/position = Vector2(913, 153)
 states/PistolActionAim/node = SubResource("AnimationNodeAnimation_fhm2q")
@@ -516,7 +535,9 @@ states/Start/position = Vector2(139, 10)
 states/idlepose/node = SubResource("AnimationNodeAnimation_76bia")
 states/idlepose/position = Vector2(377, 10)
 states/pistolActionShoot/node = SubResource("AnimationNodeAnimation_65c2w")
-states/pistolActionShoot/position = Vector2(536, -244)
+states/pistolActionShoot/position = Vector2(660, -305)
+states/pistolActionShootTimer/node = SubResource("AnimationNodeBlendTree_l6alj")
+states/pistolActionShootTimer/position = Vector2(616, -192)
 states/walkGun/node = SubResource("AnimationNodeAnimation_1ppu8")
 states/walkGun/position = Vector2(191, -70)
 states/walkGunBackwards/node = SubResource("AnimationNodeAnimation_k5sc1")
@@ -525,8 +546,8 @@ states/walkNoGun/node = SubResource("AnimationNodeAnimation_66g6d")
 states/walkNoGun/position = Vector2(283, 96)
 states/walkNoGunBackwards/node = SubResource("AnimationNodeAnimation_43a18")
 states/walkNoGunBackwards/position = Vector2(500, 96)
-transitions = ["idlepose", "walkNoGun", SubResource("AnimationNodeStateMachineTransition_a3o31"), "walkNoGun", "idlepose", SubResource("AnimationNodeStateMachineTransition_l04ac"), "Start", "idlepose", SubResource("AnimationNodeStateMachineTransition_qo65m"), "idlepose", "walkNoGunBackwards", SubResource("AnimationNodeStateMachineTransition_sp0nt"), "walkNoGunBackwards", "idlepose", SubResource("AnimationNodeStateMachineTransition_h3kgy"), "walkNoGun", "walkNoGunBackwards", SubResource("AnimationNodeStateMachineTransition_vp417"), "walkNoGunBackwards", "walkNoGun", SubResource("AnimationNodeStateMachineTransition_q21cf"), "walkGun", "idlepose", SubResource("AnimationNodeStateMachineTransition_p72v2"), "idlepose", "walkGun", SubResource("AnimationNodeStateMachineTransition_3prrp"), "walkGun", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_qh8h6"), "PistolActionAim", "walkGun", SubResource("AnimationNodeStateMachineTransition_apyv1"), "PistolActionAim", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_00yrm"), "walkGunBackwards", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_kishs"), "idlepose", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_edwae"), "walkGunBackwards", "idlepose", SubResource("AnimationNodeStateMachineTransition_3m0m7"), "walkGunBackwards", "walkGun", SubResource("AnimationNodeStateMachineTransition_mvjip"), "walkGun", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_hav1f"), "idlepose", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_dqnjq"), "PistolActionAim", "idlepose", SubResource("AnimationNodeStateMachineTransition_knkkm"), "PistolActionAim", "pistolActionShoot", SubResource("AnimationNodeStateMachineTransition_q7b4j"), "pistolActionShoot", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_802lo")]
-graph_offset = Vector2(-138, -274)
+transitions = ["idlepose", "walkNoGun", SubResource("AnimationNodeStateMachineTransition_a3o31"), "walkNoGun", "idlepose", SubResource("AnimationNodeStateMachineTransition_l04ac"), "Start", "idlepose", SubResource("AnimationNodeStateMachineTransition_qo65m"), "idlepose", "walkNoGunBackwards", SubResource("AnimationNodeStateMachineTransition_sp0nt"), "walkNoGunBackwards", "idlepose", SubResource("AnimationNodeStateMachineTransition_h3kgy"), "walkNoGun", "walkNoGunBackwards", SubResource("AnimationNodeStateMachineTransition_vp417"), "walkNoGunBackwards", "walkNoGun", SubResource("AnimationNodeStateMachineTransition_q21cf"), "walkGun", "idlepose", SubResource("AnimationNodeStateMachineTransition_p72v2"), "idlepose", "walkGun", SubResource("AnimationNodeStateMachineTransition_3prrp"), "walkGun", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_qh8h6"), "PistolActionAim", "walkGun", SubResource("AnimationNodeStateMachineTransition_apyv1"), "PistolActionAim", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_00yrm"), "walkGunBackwards", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_kishs"), "idlepose", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_edwae"), "walkGunBackwards", "idlepose", SubResource("AnimationNodeStateMachineTransition_3m0m7"), "walkGunBackwards", "walkGun", SubResource("AnimationNodeStateMachineTransition_mvjip"), "walkGun", "walkGunBackwards", SubResource("AnimationNodeStateMachineTransition_hav1f"), "idlepose", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_dqnjq"), "PistolActionAim", "idlepose", SubResource("AnimationNodeStateMachineTransition_knkkm"), "PistolActionAim", "pistolActionShoot", SubResource("AnimationNodeStateMachineTransition_q7b4j"), "pistolActionShoot", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_802lo"), "PistolActionAim", "pistolActionShootTimer", SubResource("AnimationNodeStateMachineTransition_p66ar"), "pistolActionShootTimer", "PistolActionAim", SubResource("AnimationNodeStateMachineTransition_ewk5n")]
+graph_offset = Vector2(-77, -350)
 
 [node name="test player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ysei2")
@@ -544,26 +565,23 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0377
 visible = false
 mesh = SubResource("CylinderMesh_bvgc4")
 
-[node name="pistol" parent="." instance=ExtResource("2_s1o4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311446, 0.244172, -0.609676)
-
 [node name="PM 10-31-24" parent="." instance=ExtResource("3_k5jfj")]
 transform = Transform3D(-0.998605, 0, -0.0528067, 0, 1, 0, 0.0528067, 0, -0.998605, 0.0050687, 1.34039, 0.0133889)
 
 [node name="Skeleton3D" parent="PM 10-31-24/Armature" index="0"]
 bones/1/position = Vector3(-0.0120782, 0.601476, 2.20209)
 bones/3/rotation = Quaternion(-0.406256, -7.465e-13, -1.511e-05, 0.913759)
-bones/5/rotation = Quaternion(0.231052, 0.318623, -0.592735, 0.70268)
+bones/5/rotation = Quaternion(0.197017, 0.353181, -0.600482, 0.689833)
 bones/6/rotation = Quaternion(0.00113957, -2.29276e-06, -0.00123832, 0.999999)
-bones/7/rotation = Quaternion(0.0206108, -0.381516, 0.0630807, 0.921977)
+bones/7/rotation = Quaternion(-0.035098, -0.380566, 0.0461243, 0.922936)
 bones/8/rotation = Quaternion(0.0167021, -9.79485e-05, 0.0171576, 0.999713)
 bones/9/rotation = Quaternion(-0.0362609, -0.000787705, -0.167359, 0.985229)
 bones/11/rotation = Quaternion(-0.248884, 0.0145326, 0.0354718, 0.967774)
 bones/13/rotation = Quaternion(0.293384, -2.14056e-12, 1.09119e-05, 0.955995)
 bones/14/rotation = Quaternion(-0.137409, 2.55852e-12, -5.11071e-06, 0.990514)
-bones/16/rotation = Quaternion(0.196016, -0.343044, 0.633313, 0.665442)
+bones/16/rotation = Quaternion(0.231577, -0.307255, 0.619589, 0.684161)
 bones/17/rotation = Quaternion(0.00114044, 2.29447e-06, 0.00123927, 0.999999)
-bones/18/rotation = Quaternion(-0.0158305, 0.4534, -0.0691991, 0.888476)
+bones/18/rotation = Quaternion(-0.000856749, 0.458462, -0.0748763, 0.885554)
 bones/20/rotation = Quaternion(-0.0362609, 0.000787708, 0.167359, 0.985229)
 bones/23/rotation = Quaternion(0.724072, 0.0208465, 0.688825, -0.0283754)
 bones/24/rotation = Quaternion(-0.00758763, -7.27192e-06, 0.207444, 0.978217)
@@ -572,18 +590,26 @@ bones/27/rotation = Quaternion(-0.716595, 0.0152318, 0.696994, 0.0214267)
 bones/27/scale = Vector3(1.00001, 1, 1.00005)
 bones/28/rotation = Quaternion(-0.00767768, 7.65038e-06, -0.20984, 0.977706)
 bones/29/rotation = Quaternion(-0.0173438, -0.0178741, 0.414666, 0.909633)
-bones/31/position = Vector3(0.85923, 0.539819, 2.30155)
-bones/31/rotation = Quaternion(0.104834, 0.613505, -0.759931, 0.187417)
+bones/31/position = Vector3(0.855612, 0.682511, 2.29531)
+bones/31/rotation = Quaternion(0.102671, 0.693842, -0.685457, 0.195427)
 bones/32/position = Vector3(0.297383, 0.684331, 0.217846)
 bones/32/rotation = Quaternion(0.632256, -0.314092, 0.635592, -0.312444)
 bones/33/position = Vector3(0.989722, 1.18814, 3.63696)
 bones/34/position = Vector3(0.278849, 0.171579, 1.26271)
-bones/35/position = Vector3(-0.775737, 0.694891, 2.2357)
-bones/35/rotation = Quaternion(0.0266078, -0.671956, 0.701857, 0.234871)
+bones/35/position = Vector3(-0.801619, 0.540159, 2.24546)
+bones/35/rotation = Quaternion(0.0231371, -0.616512, 0.749651, 0.239586)
 bones/36/position = Vector3(-0.297383, 0.684331, 0.217846)
 bones/36/rotation = Quaternion(-0.632256, -0.314092, 0.635592, 0.312444)
 bones/37/position = Vector3(-0.989722, 1.18814, 3.63696)
 bones/38/position = Vector3(-0.278849, 0.171579, 1.26271)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PM 10-31-24/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.870104, -0.426335, -0.247299, 0.361054, -0.892905, 0.268998, -0.335498, 0.144768, 0.930851, -0.824014, -0.047508, 0.0878453)
+bone_name = "Palm R"
+bone_idx = 19
+
+[node name="pistol" parent="PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_s1o4x")]
+transform = Transform3D(0.991018, -0.119987, 0.0590479, 0.0753736, 0.136434, -0.987777, 0.110464, 0.983356, 0.144253, -0.195347, 0.401578, 0.0521808)
 
 [node name="AnimationPlayer" parent="PM 10-31-24" index="1"]
 libraries = {
@@ -594,5 +620,6 @@ libraries = {
 root_node = NodePath("../PM 10-31-24")
 tree_root = SubResource("AnimationNodeStateMachine_s80q0")
 anim_player = NodePath("../PM 10-31-24/AnimationPlayer")
+parameters/pistolActionShootTimer/TimeScale/scale = 2.0
 
 [editable path="PM 10-31-24"]
