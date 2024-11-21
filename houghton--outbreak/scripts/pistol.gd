@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var damage: int = 10
-@export var max_reserve_ammo: int = 32
+@export var max_reserve_ammo: int = 128
 @export var mag_size: int = 8
 @export var reload_time: float = 2.0
 @export var shoot_delay: float = 0.5

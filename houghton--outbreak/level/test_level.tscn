@@ -180,7 +180,19 @@ shape = SubResource("BoxShape3D_klieq")
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
 
 [node name="test enemy" parent="." instance=ExtResource("8_ke2hr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8608, 2.06051, 0.246483)
+transform = Transform3D(-0.997363, 0, 0.0725768, 0, 1, 0, -0.0725768, 0, -0.997363, -12.2175, 2.06051, -6.92819)
+
+[node name="test enemy2" parent="." instance=ExtResource("8_ke2hr")]
+transform = Transform3D(0.699626, 0, -0.714509, 0, 1, 0, 0.714509, 0, 0.699626, -19.6289, 2.06051, 2.38877)
+
+[node name="test enemy3" parent="." instance=ExtResource("8_ke2hr")]
+transform = Transform3D(0.724172, 0, 0.68962, 0, 1, 0, -0.68962, 0, 0.724172, 7.9347, 2.06051, 21.3515)
+
+[node name="test enemy4" parent="." instance=ExtResource("8_ke2hr")]
+transform = Transform3D(-0.731568, 0, 0.681769, 0, 1, 0, -0.681769, 0, -0.731568, 24.3995, 2.06051, 1.10269)
+
+[node name="test enemy5" parent="." instance=ExtResource("8_ke2hr")]
+transform = Transform3D(-0.731568, 0, 0.681769, 0, 1, 0, -0.681769, 0, -0.731568, 20.2783, 2.06051, -27.3475)
 
 [connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
