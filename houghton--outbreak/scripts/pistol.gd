@@ -4,7 +4,7 @@ extends Node3D
 @export var max_reserve_ammo: int = 32
 @export var mag_size: int = 8
 @export var reload_time: float = 2.0
-@export var shoot_delay: float = 0.2
+@export var shoot_delay: float = 0.5
 
 var current_ammo: int
 var reserve_ammo: int
@@ -14,8 +14,8 @@ var is_reloading: bool = false
 
 @onready var shoot_timer: Timer = $shoot_timer
 @onready var reload_timer: Timer = $reload_timer
-
-
+@onready var animtree = $AnimationTree
+@onready var states = animtree["parameters/playback"]
 
 func _ready() -> void:
 	current_ammo = mag_size
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		reload()
 
 func can_shoot():
-	return current_ammo > 0
+	return current_ammo > 0 && Input.is_action_pressed("aim")
 func can_reload():
 	current_ammo < mag_size and reserve_ammo > 0
 
@@ -50,10 +50,13 @@ func shoot():
 		print("current ammo: ", current_ammo, " reserve ammo: ", reserve_ammo)
 		can_fire = false
 		shoot_timer.start()
+		$pistol_model/Sphere.show() 
+		states.travel("muzzle_flash")
 		if ray_cast_3d.is_colliding():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
 				target.health -= damage
+		
 	
 func reload():
 	if can_reload:
@@ -66,6 +69,8 @@ func _on_reload_complete():
 	current_ammo += loaded_ammo
 	reserve_ammo -= loaded_ammo
 	is_reloading = false
-
+	
 func _on_shoot_delay_complete():
 	can_fire = true
+	$pistol_model/Sphere.hide()
+	states.travel("idle")
