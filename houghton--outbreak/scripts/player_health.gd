@@ -12,6 +12,6 @@ func _process(delta):
 
 func hit(health, dmgTaken):
 	health -= dmgTaken
-	
-func heal(health, healthHealed):
+
+func _on_test_player_player_hit() -> void:
 	health += healthHealed

@@ -9,6 +9,7 @@ var health: int
 var player = null
 
 const FORWARD_SPEED = 3
+const ATTACK_RANGE = 2
 
 @export var player_path : NodePath
 
@@ -33,6 +34,8 @@ func _process(delta):
 	velocity = (next_nav_point - global_transform.origin).normalized() * FORWARD_SPEED
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
+	#conditions
+	animtree.set("parameters/conditions/attack", _target_in_range())
 	move_and_slide()
 	death()
 
@@ -42,3 +45,6 @@ func _on_test_player_player_hit() -> void:
 func death():
 	if health <= 0:
 		queue_free()
+
+func _target_in_range():
+	return global_position.distance_to(player.global_position) < ATTACK_RANGE
