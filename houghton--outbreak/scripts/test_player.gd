@@ -64,7 +64,7 @@ func character_movement(delta: float):
 		if Input.is_action_pressed("attack_or_shoot") && current_ammo != 0:
 			states.travel("pistolActionShootTimer")
 		
-		if Input.is_action_pressed("Target"):
+		if Input.is_action_just_pressed("Target"):
 			var nearest = get_nearest_enemy()
 			look_at(nearest.global_position)
 	else:
