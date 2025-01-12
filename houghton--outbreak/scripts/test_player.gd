@@ -63,6 +63,10 @@ func character_movement(delta: float):
 		states.travel("PistolActionAim")
 		if Input.is_action_pressed("attack_or_shoot") && current_ammo != 0:
 			states.travel("pistolActionShootTimer")
+		
+		if Input.is_action_pressed("Target"):
+			var nearest = get_nearest_enemy()
+			look_at(nearest.global_position)
 	else:
 		velocity.x = 0
 		velocity.z = 0
@@ -85,11 +89,24 @@ func character_movement(delta: float):
 		rotation.y += input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 		
+		
 	elif Input.is_action_pressed("turn_right"):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
 	move_and_slide()
+
+#Returns enemy closest to the player when called.
+func get_nearest_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	var nearest = enemies[0]
+	
+	for enemy in enemies:
+		if enemy.global_position.distance_to(global_position) < nearest.global_position.distance_to(global_position):
+			nearest = enemy
+	
+	return nearest
+
 
 func hit():
 	emit_signal("player_hit")
