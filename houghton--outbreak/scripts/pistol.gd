@@ -16,6 +16,7 @@ var is_reloading: bool = false
 @onready var reload_timer: Timer = $reload_timer
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
+@onready var gunshotSFX = $GunshotSFX
 
 func _ready() -> void:
 	current_ammo = mag_size
@@ -52,6 +53,7 @@ func shoot():
 		shoot_timer.start()
 		$pistol_model/Sphere.show() 
 		states.travel("muzzle_flash")
+		gunshotSFX.play()
 		if ray_cast_3d.is_colliding():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
