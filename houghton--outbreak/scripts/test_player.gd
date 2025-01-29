@@ -107,6 +107,8 @@ func get_nearest_enemy():
 	
 	return nearest
 
+func increment_ammo():
+	pistol.reserve_ammo += 12
 
 func hit():
 	emit_signal("player_hit")
