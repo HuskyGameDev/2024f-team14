@@ -20,6 +20,7 @@ const ATTACK_RANGE = 2
 @onready var groanSFX = $GroanSFX
 @onready var groanTimer = $GroanTimer
 
+
 func _ready():
 	player = get_node(player_path)
 	health = max_health
@@ -40,14 +41,14 @@ func _process(delta):
 	#conditions
 	animtree.set("parameters/conditions/attack", _target_in_range())
 	move_and_slide()
-	death()
+
 
 func _on_test_player_player_hit() -> void:
 	pass # Replace with function body.
 
 func death():
-	if health <= 0:
-		queue_free()
+	queue_free()
+	
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE

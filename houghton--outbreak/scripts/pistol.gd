@@ -19,6 +19,7 @@ var is_reloading: bool = false
 @onready var gunshotSFX = $GunshotSFX
 @onready var reloadSFX = $ReloadSFX
 @onready var ammoDisplay = $AmmoDisplay
+@onready var zombieDeathSFX = $DeathSFX
 
 func _ready() -> void:
 	current_ammo = mag_size
@@ -62,6 +63,9 @@ func shoot():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
 				target.health -= damage
+				if target.health <= 0:
+					target.death()
+					zombieDeathSFX.play()	
 		
 	
 func reload():
