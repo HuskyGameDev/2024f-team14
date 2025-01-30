@@ -17,10 +17,14 @@ const ATTACK_RANGE = 5
 
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
+@onready var groanSFX = $GroanSFX
+@onready var groanTimer = $GroanTimer
+
 
 func _ready():
 	player = get_node(player_path)
 	health = max_health
+	groanTimer.start(randi_range(randi_range(3,7), randi_range(15,30)))
 #func _physics_process(delta: float) -> void:
 
 
@@ -41,14 +45,19 @@ func _process(delta):
 	else:
 		states.travel("walk")
 	move_and_slide()
-	death()
+
 
 func _on_test_player_player_hit() -> void:
 	pass # Replace with function body.
 
 func death():
-	if health <= 0:
-		queue_free()
+	queue_free()
+	
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	
+
+func _on_groan_timer_timeout() -> void:
+	groanSFX.play()
+	groanTimer.start(randi_range(randi_range(9,14), randi_range(27,33)))
