@@ -145,11 +145,11 @@ shape = SubResource("BoxShape3D_klieq")
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
 
 [node name="test enemy" parent="." instance=ExtResource("8_ke2hr")]
-transform = Transform3D(-0.997363, 0, 0.0725768, 0, 1, 0, -0.0725768, 0, -0.997363, -12.1976, 1.7862, -14.7971)
+transform = Transform3D(-0.997363, 0, 0.0725768, 0, 1, 0, -0.0725768, 0, -0.997363, -21.6523, 1.7862, -27.1754)
 player_path = NodePath("../Test Player")
 
 [node name="test enemy2" parent="." instance=ExtResource("8_ke2hr")]
-transform = Transform3D(0.699626, 0, -0.714509, 0, 1, 0, 0.714509, 0, 0.699626, -19.6289, 2.06051, 2.38877)
+transform = Transform3D(0.699626, 0, -0.714509, 0, 1, 0, 0.714509, 0, 0.699626, -29.7477, 2.06051, 2.24543)
 player_path = NodePath("../Test Player")
 
 [node name="test enemy3" parent="." instance=ExtResource("8_ke2hr")]
