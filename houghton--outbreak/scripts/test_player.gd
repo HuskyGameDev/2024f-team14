@@ -45,6 +45,10 @@ func character_movement(delta: float):
 	elif Input.is_action_pressed("move_forwards"):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -forwardVector * FORWARD_SPEED
+		
+		if (Input.is_action_pressed("Sprint")):
+			velocity *= 1.5
+		
 		if(DEBUG):
 			states.travel("walkNoGun")
 		else:
@@ -63,6 +67,14 @@ func character_movement(delta: float):
 		states.travel("PistolActionAim")
 		if Input.is_action_pressed("attack_or_shoot") && current_ammo != 0:
 			states.travel("pistolActionShootTimer")
+		
+		if Input.is_action_just_pressed("Target"):
+			var nearest = get_nearest_enemy()
+			
+			#rotate_to(delta, nearest, 0.5)
+			
+			#await get_tree().create_timer(1).timeout
+			look_at(nearest.global_position)
 	else:
 		velocity.x = 0
 		velocity.z = 0
@@ -85,11 +97,32 @@ func character_movement(delta: float):
 		rotation.y += input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 		
+		
 	elif Input.is_action_pressed("turn_right"):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
 	move_and_slide()
+
+#Returns enemy closest to the player when called.
+func get_nearest_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	var nearest = enemies[0]
+	
+	for enemy in enemies:
+		if enemy.global_position.distance_to(global_position) < nearest.global_position.distance_to(global_position):
+			nearest = enemy
+	
+	return nearest
+
+func rotate_to(delta, object, time):
+	var pos = Vector2(global_position.x, global_position.z)
+	var objectPos = Vector2(object.global_position.x, object.global_position.z)
+	var direction = (pos - objectPos)
+	rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.y), delta / time)
+
+func increment_ammo():
+	pistol.reserve_ammo += 12
 
 func hit():
 	emit_signal("player_hit")
