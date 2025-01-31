@@ -74,6 +74,20 @@ layout_mode = 2
 [node name="InvSlots6" parent="Test Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("5_gvcf4")]
 layout_mode = 2
 
+[node name="GridContainer2" type="GridContainer" parent="Test Player/InventoryUI/NinePatchRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 110.0
+offset_bottom = 160.0
+
+[node name="Button" type="Button" parent="Test Player/InventoryUI/NinePatchRect/GridContainer2"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Test Player/InventoryUI/NinePatchRect/GridContainer2"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+
 [node name="Map Compenents" type="CSGCombiner3D" parent="."]
 transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, 0, 0, 0)
 use_collision = true
@@ -240,6 +254,8 @@ script = ExtResource("10_vhnfx")
 [connection signal="player_hit" from="Test Player" to="Control/PlayerHealth" method="_on_test_player_player_hit"]
 [connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
+[connection signal="pressed" from="Test Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Test Player/InventoryUI" method="_on_button_pressed"]
+[connection signal="pressed" from="Test Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Test Player/InventoryUI" method="_on_button_2_pressed"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="enter_trigger"]
