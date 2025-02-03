@@ -134,6 +134,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.817974)
 target_position = Vector3(0, 0, -30)
 
 [node name="shoot_timer" type="Timer" parent="."]

@@ -65,7 +65,9 @@ func shoot():
 				target.health -= damage
 				if target.health <= 0:
 					target.death()
-					zombieDeathSFX.play()	
+					zombieDeathSFX.play()
+				else:
+					target.playHurtSFX()
 		
 	
 func reload():

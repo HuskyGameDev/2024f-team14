@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=17 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
+[ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire_Effect.tscn" id="7_f4gar"]
 [ext_resource type="PackedScene" uid="uid://q8lujjtvw08b" path="res://Interact/Ammo.tscn" id="8_dsmyp"]
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]
@@ -103,6 +104,7 @@ size = Vector3(14.9521, 0.450195, 17.4457)
 
 [node name="Lighting" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.07987, -0.0402107)
+visible = false
 omni_range = 21.0098
 
 [node name="Camera1(inside)" type="Camera3D" parent="."]
@@ -236,26 +238,36 @@ transform = Transform3D(0.067667, 0, 0.997708, 0, 1, 0, -0.997708, 0, 0.067667, 
 use_collision = true
 size = Vector3(6.78058, 12.3475, 1)
 
+[node name="Fire Effect1" parent="." instance=ExtResource("7_f4gar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39647, 1.70412, -5.25463)
+
+[node name="Fire Effect2" parent="." instance=ExtResource("7_f4gar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5294, 1.70412, -24.0481)
+
+[node name="Fire Effect3" parent="." instance=ExtResource("7_f4gar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.64, 1.70412, -33.4502)
+
+[node name="TimerText" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_pbdyo")
+
+[node name="PlayerHealth" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+script = ExtResource("10_vhnfx")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TimerText" type="Label" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("9_pbdyo")
-
-[node name="PlayerHealth" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1088.0
-offset_right = 1128.0
-offset_bottom = 23.0
-script = ExtResource("10_vhnfx")
-
-[connection signal="player_hit" from="Test Player" to="Control/PlayerHealth" method="_on_test_player_player_hit"]
+[connection signal="player_hit" from="Test Player" to="PlayerHealth" method="_on_test_player_player_hit"]
 [connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
 [connection signal="pressed" from="Test Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Test Player/InventoryUI" method="_on_button_pressed"]
