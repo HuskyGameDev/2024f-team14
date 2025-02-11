@@ -6,6 +6,9 @@ var DEBUG = false
 @onready var states = animtree["parameters/playback"]
 
 @onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
+@onready var hurtSFX = $HurtSFX
+@onready var deathSFX = $DeathSFX
+
 var current_ammo: int
 var reserve_ammo: int
 
@@ -17,7 +20,7 @@ const GRAVITY_CONSTANT = 100
 var input = Vector3.ZERO
 
 var MAX_HEALTH: int = 100
-var current_health:int
+var current_health: int
 
 signal player_hit
 
@@ -107,16 +110,15 @@ func character_movement(delta: float):
 
 #Returns enemy closest to the player when called.
 func get_nearest_enemy():
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	
 	var nearest = null
-	if enemies.size() > 0:
-		nearest = enemies[0]
-		
-	for enemy in enemies:
-		if enemy.global_position.distance_to(global_position) < nearest.global_position.distance_to(global_position):
-			nearest = enemy
-	
+	var overlaps = $VisionArea.get_overlapping_bodies()
+	if overlaps.size() > 0:
+		for overlap in overlaps:
+			if overlap.is_in_group("enemies"):
+				if nearest == null:
+					nearest = overlap
+				elif (overlap.global_position.distance_to(global_position) < nearest.global_position.distance_to(global_position)):
+					nearest = overlap
 	return nearest
 
 func rotate_to(delta, object, time):
@@ -128,5 +130,15 @@ func rotate_to(delta, object, time):
 func increment_ammo():
 	pistol.reserve_ammo += 12
 
-func hit():
-	emit_signal("player_hit")
+func hit(damage):
+	current_health -= damage
+	
+	if current_health <= 0:
+		current_health = 0
+		if !deathSFX.playing:
+			deathSFX.play()
+	else:
+		if !hurtSFX.playing:
+			hurtSFX.play()
+	#
+	#emit_signal("player_hit")

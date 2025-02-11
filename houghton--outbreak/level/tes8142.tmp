@@ -112,8 +112,6 @@ transform = Transform3D(0.518748, 0.633136, -0.57449, -0.100113, 0.712339, 0.694
 
 [node name="Area3D" type="Area3D" parent="Camera1(inside)"]
 transform = Transform3D(-1.00202, -8.93246, -6.34091, 7.68728, 3.96281, -6.7972, 7.80396, -5.05048, 5.8814, -2.81341, 3.2158, -9.41504)
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("2_2r25l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera1(inside)/Area3D"]
@@ -124,8 +122,6 @@ transform = Transform3D(0.99573, 0.0223663, -0.0895619, -0.00281643, 0.977113, 0
 
 [node name="Area3D" type="Area3D" parent="Camera2(outside)"]
 transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, -2.894, 2.48101, -10.1237)
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("2_2r25l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera2(outside)/Area3D"]
@@ -136,8 +132,6 @@ transform = Transform3D(0.99573, 0.0223663, -0.0895619, -0.0146705, 0.996215, 0.
 
 [node name="Area3D" type="Area3D" parent="Camera2(outside)2"]
 transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, -2.894, 2.48101, -10.1237)
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("2_2r25l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera2(outside)2/Area3D"]
@@ -148,8 +142,6 @@ transform = Transform3D(0.0181011, 0.0859414, -0.996136, -0.0146705, 0.996215, 0
 
 [node name="Area3D" type="Area3D" parent="Camera3(outside)"]
 transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, 3.41673, 2.52898, -9.93269)
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("2_2r25l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3(outside)/Area3D"]
@@ -161,8 +153,6 @@ transform = Transform3D(0.0181011, 0.0859414, -0.996136, -0.0146705, 0.996215, 0
 
 [node name="Area3D" type="Area3D" parent="Camera3(outside)2"]
 transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, 3.41673, 2.52898, -9.93269)
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("2_2r25l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3(outside)2/Area3D"]

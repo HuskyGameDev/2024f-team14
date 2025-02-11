@@ -62,6 +62,7 @@ func shoot():
 		if ray_cast_3d.is_colliding():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
+				target.chasing = true
 				target.health -= damage
 				if target.health <= 0:
 					target.death()
