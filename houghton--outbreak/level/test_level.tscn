@@ -1,17 +1,41 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=22 format=3 uid="uid://dwpsls5jnk4qd"]
 
-[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
+[ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
+[ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Traffic Light.tscn" id="2_64k0f"]
 [ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_vv285"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
 [ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire_Effect.tscn" id="7_f4gar"]
 [ext_resource type="PackedScene" uid="uid://q8lujjtvw08b" path="res://Interact/Ammo.tscn" id="8_dsmyp"]
-[ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
+[ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://Assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]
 [ext_resource type="Script" path="res://scripts/player_health.gd" id="10_vhnfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nbsu"]
+shader = ExtResource("1_i0suc")
+shader_parameter/skyColor = Color(0.205117, 0.205117, 0.205117, 1)
+shader_parameter/horizonColor = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_rcyw6"]
+sky_material = SubResource("ShaderMaterial_1nbsu")
+
+[sub_resource type="Environment" id="Environment_mrt15"]
+background_mode = 2
+background_color = Color(1, 0, 0, 1)
+sky = SubResource("Sky_rcyw6")
+ambient_light_source = 3
+reflected_light_source = 2
+glow_enabled = true
+glow_levels/6 = 0.13
+glow_levels/7 = 0.25
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278v1"]
 
@@ -26,6 +50,12 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Arr
 albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 
 [node name="Test Level" type="Node3D" groups=["levels"]]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mrt15")
+
+[node name="TrafficLight" parent="." instance=ExtResource("2_64k0f")]
+transform = Transform3D(1.12071, 0, -0.997005, 0, 1.5, 0, 0.997005, 0, 1.12071, -26.0595, 9.28808, -10.8923)
 
 [node name="Game Manager" type="Node" parent="."]
 process_mode = 3
