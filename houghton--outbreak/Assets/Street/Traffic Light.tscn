@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://p0el2ac8wlsm"]
 
-[ext_resource type="Texture2D" uid="uid://t6a7rmi35a5q" path="res://Models/Tarbo_CITY_TrafficLights.png" id="1_1mfx7"]
+[ext_resource type="Texture2D" uid="uid://t6a7rmi35a5q" path="res://Models/Street Models/Tarbo_CITY_TrafficLights.png" id="1_3tpka"]
 
 [sub_resource type="GDScript" id="GDScript_5w2pn"]
 script/source = "extends Node3D
@@ -55,7 +55,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fsyot")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6jtx"]
-albedo_texture = ExtResource("1_1mfx7")
+albedo_texture = ExtResource("1_3tpka")
 
 [node name="TrafficLight" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

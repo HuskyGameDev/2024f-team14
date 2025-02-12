@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d2y50b8kd6x0l"
-path="res://.godot/imported/Cone.glb-a4eb38ca34217642c9ca135f085862c3.scn"
+uid="uid://63sdcvrr1vtw"
+path="res://.godot/imported/RoadSigns-3.fbx-9f1ecba2db42d9b2a6a550322133bd7d.scn"
 
 [deps]
 
-source_file="res://Models/Cone.glb"
-dest_files=["res://.godot/imported/Cone.glb-a4eb38ca34217642c9ca135f085862c3.scn"]
+source_file="res://Models/Street Models/RoadSigns-3.fbx"
+dest_files=["res://.godot/imported/RoadSigns-3.fbx-9f1ecba2db42d9b2a6a550322133bd7d.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

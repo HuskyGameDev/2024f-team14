@@ -121,9 +121,9 @@ func get_nearest_enemy():
 					nearest = overlap
 	return nearest
 
-func rotate_to(delta, object, time):
+func rotate_to(delta, posit, time):
 	var pos = Vector2(global_position.x, global_position.z)
-	var objectPos = Vector2(object.global_position.x, object.global_position.z)
+	var objectPos = Vector2(posit.x, posit.z)
 	var direction = (pos - objectPos)
 	rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.y), delta / time)
 

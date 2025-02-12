@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bx2lh7vl0yxcg"
-path="res://.godot/imported/TB_CITY_Prop_TrafficLight_A_Yellow.FBX-4f16e516b87435e4f479c4138631958c.scn"
+uid="uid://rlo8ybobcb5"
+path="res://.godot/imported/street_lamp_3.fbx-afe2c27acd9ac26d2e5abc4c047df077.scn"
 
 [deps]
 
-source_file="res://Models/TB_CITY_Prop_TrafficLight_A_Yellow.FBX"
-dest_files=["res://.godot/imported/TB_CITY_Prop_TrafficLight_A_Yellow.FBX-4f16e516b87435e4f479c4138631958c.scn"]
+source_file="res://Models/Street Models/street_lamp_3.fbx"
+dest_files=["res://.godot/imported/street_lamp_3.fbx-afe2c27acd9ac26d2e5abc4c047df077.scn"]
 
 [params]
 
@@ -31,19 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"meshes": {
-"TB_CITY_Prop_TrafficLight_A_Yellow": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
-"save_to_file/path": ""
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

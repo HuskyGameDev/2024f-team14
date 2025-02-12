@@ -22,7 +22,9 @@ const ATTACK_RANGE = 2.2
 @onready var hurtSFX = $HurtSFX
 
 var chasing = false
-
+var keepChasing = false
+var hasPast = false
+var playerOriginalPosition = null
 
 func _ready():
 
@@ -37,8 +39,7 @@ func _process(delta):
 	update_animation_parameters()
 
 	if chasing:
-		#if global_position.distance_to(player.global_position) > 30:
-			#chasing = false
+	
 		$VisionRaycast.debug_shape_custom_color = Color(0,255,0)
 		velocity = Vector3.ZERO
 		#navigation
@@ -50,6 +51,28 @@ func _process(delta):
 		
 		move_and_slide()
 		
+	elif keepChasing:
+		
+		$VisionRaycast.debug_shape_custom_color = Color(0,255,0)
+		#velocity = Vector3.ZERO
+		#navigation
+		var distance_vector = global_position - playerOriginalPosition
+		if distance_vector.length() > 0.5 and !hasPast:
+			nav_agent.set_target_position(playerOriginalPosition)
+			var next_nav_point = nav_agent.get_next_path_position()
+			velocity = (next_nav_point - global_transform.origin).normalized() * FORWARD_SPEED
+			look_at(Vector3(playerOriginalPosition.x, playerOriginalPosition.y, playerOriginalPosition.z), Vector3.UP)
+			distance_vector = global_position - playerOriginalPosition
+			if distance_vector.length() > 0.5:
+				look_at(Vector3(global_position.x + velocity.x, playerOriginalPosition.y, global_position.z + velocity.z), Vector3.UP)
+		else:
+			hasPast = true
+			velocity = Vector3(velocity.x, velocity.y, velocity.z).normalized() * FORWARD_SPEED
+			if velocity != Vector3.ZERO:
+				look_at(Vector3(global_position.x + velocity.x, playerOriginalPosition.y, global_position.z + velocity.z), Vector3.UP)
+			
+		move_and_slide()
+		
 	else:
 		velocity = Vector3.ZERO
 		$VisionRaycast.debug_shape_custom_color = Color(174,0,0)
@@ -58,6 +81,9 @@ func _process(delta):
 
 func update_animation_parameters():
 	if chasing:
+		animtree["parameters/conditions/chasing"] = true
+		animtree["parameters/conditions/idle"] = false
+	elif keepChasing:
 		animtree["parameters/conditions/chasing"] = true
 		animtree["parameters/conditions/idle"] = false
 	else:
@@ -88,6 +114,15 @@ func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 	
 
+func setChasing(boolean):
+	var original = chasing
+	chasing = boolean
+	if original != chasing:
+		$KeepChasingTimer.start()
+		playerOriginalPosition = player.global_position
+		keepChasing = true
+		
+
 func _on_groan_timer_timeout() -> void:
 	groanSFX.play()
 	groanTimer.start(randi_range(randi_range(9,14), randi_range(27,33)))
@@ -106,7 +141,11 @@ func _on_vision_timer_timeout() -> void:
 					var collider = $VisionRaycast.get_collider()
 					
 					if collider.name == "Player":
-						chasing = true
+						setChasing(true)
 					
 					else:
-						chasing = false
+						setChasing(false)
+
+func _on_keep_chasing_timer_timeout() -> void:
+	keepChasing = false
+	hasPast = false

@@ -1,12 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=25 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
-[ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Traffic Light.tscn" id="2_64k0f"]
+[ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Street/Traffic Light.tscn" id="2_64k0f"]
 [ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_vv285"]
+[ext_resource type="PackedScene" uid="uid://wixobdp5tftd" path="res://Assets/Street/Street Light.tscn" id="3_f7n4m"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
+[ext_resource type="PackedScene" uid="uid://bsm5ddk8up8uh" path="res://Assets/Street/Stop Sign.tscn" id="4_m2tur"]
+[ext_resource type="PackedScene" uid="uid://dyjsfse7wkd0h" path="res://Assets/Street/No Turn Sign.tscn" id="5_16s2v"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
 [ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire_Effect.tscn" id="7_f4gar"]
@@ -56,6 +59,18 @@ environment = SubResource("Environment_mrt15")
 
 [node name="TrafficLight" parent="." instance=ExtResource("2_64k0f")]
 transform = Transform3D(1.12071, 0, -0.997005, 0, 1.5, 0, 0.997005, 0, 1.12071, -26.0595, 9.28808, -10.8923)
+
+[node name="StreetLight" parent="." instance=ExtResource("3_f7n4m")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -8.64523, 0, -8.08726)
+
+[node name="StreetLight2" parent="." instance=ExtResource("3_f7n4m")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 32.2882, 0, -30.4592)
+
+[node name="StopSign" parent="." instance=ExtResource("4_m2tur")]
+transform = Transform3D(9.2321, 0, -3.84295, 0, 10, 0, 3.84295, 0, 9.2321, -22.1582, 0.647816, -12.2837)
+
+[node name="No Turn Sign" parent="." instance=ExtResource("5_16s2v")]
+transform = Transform3D(3.86373, 0, 9.22342, 0, 10, 0, -9.22342, 0, 3.86373, -27.7647, 0.733, -11.8862)
 
 [node name="Game Manager" type="Node" parent="."]
 process_mode = 3
