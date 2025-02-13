@@ -85,6 +85,7 @@ size = Vector3(3.94813, 6, 1)
 
 [node name="roof" type="CSGBox3D" parent="Map Compenents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269116, 13.4204, -0.0507884)
+visible = false
 size = Vector3(14.9521, 0.450195, 17.4457)
 
 [node name="Lighting" type="OmniLight3D" parent="."]

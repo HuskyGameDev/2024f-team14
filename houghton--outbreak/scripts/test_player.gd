@@ -9,9 +9,10 @@ var DEBUG = false
 var current_ammo: int
 var reserve_ammo: int
 
-const FORWARD_SPEED = 4.5
-const BACKWARD_SPEED = 4.5
-const TURNING_SPEED = 0.035
+const FORWARD_SPEED = 5.5
+const BACKWARD_SPEED = 3.5
+const SPRINT_SPEED = 7.5
+const TURNING_SPEED = 0.075
 const GRAVITY_CONSTANT = 100
 @export var turning_sensitivity: float = 1.0
 var input = Vector3.ZERO
