@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pistol.gd" id="1_fnodl"]
 [ext_resource type="ArrayMesh" uid="uid://421pgj2y8dg2" path="res://Models/pistol_model.obj" id="2_p3qul"]
-[ext_resource type="Animation" uid="uid://nh5rsvlj8e6p" path="res://Models/Animations/muzzelflash.res" id="3_4wh3u"]
+[ext_resource type="Animation" uid="uid://nh5rsvlj8e6p" path="res://Models/animations/muzzelflash.res" id="3_4wh3u"]
 [ext_resource type="AudioStream" uid="uid://crvca72w1mw8u" path="res://Audio/Gunshot SFX.wav" id="4_qslhe"]
 [ext_resource type="AudioStream" uid="uid://bdymh23va2prk" path="res://Audio/Online Sources/Pistol Reload.mp3" id="5_l17de"]
 [ext_resource type="AudioStream" uid="uid://bvau7pwyoli5a" path="res://Audio/Online Sources/Zombie Death.wav" id="6_2eaa1"]
