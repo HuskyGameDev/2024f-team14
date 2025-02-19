@@ -16,6 +16,10 @@ var is_reloading: bool = false
 @onready var reload_timer: Timer = $reload_timer
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
+@onready var gunshotSFX = $GunshotSFX
+@onready var reloadSFX = $ReloadSFX
+@onready var ammoDisplay = $AmmoDisplay
+@onready var zombieDeathSFX = $DeathSFX
 
 func _ready() -> void:
 	current_ammo = mag_size
@@ -35,9 +39,11 @@ func _process(_delta: float) -> void:
 		shoot()
 	if Input.is_action_just_pressed("reload") and !is_reloading:
 		reload()
+	ammoDisplay.text = "Current Ammo: " + str(current_ammo) + "\nReserve Ammo: " + str(reserve_ammo)
 
 func can_shoot():
 	return current_ammo > 0 && Input.is_action_pressed("aim")
+
 func can_reload():
 	current_ammo < mag_size and reserve_ammo > 0
 
@@ -47,21 +53,26 @@ func can_reload():
 func shoot():
 	if can_shoot():
 		current_ammo -= 1
-		print("current ammo: ", current_ammo, " reserve ammo: ", reserve_ammo)
+		#print("current ammo: ", current_ammo, " reserve ammo: ", reserve_ammo)
 		can_fire = false
 		shoot_timer.start()
 		$pistol_model/Sphere.show() 
 		states.travel("muzzle_flash")
+		gunshotSFX.play()
 		if ray_cast_3d.is_colliding():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
 				target.health -= damage
+				if target.health <= 0:
+					target.death()
+					zombieDeathSFX.play()	
 		
 	
 func reload():
 	if can_reload:
 		is_reloading = true
 		reload_timer.start()
+		reloadSFX.play()
 	
 
 func _on_reload_complete():

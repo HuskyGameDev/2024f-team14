@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxkk0x7i3u4v8"
+path="res://.godot/imported/Ammo Pickup SFX.wav-28fe3814f57640f0a47d287498758142.sample"
+
+[deps]
+
+source_file="res://Audio/Ammo Pickup SFX.wav"
+dest_files=["res://.godot/imported/Ammo Pickup SFX.wav-28fe3814f57640f0a47d287498758142.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

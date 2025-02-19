@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=16 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
+[ext_resource type="PackedScene" uid="uid://q8lujjtvw08b" path="res://Interact/Ammo.tscn" id="8_dsmyp"]
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]
 [ext_resource type="Script" path="res://scripts/player_health.gd" id="10_vhnfx"]
@@ -115,7 +116,7 @@ script = ExtResource("2_2r25l")
 shape = SubResource("BoxShape3D_278v1")
 
 [node name="Camera2(outside)" type="Camera3D" parent="."]
-transform = Transform3D(0.99573, 0.0223663, -0.0895619, -0.0146705, 0.996215, 0.0856816, 0.0911392, -0.0840018, 0.992289, -11.285, 4.27501, 9.27179)
+transform = Transform3D(0.99573, 0.0223663, -0.0895619, -0.00281643, 0.977113, 0.212702, 0.0922694, -0.211542, 0.973004, -11.285, 7.77044, 9.27179)
 
 [node name="Area3D" type="Area3D" parent="Camera2(outside)"]
 transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, -2.894, 2.48101, -10.1237)
@@ -157,6 +158,9 @@ transform = Transform3D(0.999888, -5.58794e-09, -5.69969e-06, 1.61491e-06, 1, -1
 shape = SubResource("BoxShape3D_klieq")
 
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
+
+[node name="Ammo" parent="." instance=ExtResource("8_dsmyp")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -13.3235, 2.01637, -6.71496)
 
 [node name="test enemy" parent="." instance=ExtResource("8_ke2hr")]
 transform = Transform3D(-0.997363, 0, 0.0725768, 0, 1, 0, -0.0725768, 0, -0.997363, -12.1976, 1.7862, -14.7971)
