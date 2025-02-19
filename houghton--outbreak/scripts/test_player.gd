@@ -4,6 +4,7 @@ var DEBUG = false
 @export var invenItems: inventory
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
+@onready var animationPlayer = $"PM 10-31-24/AnimationPlayer"
 
 @onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
 @onready var hurtSFX = $HurtSFX
@@ -31,6 +32,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#Applies gravity if necissary
+	animtree.advance(delta * 0)
 	if not is_on_floor():
 		velocity.y -= GRAVITY_CONSTANT*delta
 	
@@ -49,9 +51,11 @@ func character_movement(delta: float):
 	elif Input.is_action_pressed("move_forwards"):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -forwardVector * FORWARD_SPEED
+		animtree.advance(delta * 1.5)
 		
 		if (Input.is_action_pressed("Sprint")):
 			velocity *= 1.5
+			animtree.advance(delta * 1.7)
 		
 		if(DEBUG):
 			states.travel("walkNoGun")
@@ -61,6 +65,7 @@ func character_movement(delta: float):
 	elif Input.is_action_pressed("move_backwards"):
 		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -backwardVector * BACKWARD_SPEED
+		animtree.advance(delta * 1)
 		if(DEBUG):
 			states.travel("walkNoGunBackwards")
 		else:
