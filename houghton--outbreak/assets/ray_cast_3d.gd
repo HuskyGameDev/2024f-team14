@@ -1,5 +1,5 @@
 extends RayCast3D
-@onready var laser = $LaserSight
+@onready var laser = $"Laser Dot"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	var contactPoint
 	force_raycast_update()
 	if is_colliding():
-		contactPoint = to_global(get_collision_point())
-		
-		laser.mesh.height = contactPoint.z
-		laser.position.z = -contactPoint.z/2
+		contactPoint = to_local(get_collision_point())
+		laser.position.z = contactPoint.z
+		laser.position.x = contactPoint.x
+		laser.position.y = contactPoint.y
