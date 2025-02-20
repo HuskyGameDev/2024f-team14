@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy04tbawnr8ea"
+path="res://.godot/imported/Fire Crackling.wav-726062c5b7644f06d471759edc7b745b.sample"
+
+[deps]
+
+source_file="res://Audio/Online Sources/Fire Crackling.wav"
+dest_files=["res://.godot/imported/Fire Crackling.wav-726062c5b7644f06d471759edc7b745b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
