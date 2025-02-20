@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=18 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]
 [ext_resource type="Script" path="res://scripts/player_health.gd" id="10_vhnfx"]
+[ext_resource type="Script" path="res://level/OptionsButton.gd" id="13_0qw8f"]
+[ext_resource type="Script" path="res://level/controlsPage.gd" id="13_n30o1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278v1"]
 
@@ -77,9 +79,10 @@ layout_mode = 2
 
 [node name="GridContainer2" type="GridContainer" parent="Test Player/InventoryUI/NinePatchRect"]
 layout_mode = 0
-offset_left = 2.0
-offset_right = 110.0
+offset_left = 1.0
+offset_right = 109.0
 offset_bottom = 160.0
+columns = 2
 
 [node name="Button" type="Button" parent="Test Player/InventoryUI/NinePatchRect/GridContainer2"]
 custom_minimum_size = Vector2(52, 50)
@@ -255,6 +258,45 @@ offset_right = 1128.0
 offset_bottom = 23.0
 script = ExtResource("10_vhnfx")
 
+[node name="Controls" type="Label" parent="Control" groups=["ControlsGroup"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 430.0
+offset_top = 145.0
+offset_right = 714.0
+offset_bottom = 454.0
+text = "Controls:
+
+Left Click: Shoot
+Right Click: Aim (Hold)
+Middle Mouse: Target (When Aiming)
+
+E: Interact
+P: Pause/Inventory
+R: Reload Weapon
+
+Shift: Sprint
+W, S: Forward, Backward
+A, D: Rotate Left, Right"
+horizontal_alignment = 1
+script = ExtResource("13_n30o1")
+
+[node name="BackButton" type="Button" parent="Control/Controls"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 336.0
+offset_right = 165.0
+offset_bottom = 367.0
+text = "back"
+
+[node name="ControlsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 905.0
+offset_right = 979.0
+offset_bottom = 31.0
+text = "Controls"
+script = ExtResource("13_0qw8f")
+
 [connection signal="player_hit" from="Test Player" to="Control/PlayerHealth" method="_on_test_player_player_hit"]
 [connection signal="pauseSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Test Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
@@ -270,3 +312,6 @@ script = ExtResource("10_vhnfx")
 [connection signal="body_exited" from="Camera3(outside)/Area3D" to="Camera3(outside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera3(outside)2/Area3D" to="Camera3(outside)2/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera3(outside)2/Area3D" to="Camera3(outside)2/Area3D" method="exit_trigger"]
+[connection signal="visibility_changed" from="Control/Controls" to="Control/Controls" method="_on_visibility_changed"]
+[connection signal="pressed" from="Control/Controls/BackButton" to="Control/Controls" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
