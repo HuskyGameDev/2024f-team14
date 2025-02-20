@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6xo8n0kcjct5"
+path="res://.godot/imported/Hitmarker SFX.mp3-10840286b548172f7d3ae77d15c374dd.mp3str"
+
+[deps]
+
+source_file="res://Audio/Online Sources/Hitmarker SFX.mp3"
+dest_files=["res://.godot/imported/Hitmarker SFX.mp3-10840286b548172f7d3ae77d15c374dd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
