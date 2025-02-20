@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_pressed():
+func _on_pressed() -> void:
 	Controls.visible = true

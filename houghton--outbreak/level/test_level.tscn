@@ -1,3 +1,5 @@
+[gd_scene load_steps=27 format=3 uid="uid://dwpsls5jnk4qd"]
+
 [ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
@@ -15,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]
 [ext_resource type="Script" path="res://scripts/player_health.gd" id="10_vhnfx"]
-[ext_resource type="Script" path="res://level/OptionsButton.gd" id="13_0qw8f"]
-[ext_resource type="Script" path="res://level/controlsPage.gd" id="13_n30o1"]
+[ext_resource type="Script" path="res://scripts/OptionsButton.gd" id="18_b7gc5"]
+[ext_resource type="Script" path="res://scripts/controlsPage.gd" id="18_i6v2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nbsu"]
 shader = ExtResource("1_i0suc")
@@ -123,8 +125,8 @@ layout_mode = 2
 
 [node name="GridContainer2" type="GridContainer" parent="Player/InventoryUI/NinePatchRect"]
 layout_mode = 0
-offset_left = 1.0
-offset_right = 109.0
+offset_left = 2.0
+offset_right = 110.0
 offset_bottom = 160.0
 columns = 2
 
@@ -317,6 +319,54 @@ offset_bottom = 23.0
 grow_horizontal = 0
 script = ExtResource("10_vhnfx")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="Label" parent="." groups=["ControlsGroup"]]
+unique_name_in_owner = true
+offset_left = 438.0
+offset_top = 111.0
+offset_right = 722.0
+offset_bottom = 446.0
+text = "Controls:
+
+Left Click: Shoot
+Right Click: Aim (Hold)
+Middle Mouse: Target (When Aiming)
+
+E: Interact
+P: Pause/Inventory
+R: Reload
+
+Shift: Sprint
+W,S: Forward, Backward
+A,D: Rotate Left, Right"
+horizontal_alignment = 1
+script = ExtResource("18_i6v2r")
+
+[node name="BackButton" type="Button" parent="Controls"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 350.0
+offset_right = 176.0
+offset_bottom = 381.0
+text = "back"
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 940.0
+offset_right = 1014.0
+offset_bottom = 31.0
+text = "Controls"
+script = ExtResource("18_b7gc5")
+
+[connection signal="player_hit" from="Player" to="PlayerHealth" method="_on_test_player_player_hit"]
+[connection signal="pauseSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
+[connection signal="resumeSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
+[connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Player/InventoryUI" method="_on_button_2_pressed"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="enter_trigger"]
@@ -327,6 +377,5 @@ script = ExtResource("10_vhnfx")
 [connection signal="body_exited" from="Camera3(outside)/Area3D" to="Camera3(outside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera3(outside)2/Area3D" to="Camera3(outside)2/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera3(outside)2/Area3D" to="Camera3(outside)2/Area3D" method="exit_trigger"]
-[connection signal="visibility_changed" from="Control/Controls" to="Control/Controls" method="_on_visibility_changed"]
-[connection signal="pressed" from="Control/Controls/BackButton" to="Control/Controls" method="_on_back_button_pressed"]
-[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
+[connection signal="pressed" from="Controls/BackButton" to="Controls" method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="OptionsButton" method="_on_pressed"]
