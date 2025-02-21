@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=3 uid="uid://d2p2xgexeg3a8"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_fchar"]
@@ -204,3 +205,92 @@ layout_mode = 2
 
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Player/InventoryUI" method="_on_button_2_pressed"]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://bbf8jkke37quo"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_tgw3o"]
+
+[node name="Level" type="Node3D"]
+
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("1_tgw3o")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+size = Vector3(50, 0.5, 200)
+
+[node name="Wall1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6213, 11.5293, 0)
+size = Vector3(0.5, 25, 200)
+
+[node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5532, 11.5293, 0)
+size = Vector3(0.5, 25, 200)
+
+[node name="Wall3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0245342, 11.5607, -99.7227)
+visible = false
+size = Vector3(50, 25, 0.5)
+
+[node name="Wall4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0245342, 11.5607, 99.5859)
+visible = false
+size = Vector3(50, 25, 0.5)
+
+[node name="Wall5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, -74.1659)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall12" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, -99.7957)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, -48.6662)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, -29.7451)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall8" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, -6.16968)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall9" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, 21.7713)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall10" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, 46.1288)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall11" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, 79.73)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall13" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9014, 11.5607, 99.7699)
+size = Vector3(15, 25, 0.5)
+
+[node name="Wall14" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69722, 11.5607, 89.7959)
+size = Vector3(0.5, 25, 20)
+
+[node name="Wall15" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69722, 11.5607, -39.1976)
+size = Vector3(0.5, 25, 18.5)
+
+[node name="Wall16" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69722, 11.5607, -24.4769)
+size = Vector3(0.5, 25, 10)
+
+[node name="Wall17" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69722, 11.5607, -10.9774)
+size = Vector3(0.5, 25, 10)
+
+[node name="Wall18" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69722, 15.567, -18.0707)
+size = Vector3(0.5, 17, 10)
+>>>>>>> Stashed changes
