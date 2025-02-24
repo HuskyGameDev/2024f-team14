@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpiakin8jn14o"
-path.s3tc="res://.godot/imported/Voronoi01.png-5cbd2603b156887b878b293b8cc3c787.s3tc.ctex"
+uid="uid://e1s5olru21ax"
+path.s3tc="res://.godot/imported/Flame01.png-d38f05f79d616c52fa06246bb0e7f6ad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/GAP_Fire_Textures/Voronoi01.png"
-dest_files=["res://.godot/imported/Voronoi01.png-5cbd2603b156887b878b293b8cc3c787.s3tc.ctex"]
+source_file="res://Shaders/Fire/GAP_Fire_Textures/Flame01.png"
+dest_files=["res://.godot/imported/Flame01.png-d38f05f79d616c52fa06246bb0e7f6ad.s3tc.ctex"]
 
 [params]
 

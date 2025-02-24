@@ -16,6 +16,7 @@ const ATTACK_RANGE = 2.2
 @onready var groanSFX = $GroanSFX
 @onready var groanTimer = $GroanTimer
 @onready var hurtSFX = $HurtSFX
+@onready var deathSFX = $DeathSFX
 @onready var walkTimer = $WalkTimer
 
 var chasing = false
@@ -23,6 +24,8 @@ var keepChasing = false
 var hasPast = false
 var walkForward = false
 var playerOriginalPosition = null
+
+var dead = false
 
 @export var player = null
 
@@ -91,32 +94,48 @@ func update_animation_parameters():
 	if chasing:
 		animtree["parameters/conditions/chasing"] = true
 		animtree["parameters/conditions/idle"] = false
+		
+		if _target_in_range():
+			animtree["parameters/conditions/attack"] = true
+		else:
+			animtree["parameters/conditions/attack"] = false
+
+		
 	elif keepChasing or walkForward:
 		animtree["parameters/conditions/chasing"] = true
 		animtree["parameters/conditions/idle"] = false
+		
+		if _target_in_range():
+			animtree["parameters/conditions/attack"] = true
+		else:
+			animtree["parameters/conditions/attack"] = false
+			
 	else:
 		animtree["parameters/conditions/chasing"] = false
 		animtree["parameters/conditions/idle"] = true
 	
-	if _target_in_range():
-		animtree["parameters/conditions/attack"] = true
-	else:
-		animtree["parameters/conditions/attack"] = false
-
 
 func hitPlayer():
-	if _target_in_range():
+	if _target_in_range() and !dead:
 		player.hit(10)
 
 func _on_test_player_player_hit() -> void:
 	pass # Replace with function body.
 
 func death():
+	dead = true
+	$Hurtbox.disabled = true
+	$EnemyModel1.visible = false
+	await get_tree().create_timer(3).timeout
 	queue_free()
-	
 
-func playHurtSFX():
-	hurtSFX.play()
+func hit(damage):
+	health -= damage
+	if health <= 0:
+		death()
+		deathSFX.play()
+	else:
+		hurtSFX.play()
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
@@ -132,8 +151,9 @@ func setChasing(boolean):
 		
 
 func _on_groan_timer_timeout() -> void:
-	groanSFX.play()
-	groanTimer.start(randi_range(randi_range(9,14), randi_range(27,33)))
+	if !dead:
+		groanSFX.play()
+		groanTimer.start(randi_range(randi_range(9,14), randi_range(27,33)))
 
 func _on_vision_timer_timeout() -> void:
 	chasing = false
@@ -153,6 +173,7 @@ func _on_vision_timer_timeout() -> void:
 					
 					else:
 						setChasing(false)
+
 
 func _on_keep_chasing_timer_timeout() -> void:
 	keepChasing = false

@@ -10,6 +10,8 @@ var DEBUG = false
 @onready var hurtSFX = $HurtSFX
 @onready var deathSFX = $DeathSFX
 
+var grenade = preload("res://Assets/Grenades/Grenade.tscn")
+
 var current_ammo: int
 var reserve_ammo: int
 
@@ -20,6 +22,8 @@ const TURNING_SPEED = 0.075
 const GRAVITY_CONSTANT = 100
 @export var turning_sensitivity: float = 1.0
 var input = Vector3.ZERO
+
+var canThrow = true
 
 var MAX_HEALTH: int = 100
 var current_health: int
@@ -112,6 +116,8 @@ func character_movement(delta: float):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
+	throwGrenade()
+	
 	move_and_slide()
 
 #Returns enemy closest to the player when called.
@@ -148,3 +154,35 @@ func hit(damage):
 			hurtSFX.play()
 	#
 	#emit_signal("player_hit")
+
+func throwGrenade():
+	if Input.is_action_just_released("G") && canThrow:
+		var grenadeInstance = grenade.instantiate()
+		grenadeInstance.position = $GrenadePos.global_position
+		get_tree().current_scene.add_child(grenadeInstance)
+			
+		canThrow = false
+		$ThrowTimer.start()
+		
+		#Drop Grenade
+		if Input.is_action_pressed("aim"):
+			var force = -0.5
+			var upDirection = 0.0
+			
+			var playerRotation = global_transform.basis.z.normalized()
+			
+			grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
+		
+		#Throw Grenade
+		else:
+			
+			var force = -10
+			var upDirection = 3.5
+			
+			var playerRotation = global_transform.basis.z.normalized()
+			
+			grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
+
+
+func _on_throw_timer_timeout() -> void:
+	canThrow = true

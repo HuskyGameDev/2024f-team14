@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://op0rugfhyfe7"
-path.s3tc="res://.godot/imported/Flare00.PNG-cf10072dc8630be9fe51077ea0ab463f.s3tc.ctex"
+uid="uid://iqddokevhbuw"
+path.s3tc="res://.godot/imported/grenade_lowpoly_grenade_lowpoly_Normal.png-6c4071d6c2828e221b1463fc64bdd45a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/GAP_Fire_Textures/Flare00.PNG"
-dest_files=["res://.godot/imported/Flare00.PNG-cf10072dc8630be9fe51077ea0ab463f.s3tc.ctex"]
+source_file="res://Models/Grenades/Grenade1/textures/grenade_lowpoly_grenade_lowpoly_Normal.png"
+dest_files=["res://.godot/imported/grenade_lowpoly_grenade_lowpoly_Normal.png-6c4071d6c2828e221b1463fc64bdd45a.s3tc.ctex"]
 
 [params]
 

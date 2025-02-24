@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyjsfse7wkd0h" path="res://Assets/Street/No Turn Sign.tscn" id="5_16s2v"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="5_gvcf4"]
 [ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="5_nuyci"]
-[ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire_Effect.tscn" id="7_f4gar"]
+[ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire/Fire_Effect.tscn" id="7_f4gar"]
 [ext_resource type="PackedScene" uid="uid://q8lujjtvw08b" path="res://Interact/Ammo.tscn" id="8_dsmyp"]
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://Assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_pbdyo"]

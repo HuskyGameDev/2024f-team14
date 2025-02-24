@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8xsjrx5yrm5x"
+path="res://.godot/imported/Grenade Explosion.wav-d995b0c3efaeecf8ac065fdd93c4e8ad.sample"
+
+[deps]
+
+source_file="res://Audio/Online Sources/Grenade Explosion.wav"
+dest_files=["res://.godot/imported/Grenade Explosion.wav-d995b0c3efaeecf8ac065fdd93c4e8ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
