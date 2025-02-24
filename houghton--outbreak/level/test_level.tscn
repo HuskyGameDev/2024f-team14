@@ -315,10 +315,17 @@ offset_bottom = 40.0
 
 [node name="Controls" type="Label" parent="." groups=["ControlsGroup"]]
 unique_name_in_owner = true
-offset_left = 438.0
-offset_top = 111.0
-offset_right = 722.0
-offset_bottom = 446.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -167.5
+offset_right = 142.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Controls:
 
 Left Click: Shoot
@@ -344,9 +351,14 @@ offset_bottom = 381.0
 text = "back"
 
 [node name="OptionsButton" type="Button" parent="."]
-offset_left = 940.0
-offset_right = 1014.0
-offset_bottom = 31.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -163.0
+offset_top = -1.0
+offset_right = -89.0
+offset_bottom = 30.0
+grow_horizontal = 0
 text = "Controls"
 script = ExtResource("18_b7gc5")
 

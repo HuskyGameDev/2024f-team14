@@ -88,7 +88,7 @@ func character_movement(delta: float):
 			
 			#await get_tree().create_timer(1).timeout
 			if nearest != null:
-				look_at(nearest.global_position)
+				look_at(Vector3(nearest.global_position.x, global_position.y, nearest.global_position.z))
 	else:
 		velocity.x = 0
 		velocity.z = 0
