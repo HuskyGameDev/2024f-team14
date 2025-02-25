@@ -39,8 +39,12 @@ func _ready():
 #func _physics_process(delta: float) -> void:
 
 func _process(delta):
+	
+	if dead:
+		return
+	
 	update_animation_parameters()
-
+	
 	if chasing:
 	
 		$VisionRaycast.debug_shape_custom_color = Color(0,255,0)
@@ -61,10 +65,12 @@ func _process(delta):
 		#navigation
 		var distance_vector = global_position - playerOriginalPosition
 		if distance_vector.length() > 0.5 and !hasPast:
-			nav_agent.set_target_position(playerOriginalPosition)
-			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * FORWARD_SPEED
+			#nav_agent.set_target_position(playerOriginalPosition)
+			#var next_nav_point = nav_agent.get_next_path_position()
+			#velocity = (next_nav_point - global_transform.origin).normalized() * FORWARD_SPEED
 			look_at(Vector3(playerOriginalPosition.x, playerOriginalPosition.y, playerOriginalPosition.z), Vector3.UP)
+			var move_direction = -global_transform.basis.z.normalized()
+			velocity = move_direction * FORWARD_SPEED
 			distance_vector = global_position - playerOriginalPosition
 			if distance_vector.length() > 0.5:
 				look_at(Vector3(global_position.x + velocity.x, playerOriginalPosition.y, global_position.z + velocity.z), Vector3.UP)
