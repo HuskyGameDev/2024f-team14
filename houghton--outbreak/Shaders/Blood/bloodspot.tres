@@ -2,7 +2,7 @@
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_jtret"]
 output_port_for_preview = 0
-constant = Color(0.886275, 0, 0.0431373, 1)
+constant = Color(0.500362, 0, 0.0121414, 1)
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_3khxf"]
 output_port_for_preview = 0
@@ -114,7 +114,7 @@ void vertex() {
 
 void fragment() {
 // ColorConstant:10
-	vec4 n_out10p0 = vec4(0.886275, 0.000000, 0.043137, 1.000000);
+	vec4 n_out10p0 = vec4(0.500362, 0.000000, 0.012141, 1.000000);
 
 
 // Input:4
