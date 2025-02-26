@@ -24,6 +24,8 @@ const GRAVITY_CONSTANT = 100
 var input = Vector3.ZERO
 
 var canThrow = true
+var turning = false
+var targetTurn = null
 
 var MAX_HEALTH: int = 100
 var current_health: int
@@ -47,6 +49,11 @@ func character_movement(delta: float):
 	var current_y_velocity = velocity.y
 	var current_ammo = pistol.current_ammo
 	var reserve_ammo = pistol.reserve_ammo
+	
+	if (turning):
+		turn_around(delta, 0.15)
+		return
+	
 	
 	if Input.is_action_pressed("move_forwards") and Input.is_action_pressed("move_backwards"):
 		velocity.x = 0
@@ -116,6 +123,11 @@ func character_movement(delta: float):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
+	elif Input.is_action_just_pressed("TurnAround") and !turning:
+		targetTurn = rotation.y + PI
+		turning = true
+		
+		
 	throwGrenade()
 	
 	move_and_slide()
@@ -138,6 +150,13 @@ func rotate_to(delta, posit, time):
 	var objectPos = Vector2(posit.x, posit.z)
 	var direction = (pos - objectPos)
 	rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.y), delta / time)
+
+func turn_around(delta, time):
+	rotation.y += delta / time
+	var rotation1 = rotation.y + 2*PI if rotation.y < 0 else rotation.y
+	var rotation2 = targetTurn + 2*PI if targetTurn < 0 else targetTurn
+	if abs(rotation1 - rotation2) < 0.05:
+		turning = false
 
 func increment_ammo():
 	pistol.reserve_ammo += 12
