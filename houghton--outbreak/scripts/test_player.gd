@@ -46,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	character_movement(delta)
 
 func character_movement(delta: float):
+	
 	var current_y_velocity = velocity.y
 	var current_ammo = pistol.current_ammo
 	var reserve_ammo = pistol.reserve_ammo

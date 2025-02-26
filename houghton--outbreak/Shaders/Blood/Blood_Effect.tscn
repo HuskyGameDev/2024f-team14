@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=3 uid="uid://dawsttfvfckwn"]
+
+[ext_resource type="Shader" uid="uid://derog1ox31ik" path="res://Shaders/Blood/blood.tres" id="1_mnp50"]
+[ext_resource type="Script" path="res://Shaders/Blood/blood_effect.gd" id="1_u648v"]
+[ext_resource type="Shader" uid="uid://dr8esrwiutpmw" path="res://Shaders/Blood/bloodspot.tres" id="2_1pxne"]
+[ext_resource type="Shader" uid="uid://dmuqd138jsjoy" path="res://Shaders/Blood/blooddrop.tres" id="2_ouvs0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdu5k"]
+render_priority = 0
+shader = ExtResource("2_ouvs0")
+
+[sub_resource type="Curve" id="Curve_i18k8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r8abx"]
+curve = SubResource("Curve_i18k8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_me257"]
+direction = Vector3(0, 0, 0)
+spread = 30.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -20, 0)
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_min = 3.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_r8abx")
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_v4p4d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfpk2"]
+render_priority = 0
+shader = ExtResource("1_mnp50")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bw81"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_min = 3.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_r8abx")
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_g5vu6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvwef"]
+render_priority = 0
+shader = ExtResource("2_1pxne")
+
+[sub_resource type="Curve" id="Curve_t5egs"]
+_data = [Vector2(0, 0.56044), 0.0, 0.0, 0, 0, Vector2(0.181159, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fulki"]
+curve = SubResource("Curve_t5egs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cmcl"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_fulki")
+
+[sub_resource type="QuadMesh" id="QuadMesh_yitx2"]
+orientation = 1
+
+[node name="BloodEffect" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+script = ExtResource("1_u648v")
+
+[node name="BulletBlood" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_kdu5k")
+emitting = false
+amount = 1
+sub_emitter = NodePath("../Bloodspot")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_me257")
+draw_pass_1 = SubResource("QuadMesh_v4p4d")
+
+[node name="ExplosionBlood" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_hfpk2")
+emitting = false
+amount = 50
+sub_emitter = NodePath("../Bloodspot")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7bw81")
+draw_pass_1 = SubResource("QuadMesh_g5vu6")
+
+[node name="Bloodspot" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+material_override = SubResource("ShaderMaterial_vvwef")
+cast_shadow = 0
+emitting = false
+amount = 100
+lifetime = 10.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8cmcl")
+draw_pass_1 = SubResource("QuadMesh_yitx2")
+
+[node name="ParticleCollision" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676799, -1.46536, -1.28079)
+layers = 0
+size = Vector3(32.5134, 0.279405, 30.3441)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

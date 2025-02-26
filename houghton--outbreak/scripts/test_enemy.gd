@@ -3,6 +3,8 @@ extends CharacterBody3D
 #const TURNING_SPEED = 0.0325
 #const GRAVITY_CONSTANT = 100
 
+var bloodEffect = preload("res://Shaders/Blood/Blood_Effect.tscn")
+
 @export var max_health = 50
 var health: int
 
@@ -130,6 +132,10 @@ func _on_test_player_player_hit() -> void:
 
 func death():
 	dead = true
+	var bloodInstance = bloodEffect.instantiate()
+	bloodInstance.position = $BloodPos.global_position
+	get_tree().current_scene.add_child(bloodInstance)
+	bloodInstance.explode("Explosion")
 	$Hurtbox.disabled = true
 	$EnemyModel1.visible = false
 	await get_tree().create_timer(3).timeout
@@ -141,6 +147,12 @@ func hit(damage):
 		death()
 		deathSFX.play()
 	else:
+		var bloodInstance = bloodEffect.instantiate()
+		bloodInstance.position = $BloodPos.global_position
+		bloodInstance.rotation = rotation
+		get_tree().current_scene.add_child(bloodInstance)
+		
+		bloodInstance.explode("Bullet")
 		hurtSFX.play()
 
 func _target_in_range():
