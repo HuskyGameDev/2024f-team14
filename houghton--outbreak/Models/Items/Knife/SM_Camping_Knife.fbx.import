@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d3cewf80erx0r"
-path="res://.godot/imported/Ammo_00.fbx-673b0bb194e92b6508e40292e31e6318.scn"
+uid="uid://cs7caxq6vg2ov"
+path="res://.godot/imported/SM_Camping_Knife.fbx-613aeede67f07bb792dc2d1c1e33750b.scn"
 
 [deps]
 
-source_file="res://Models/Ammo/Ammo_00.fbx"
-dest_files=["res://.godot/imported/Ammo_00.fbx-673b0bb194e92b6508e40292e31e6318.scn"]
+source_file="res://Models/Items/Knife/SM_Camping_Knife.fbx"
+dest_files=["res://.godot/imported/SM_Camping_Knife.fbx-613aeede67f07bb792dc2d1c1e33750b.scn"]
 
 [params]
 

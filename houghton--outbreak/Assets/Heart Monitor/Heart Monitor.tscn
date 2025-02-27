@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqlp282g43yf0"]
+
+[ext_resource type="Shader" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_nf4tr"]
+[ext_resource type="Script" path="res://Assets/Heart Monitor/HeartBeat.gd" id="1_rjg5c"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5ib2"]
+
+[sub_resource type="Gradient" id="Gradient_h700v"]
+offsets = PackedFloat32Array(0.993506, 1)
+colors = PackedColorArray(0, 0.501961, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uqbac"]
+gradient = SubResource("Gradient_h700v")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.504587, 0.5)
+fill_to = Vector2(0.711009, 0.357798)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kod2o"]
+shader = ExtResource("1_nf4tr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6460w"]
+size = Vector2(1161, 642)
+center_offset = Vector3(572.705, 330.06, 0)
+
+[node name="Heart Monitor" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1161.0
+offset_bottom = 652.0
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(1, 2, 1, 1)
+material = SubResource("CanvasItemMaterial_p5ib2")
+position = Vector2(115, 297)
+scale = Vector2(12.5944, 1)
+points = PackedVector2Array(0.999, -148.426, 1, -112.072, 2, -125.003, 3, -84.3594, 4, -31.5124, 5, -3.05779, 6, -0.141923, 7, 6.44847, 8, 41.6169, 9, 95.4939, 10, 127.033, 11, 99.6936, 12, 16.8997, 13, -75.7864, 14, -125.075, 15, -111.134, 16, -59.5889, 17, -14.8259, 18, 0.0904853, 19, 0.208361, 20, 17.8255, 21, 64.8667, 22, 115.027, 23, 123.784, 24, 68.9068, 25, -25.6701, 26, -105.388, 27, -127.305, 28, -92.1267, 29, -38.4205, 30, -5.5765, 31, 0.0127645, 32, 5.04216, 33, 36.9726, 34, 90.915, 35, 128.096, 36, 108.801, 37, 30.1868, 38, -66.109, 39, -124.767, 40, -119.506, 41, -70.446, 42, -21.8217, 43, -1.48189, 44, 0.623822, 45, 16.1821, 46, 61.1481, 47, 113.649, 48, 129.298, 49, 81.0289, 50, -12.9369, 51, -99.4451, 52, -131.139, 53, -102.111, 54, -47.6387, 55, -9.64026, 56, -0.134522, 57, 4.19433, 58, 32.707, 59, 85.6496, 60, 127.453, 61, 116.234, 62, 43.162, 63, -54.7222, 64, -121.174, 65, -124.193, 66, -78.3276, 67, -27.0726, 68, -2.57299, 69, 0.249766, 70, 12.2625, 71, 53.5493, 72, 107.332, 73, 130.219, 73.001, 129.637)
+width = 1.0
+default_color = Color(0, 0.501961, 0, 1)
+script = ExtResource("1_rjg5c")
+spacing = 1.0
+
+[node name="Point" type="PointLight2D" parent="." groups=["Point"]]
+unique_name_in_owner = true
+position = Vector2(601, 550)
+energy = 118.4
+texture = SubResource("GradientTexture2D_uqbac")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_kod2o")
+position = Vector2(0.666718, -10.7222)
+scale = Vector2(0.963542, 0.978009)
+mesh = SubResource("QuadMesh_6460w")

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ea0rylljf51w"
-path="res://.godot/imported/Ammo_Pack_00.fbx-258ce4e68c5b21c5fac7c399564b352f.scn"
+path="res://.godot/imported/Ammo_Pack_00.fbx-e0226f063d568c07702a6c9ed9ebfc49.scn"
 
 [deps]
 
-source_file="res://Models/Ammo/Ammo_Pack_00.fbx"
-dest_files=["res://.godot/imported/Ammo_Pack_00.fbx-258ce4e68c5b21c5fac7c399564b352f.scn"]
+source_file="res://Models/Items/Ammo/Ammo_Pack_00.fbx"
+dest_files=["res://.godot/imported/Ammo_Pack_00.fbx-e0226f063d568c07702a6c9ed9ebfc49.scn"]
 
 [params]
 

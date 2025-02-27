@@ -8,12 +8,12 @@ var healthHealed = 35
 
 #var player_hit = test_area.
 
-func _process(delta):
+func _process(_delta):
 	var hp = "%d hp" % [player.current_health]
 	text = hp
 
-func hit(health, dmgTaken):
-	health -= dmgTaken
+#func hit(_health, dmgTaken):
+	#health -= dmgTaken
 
 func _on_test_player_player_hit() -> void:
 	health -= 10

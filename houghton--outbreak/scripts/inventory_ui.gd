@@ -25,7 +25,7 @@ func move_children():
 #func equip_items():
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("P"):
 		if GameManager.debugLog:
 			if GameManager.STATE==GameManager.PAUSE:

@@ -30,13 +30,13 @@ shader = ExtResource("1_i0suc")
 shader_parameter/skyColor = Color(0.205117, 0.205117, 0.205117, 1)
 shader_parameter/horizonColor = Color(0, 0, 0, 1)
 
-[sub_resource type="Sky" id="Sky_g0ba0"]
+[sub_resource type="Sky" id="Sky_rcyw6"]
 sky_material = SubResource("ShaderMaterial_1nbsu")
 
 [sub_resource type="Environment" id="Environment_mrt15"]
 background_mode = 2
 background_color = Color(1, 0, 0, 1)
-sky = SubResource("Sky_g0ba0")
+sky = SubResource("Sky_rcyw6")
 ambient_light_source = 3
 reflected_light_source = 2
 glow_enabled = true
@@ -92,11 +92,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.12746, 0.674101, -5.99164)
 [node name="Mailbox" parent="." instance=ExtResource("8_34plq")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -34.848, 0.713295, -26.8787)
 
-[node name="Ammo" parent="." instance=ExtResource("8_dsmyp")]
-transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -10.677, 2.27203, 3.23067)
-
 [node name="Medkit" parent="." instance=ExtResource("24_1uixx")]
-transform = Transform3D(-0.113203, 0.323475, -0.939441, 0, 0.945519, 0.325568, 0.993572, 0.0368554, -0.107036, 6.6614, 2.27255, -3.55196)
+transform = Transform3D(-1.13203, 3.23475, -9.39441, 0, 9.45519, 3.25568, 9.93572, 0.368554, -1.07036, 6.6614, 2.27255, -3.55196)
+prompt_message = null
+prompt_input = null
 
 [node name="Player" parent="." instance=ExtResource("1_lg7yx")]
 unique_name_in_owner = true
@@ -246,6 +245,11 @@ shape = SubResource("BoxShape3D_klieq")
 
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
 
+[node name="Ammo" parent="." instance=ExtResource("8_dsmyp")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -10.677, 2.27203, 3.23067)
+prompt_message = null
+prompt_input = null
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_xqjdn")
 enabled = false
@@ -331,15 +335,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Controls" type="Label" parent="." groups=["ControlsGroup"]]
+unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -142.0
-offset_top = -266.055
+offset_top = -167.5
 offset_right = 142.0
-offset_bottom = 146.945
+offset_bottom = 167.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Controls:
@@ -350,24 +355,20 @@ Middle Mouse: Target (When Aiming)
 
 E: Interact
 P: Pause/Inventory
-G: Throw Grenade
-G + Right Click: Drop Grenade
-C: Turn Around
-V: Melee Attack
+R: Reload
 
 Shift: Sprint
-W, S: Forward, Backward
-A, D: Rotate Left, Right
-"
+W,S: Forward, Backward
+A,D: Rotate Left, Right"
 horizontal_alignment = 1
 script = ExtResource("18_i6v2r")
 
 [node name="BackButton" type="Button" parent="Controls"]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 444.5
-offset_right = 164.0
-offset_bottom = 475.5
+offset_left = 131.0
+offset_top = 350.0
+offset_right = 176.0
+offset_bottom = 381.0
 text = "back"
 
 [node name="OptionsButton" type="Button" parent="."]
@@ -382,6 +383,7 @@ grow_horizontal = 0
 text = "Controls"
 script = ExtResource("18_b7gc5")
 
+[connection signal="player_hit" from="Player" to="PlayerHealth" method="_on_test_player_player_hit"]
 [connection signal="pauseSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
 [connection signal="resumeSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]

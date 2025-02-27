@@ -40,7 +40,7 @@ func _ready():
 
 #func _physics_process(delta: float) -> void:
 
-func _process(delta):
+func _process(_delta):
 	
 	if dead:
 		return

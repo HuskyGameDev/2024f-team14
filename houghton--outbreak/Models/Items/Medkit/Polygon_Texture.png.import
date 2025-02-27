@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnspwb5waj7yb"
-path.s3tc="res://.godot/imported/Ammo_Pack_00_AlbedoTransparency.png-5b4949449d6988fee6abb2bd07d93583.s3tc.ctex"
+uid="uid://drtf7wqrd4c68"
+path.s3tc="res://.godot/imported/Polygon_Texture.png-80db890edb995cd172b7348269de313c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Ammo/Ammo_Pack_00_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/Ammo_Pack_00_AlbedoTransparency.png-5b4949449d6988fee6abb2bd07d93583.s3tc.ctex"]
+source_file="res://Models/Items/Medkit/Polygon_Texture.png"
+dest_files=["res://.godot/imported/Polygon_Texture.png-80db890edb995cd172b7348269de313c.s3tc.ctex"]
 
 [params]
 

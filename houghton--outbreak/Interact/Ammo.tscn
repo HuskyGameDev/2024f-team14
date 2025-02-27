@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Interact/Ammo.gd" id="1_lwypc"]
 [ext_resource type="AudioStream" uid="uid://cxkk0x7i3u4v8" path="res://Audio/Ammo Pickup SFX.wav" id="2_8cvaq"]
-[ext_resource type="Texture2D" uid="uid://bnspwb5waj7yb" path="res://Models/Ammo/Ammo_Pack_00_AlbedoTransparency.png" id="3_72in8"]
+[ext_resource type="Texture2D" uid="uid://bnspwb5waj7yb" path="res://Models/Items/Ammo/Ammo_Pack_00_AlbedoTransparency.png" id="3_72in8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ralb4"]
 size = Vector3(0.401855, 0.21994, 0.217133)

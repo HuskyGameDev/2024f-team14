@@ -22,10 +22,10 @@ func _on_button_pressed() -> void:
 script = SubResource("GDScript_7p5wu")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 462.0
-offset_top = 158.0
-offset_right = 746.0
-offset_bottom = 467.0
+offset_left = 472.0
+offset_top = 39.0
+offset_right = 756.0
+offset_bottom = 452.0
 text = "Controls:
 
 Left Click: Shoot
@@ -34,6 +34,10 @@ Middle Mouse: Target (When Aiming)
 
 E: Interact
 P: Pause/Inventory
+G: Throw Grenade
+G + Right Click: Drop Grenade
+C: Turn Around
+V: Melee Attack
 
 Shift: Sprint
 W, S: Forward, Backward

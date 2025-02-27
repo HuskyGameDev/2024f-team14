@@ -5,8 +5,6 @@ var STATE = PLAY
 @export var debugLog = true
 
 
-
-
 func _on_inventory_ui_pause_signal() -> void:
 	STATE = PAUSE
 	get_tree().paused = true;

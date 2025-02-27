@@ -19,7 +19,6 @@ var is_reloading: bool = false
 @onready var gunshotSFX = $GunshotSFX
 @onready var reloadSFX = $ReloadSFX
 @onready var ammoDisplay = $AmmoDisplay
-@onready var zombieDeathSFX = $DeathSFX
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 func _ready() -> void:

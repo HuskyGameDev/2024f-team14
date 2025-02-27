@@ -2,7 +2,7 @@ extends RigidBody3D
 
 var damage = 50
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	linear_damp = 0.3
 	angular_damp = 1.5
 
