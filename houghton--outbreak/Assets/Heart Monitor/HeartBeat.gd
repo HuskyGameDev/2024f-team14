@@ -29,10 +29,10 @@ func _physics_process(delta):
 			sin_time -= 1
 			points[i].y = sin(sin_time) * r_amp / 2 + cos(sin_time / 2) * r_amp
 			points[i].x = (i - 0.999) * spacing
-		if i == 0:
-			sin_time = time * speed + 1
-			points[i].y = sin(sin_time) * r_amp / 2 + cos(sin_time / 2 + 1) * r_amp
-			points[i].x = 0.999 * spacing
+		#if i == 0:
+			#sin_time = time * speed + 1
+			#points[i].y = sin(sin_time) * r_amp / 2 + cos(sin_time / 2 + 1) * r_amp
+			#points[i].x = 0.999 * spacing
 
 func set_params(new_spacing = spacing, new_speed = speed, new_amp = amp):
 	spacing = new_spacing

@@ -25,13 +25,181 @@ center_offset = Vector3(572.705, 330.06, 0)
 
 [node name="Heart Monitor" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_right = 1161.0
 offset_bottom = 652.0
-color = Color(0.252028, 0.252028, 0.252028, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Lines" type="ColorRect" parent="."]
+offset_top = 23.0
+offset_right = 1161.0
+offset_bottom = 33.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines2" type="ColorRect" parent="."]
+offset_top = 46.0
+offset_right = 1161.0
+offset_bottom = 56.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines3" type="ColorRect" parent="."]
+offset_top = 69.0
+offset_right = 1161.0
+offset_bottom = 79.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines4" type="ColorRect" parent="."]
+offset_top = 92.0
+offset_right = 1161.0
+offset_bottom = 102.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines5" type="ColorRect" parent="."]
+offset_top = 115.0
+offset_right = 1161.0
+offset_bottom = 125.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines6" type="ColorRect" parent="."]
+offset_top = 138.0
+offset_right = 1161.0
+offset_bottom = 148.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines25" type="ColorRect" parent="."]
+offset_top = 598.0
+offset_right = 1161.0
+offset_bottom = 608.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines23" type="ColorRect" parent="."]
+offset_top = 644.0
+offset_right = 1161.0
+offset_bottom = 654.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines24" type="ColorRect" parent="."]
+offset_top = 621.0
+offset_right = 1161.0
+offset_bottom = 631.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines22" type="ColorRect" parent="."]
+offset_top = 575.0
+offset_right = 1161.0
+offset_bottom = 585.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines21" type="ColorRect" parent="."]
+offset_top = 552.0
+offset_right = 1161.0
+offset_bottom = 562.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines26" type="ColorRect" parent="."]
+offset_top = 529.0
+offset_right = 1161.0
+offset_bottom = 539.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines20" type="ColorRect" parent="."]
+offset_top = 506.0
+offset_right = 1161.0
+offset_bottom = 516.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines19" type="ColorRect" parent="."]
+offset_top = 483.0
+offset_right = 1161.0
+offset_bottom = 493.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines18" type="ColorRect" parent="."]
+offset_top = 460.0
+offset_right = 1161.0
+offset_bottom = 470.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines17" type="ColorRect" parent="."]
+offset_top = 437.0
+offset_right = 1161.0
+offset_bottom = 447.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines27" type="ColorRect" parent="."]
+offset_top = 414.0
+offset_right = 1161.0
+offset_bottom = 424.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines16" type="ColorRect" parent="."]
+offset_top = 391.0
+offset_right = 1161.0
+offset_bottom = 401.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines15" type="ColorRect" parent="."]
+offset_top = 368.0
+offset_right = 1161.0
+offset_bottom = 378.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines28" type="ColorRect" parent="."]
+offset_top = 345.0
+offset_right = 1161.0
+offset_bottom = 355.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines14" type="ColorRect" parent="."]
+offset_top = 322.0
+offset_right = 1161.0
+offset_bottom = 332.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines13" type="ColorRect" parent="."]
+offset_top = 299.0
+offset_right = 1161.0
+offset_bottom = 309.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines12" type="ColorRect" parent="."]
+offset_top = 276.0
+offset_right = 1161.0
+offset_bottom = 286.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines11" type="ColorRect" parent="."]
+offset_top = 253.0
+offset_right = 1161.0
+offset_bottom = 263.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines10" type="ColorRect" parent="."]
+offset_top = 230.0
+offset_right = 1161.0
+offset_bottom = 240.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines9" type="ColorRect" parent="."]
+offset_top = 207.0
+offset_right = 1161.0
+offset_bottom = 217.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines8" type="ColorRect" parent="."]
+offset_top = 184.0
+offset_right = 1161.0
+offset_bottom = 194.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Lines7" type="ColorRect" parent="."]
+offset_top = 161.0
+offset_right = 1161.0
+offset_bottom = 171.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
 
 [node name="Line2D" type="Line2D" parent="."]
-modulate = Color(1, 2, 1, 1)
+modulate = Color(1, 2, 1, 0.622)
 material = SubResource("CanvasItemMaterial_p5ib2")
 position = Vector2(115, 297)
 scale = Vector2(12.5944, 1)
@@ -45,6 +213,7 @@ spacing = 1.0
 unique_name_in_owner = true
 position = Vector2(601, 550)
 energy = 118.4
+range_z_min = 0
 texture = SubResource("GradientTexture2D_uqbac")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -53,3 +222,4 @@ material = SubResource("ShaderMaterial_kod2o")
 position = Vector2(0.666718, -10.7222)
 scale = Vector2(0.963542, 0.978009)
 mesh = SubResource("QuadMesh_6460w")
+metadata/_edit_lock_ = true
