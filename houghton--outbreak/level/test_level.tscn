@@ -1,12 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=33 format=3 uid="uid://dwpsls5jnk4qd"]
 
+[ext_resource type="PackedScene" uid="uid://c2uajhpd6u58y" path="res://game_manager.tscn" id="1_0dg1n"]
 [ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_m0mky"]
 [ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Street/Traffic Light.tscn" id="2_64k0f"]
 [ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_vv285"]
 [ext_resource type="PackedScene" uid="uid://wixobdp5tftd" path="res://Assets/Street/Street Light.tscn" id="3_f7n4m"]
+[ext_resource type="PackedScene" uid="uid://bca233md6u1jc" path="res://Shaders/Water/Water.tscn" id="3_v4wfd"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://bsm5ddk8up8uh" path="res://Assets/Street/Stop Sign.tscn" id="4_m2tur"]
 [ext_resource type="PackedScene" uid="uid://dyjsfse7wkd0h" path="res://Assets/Street/No Turn Sign.tscn" id="5_16s2v"]
@@ -61,12 +62,13 @@ albedo_color = Color(0.482939, 0.326935, 0.0905248, 1)
 
 [node name="Test Level" type="Node3D" groups=["levels"]]
 
-[node name="Game Manager" type="Node" parent="."]
-process_mode = 3
-script = ExtResource("1_m0mky")
+[node name="Game Manager" parent="." instance=ExtResource("1_0dg1n")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mrt15")
+
+[node name="WaterPlane" parent="." instance=ExtResource("3_v4wfd")]
+transform = Transform3D(88.9588, 0, -5.09629, 0, 3.73119, 0, 5.59682, 0, 81.0033, 1.48024, 1.52615, -81.6425)
 
 [node name="TrafficLight" parent="." instance=ExtResource("2_64k0f")]
 transform = Transform3D(1.12071, 0, -0.997005, 0, 1.5, 0, 0.997005, 0, 1.12071, -26.0595, 9.28808, -10.8923)
@@ -232,16 +234,16 @@ transform = Transform3D(0.999888, -5.58794e-09, -5.69969e-06, 1.61491e-06, 1, -1
 shape = SubResource("BoxShape3D_klieq")
 
 [node name="Camera3(outside)2" type="Camera3D" parent="."]
-transform = Transform3D(0.0181011, 0.0859414, -0.996136, -0.0146705, 0.996215, 0.0856816, 0.999729, 0.0130629, 0.0192934, -10.1856, 4.12584, -22.8219)
+transform = Transform3D(0.018101, 0.0859414, -0.996136, -0.0146705, 0.996215, 0.0856816, 0.999729, 0.0130629, 0.0192933, -10.1856, 4.12584, -22.8219)
 
 [node name="Area3D" type="Area3D" parent="Camera3(outside)2"]
-transform = Transform3D(9, 0, 0, 0, 8.96575, -1.5688, 0, 0.784402, 17.9315, 3.41673, 2.52898, -9.93269)
+transform = Transform3D(9, 1.49012e-08, 0, -1.49012e-08, 8.96575, -1.5688, 0, 0.784402, 17.9315, 3.41673, 2.52898, -9.93269)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_2r25l")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3(outside)2/Area3D"]
-transform = Transform3D(0.999888, -5.58794e-09, -5.69969e-06, 1.61491e-06, 1, -1.48138e-07, -1.40723e-06, -7.27596e-11, 0.999911, 0.321545, 0.0772097, 1.65775e-07)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Camera3(outside)2/Area3D"]
+transform = Transform3D(0.999864, -1.4957e-06, 1.36718e-06, 1.93994e-06, 0.999956, 3.20142e-08, -1.71177e-06, 1.12195e-08, 0.999911, 0.321545, 0.0772096, 8.00937e-08)
 shape = SubResource("BoxShape3D_klieq")
 
 [node name="Timer Scene" parent="." instance=ExtResource("3_wh8uq")]
@@ -261,10 +263,15 @@ transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, 
 use_collision = true
 size = Vector3(16, 12.3475, 1)
 
-[node name="wall7" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, -4.05622, 7, -40.7332)
+[node name="wall11" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.997684, 0, -0.0680153, 0, 1, 0, 0.0680153, 0, 0.997684, -5.32737, 6.7952, -58.9812)
 use_collision = true
-size = Vector3(208.195, 12.3475, 1)
+size = Vector3(208.195, 12.2107, 1)
+
+[node name="wall7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, -4.05622, 1.39979, -40.7332)
+use_collision = true
+size = Vector3(208.195, 1.14708, 1)
 
 [node name="wall2" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.997708, 0, -0.067667, 0, 1, 0, 0.067667, 0, 0.997708, -0.609003, 7, 8.97937)
@@ -382,8 +389,6 @@ grow_horizontal = 0
 text = "Controls"
 script = ExtResource("18_b7gc5")
 
-[connection signal="pauseSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
-[connection signal="resumeSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Player/InventoryUI" method="_on_button_2_pressed"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]

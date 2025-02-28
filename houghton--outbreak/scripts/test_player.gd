@@ -63,6 +63,7 @@ func character_movement(delta: float):
 	if Input.is_action_pressed("move_forwards") and Input.is_action_pressed("move_backwards"):
 		velocity.x = 0
 		velocity.z = 0
+		states.travel("idlepose")
 
 	elif Input.is_action_pressed("move_forwards"):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)

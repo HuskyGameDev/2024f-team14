@@ -6,6 +6,7 @@ extends CharacterBody3D
 var bloodEffect = preload("res://Shaders/Blood/Blood_Effect.tscn")
 
 @export var max_health = 50
+@export var spawn_pos = Vector3(100, 100, 100)
 var health: int
 
 const FORWARD_SPEED = 3
@@ -155,9 +156,11 @@ func hit(damage):
 		bloodInstance.explode("Bullet")
 		hurtSFX.play()
 
+
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 	
+
 
 func setChasing(boolean):
 	var original = chasing
