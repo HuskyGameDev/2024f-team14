@@ -389,6 +389,8 @@ grow_horizontal = 0
 text = "Controls"
 script = ExtResource("18_b7gc5")
 
+[connection signal="pauseSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_pause_signal"]
+[connection signal="resumeSignal" from="Player/InventoryUI" to="Game Manager" method="_on_inventory_ui_resume_signal"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]
 [connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Player/InventoryUI" method="_on_button_2_pressed"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
