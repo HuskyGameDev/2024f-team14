@@ -13,7 +13,7 @@ func _ready() -> void:
 	totalEnemies = get_tree().get_node_count_in_group("enemies")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	totalEnemies = 0
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if !enemy.dead:

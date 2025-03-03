@@ -11,6 +11,7 @@ var reserve_ammo: int
 
 var can_fire: bool = true
 var is_reloading: bool = false
+var pistolEquipped = true
 
 @onready var shoot_timer: Timer = $shoot_timer
 @onready var reload_timer: Timer = $reload_timer
@@ -35,9 +36,9 @@ func _ready() -> void:
 	reload_timer.timeout.connect(_on_reload_complete)
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading:
+	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading and pistolEquipped:
 		shoot()
-	if Input.is_action_just_pressed("reload") and !is_reloading:
+	if Input.is_action_just_pressed("reload") and !is_reloading and pistolEquipped:
 		reload()
 	ammoDisplay.text = "Current Ammo: " + str(current_ammo) + "\nReserve Ammo: " + str(reserve_ammo)
 

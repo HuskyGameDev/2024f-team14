@@ -177,7 +177,7 @@ skeleton = NodePath("")
 transform = Transform3D(0, 1, 0, -1.43051e-06, 0, -1, -1, 0, 1.43051e-06, -5, 0, 0)
 
 [node name="Sphere" type="MeshInstance3D" parent="pistol_model"]
-transform = Transform3D(0.0562701, 0, 0, 0, 0.0562701, 0, 0, 0, 0.0562701, 1.53934, 1.11712, -1.71048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53934, 1.11712, -1.71048)
 visible = false
 mesh = SubResource("ArrayMesh_yb3t7")
 skeleton = NodePath("")

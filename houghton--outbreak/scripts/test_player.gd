@@ -7,6 +7,8 @@ var DEBUG = false
 @onready var animationPlayer = $"PM 10-31-24/AnimationPlayer"
 
 @onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
+var pistolEquipped = true
+
 @onready var hurtSFX = $HurtSFX
 @onready var deathSFX = $DeathSFX
 
@@ -74,20 +76,20 @@ func character_movement(delta: float):
 			velocity *= 1.5
 			animtree.advance(delta * 1.7)
 		
-		if(DEBUG):
-			states.travel("walkNoGun")
-		else:
+		if (pistolEquipped):
 			states.travel("walkGun")
+		else:
+			states.travel("walkNoGun")
 		
 	elif Input.is_action_pressed("move_backwards"):
 		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -backwardVector * BACKWARD_SPEED
 		animtree.advance(delta * 1)
-		if(DEBUG):
-			states.travel("walkNoGunBackwards")
-		else:
+		if (pistolEquipped):
 			states.travel("walkGunBackwards")
-	elif Input.is_action_pressed("aim"):
+		else:
+			states.travel("walkNoGunBackwards")
+	elif Input.is_action_pressed("aim") and pistolEquipped:
 		velocity.x = 0
 		velocity.z = 0
 		states.travel("PistolActionAim")
