@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://brsqpacscgdbn"]
 
-[ext_resource type="Script" path="res://Shaders/Explosion/explosion_effect.gd" id="1_45vl7"]
+[ext_resource type="Script" uid="uid://cb038j1ul33bp" path="res://Shaders/Explosion/explosion_effect.gd" id="1_45vl7"]
 [ext_resource type="Texture2D" uid="uid://cwy67gh3su1qd" path="res://Shaders/Explosion/GAP_EasyExplosions_Textures/Flare00.PNG" id="1_vkic0"]
 [ext_resource type="Material" uid="uid://ls3cnwovxv6" path="res://Shaders/Explosion/Mat_Flare00.tres" id="2_dpnjc"]
 
@@ -16,7 +16,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_q8waj"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 

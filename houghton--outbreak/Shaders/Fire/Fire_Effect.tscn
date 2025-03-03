@@ -1,13 +1,13 @@
 [gd_scene load_steps=34 format=3 uid="uid://csjebvsdmxbma"]
 
 [ext_resource type="Shader" uid="uid://j1vimvg1iqgf" path="res://Shaders/Fire/FireShader.tres" id="1_gpqd0"]
-[ext_resource type="Script" path="res://Shaders/Fire/fire_effect.gd" id="1_xr4w4"]
+[ext_resource type="Script" uid="uid://ds08xfvyyxfp6" path="res://Shaders/Fire/fire_effect.gd" id="1_xr4w4"]
 [ext_resource type="Texture2D" uid="uid://dpiakin8jn14o" path="res://Shaders/Fire/GAP_Fire_Textures/Voronoi01.png" id="2_ribd8"]
 [ext_resource type="Texture2D" uid="uid://e1s5olru21ax" path="res://Shaders/Fire/GAP_Fire_Textures/Flame01.png" id="3_4dnq4"]
 [ext_resource type="Texture2D" uid="uid://br3yaxuyudrf6" path="res://Shaders/Fire/GAP_Fire_Textures/Flame02.png" id="4_ra1rg"]
 [ext_resource type="Shader" uid="uid://cupcfch382xpr" path="res://Shaders/Fire/SimpleParticles.tres" id="5_ywigm"]
 [ext_resource type="Texture2D" uid="uid://op0rugfhyfe7" path="res://Shaders/Fire/GAP_Fire_Textures/Flare00.PNG" id="6_ytb2n"]
-[ext_resource type="Script" path="res://Shaders/Fire/FireLight.gd" id="7_x2gqs"]
+[ext_resource type="Script" uid="uid://c28kusw8xhedn" path="res://Shaders/Fire/FireLight.gd" id="7_x2gqs"]
 [ext_resource type="AudioStream" uid="uid://dy04tbawnr8ea" path="res://Audio/Online Sources/Fire Crackling.wav" id="8_6tvre"]
 [ext_resource type="AudioStream" uid="uid://duh42qvy84hku" path="res://Audio/Online Sources/Fire Sizzle.wav" id="10_yb4ib"]
 
@@ -15,13 +15,13 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_gpqd0")
-shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
-shader_parameter/DissolveAmount = 0.505
 shader_parameter/MainTex = ExtResource("3_4dnq4")
+shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
 shader_parameter/DissolveTexture = ExtResource("2_ribd8")
+shader_parameter/DissolveAmount = 0.505
 
 [sub_resource type="Curve" id="Curve_l2aoa"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.68254, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -38,13 +38,13 @@ emission_curve = SubResource("CurveTexture_4h7kj")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7kjb"]
 render_priority = 0
 shader = ExtResource("1_gpqd0")
-shader_parameter/DissolveTiling = Vector2(1, 1)
-shader_parameter/DissolveAmount = 0.0
 shader_parameter/MainTex = ExtResource("4_ra1rg")
+shader_parameter/DissolveTiling = Vector2(1, 1)
 shader_parameter/DissolveTexture = ExtResource("2_ribd8")
+shader_parameter/DissolveAmount = 0.0
 
 [sub_resource type="Curve" id="Curve_f5mga"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0]
 point_count = 1
 
@@ -102,7 +102,7 @@ shader = ExtResource("5_ywigm")
 shader_parameter/MainTex = ExtResource("6_ytb2n")
 
 [sub_resource type="Curve" id="Curve_i807q"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0]
 point_count = 1
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dawsttfvfckwn"]
 
 [ext_resource type="Shader" uid="uid://derog1ox31ik" path="res://Shaders/Blood/blood.tres" id="1_mnp50"]
-[ext_resource type="Script" path="res://Shaders/Blood/blood_effect.gd" id="1_u648v"]
+[ext_resource type="Script" uid="uid://b1l2e3gp32hs4" path="res://Shaders/Blood/blood_effect.gd" id="1_u648v"]
 [ext_resource type="Shader" uid="uid://dr8esrwiutpmw" path="res://Shaders/Blood/bloodspot.tres" id="2_1pxne"]
 [ext_resource type="Shader" uid="uid://dmuqd138jsjoy" path="res://Shaders/Blood/blooddrop.tres" id="2_ouvs0"]
 
@@ -406,8 +406,8 @@ shader_parameter/angular_velocity_min = 0.0
 shader_parameter/angular_velocity_max = 0.0
 shader_parameter/orbit_velocity_min = 0.0
 shader_parameter/orbit_velocity_max = 0.0
-shader_parameter/radial_velocity_min = null
-shader_parameter/radial_velocity_max = null
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
 shader_parameter/linear_accel_min = 4.0
 shader_parameter/linear_accel_max = 4.0
 shader_parameter/radial_accel_min = 0.0
@@ -842,8 +842,8 @@ shader_parameter/angular_velocity_min = 0.0
 shader_parameter/angular_velocity_max = 0.0
 shader_parameter/orbit_velocity_min = 0.0
 shader_parameter/orbit_velocity_max = 0.0
-shader_parameter/radial_velocity_min = null
-shader_parameter/radial_velocity_max = null
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
 shader_parameter/linear_accel_min = 4.0
 shader_parameter/linear_accel_max = 4.0
 shader_parameter/radial_accel_min = 0.0

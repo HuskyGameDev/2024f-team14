@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=4 uid="uid://cjqi0f3r118nc"]
 
-[ext_resource type="Script" path="res://scripts/test_enemy.gd" id="1_xt1y5"]
+[ext_resource type="Script" uid="uid://bgjv3bfny82e2" path="res://scripts/test_enemy.gd" id="1_xt1y5"]
 [ext_resource type="Texture2D" uid="uid://teck6xhlgwup" path="res://Models/EnemyModel1_zombie.png" id="2_ch8ra"]
 [ext_resource type="AudioStream" uid="uid://63lj60m0hokf" path="res://Audio/Creature Growl SFX.wav" id="3_yfvjt"]
 [ext_resource type="AudioStream" uid="uid://c6xo8n0kcjct5" path="res://Audio/Online Sources/Hitmarker SFX.mp3" id="4_kyuqw"]
@@ -841,10 +841,10 @@ tracks/28/keys = PackedFloat32Array(0, 1, -0.234892, -0.838866, 1.91431)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2e82"]
 _data = {
-"RESET": SubResource("Animation_xulaa"),
-"attack": SubResource("Animation_w6m66"),
-"idlepose": SubResource("Animation_1r111"),
-"walk": SubResource("Animation_p4l2f")
+&"RESET": SubResource("Animation_xulaa"),
+&"attack": SubResource("Animation_w6m66"),
+&"idlepose": SubResource("Animation_1r111"),
+&"walk": SubResource("Animation_p4l2f")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32lak"]
@@ -1228,7 +1228,7 @@ skin = SubResource("Skin_gbyvg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyModel1"]
 libraries = {
-"": SubResource("AnimationLibrary_v2e82")
+&"": SubResource("AnimationLibrary_v2e82")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

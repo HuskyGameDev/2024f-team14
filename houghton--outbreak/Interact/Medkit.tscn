@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://c5oef5htj8xe"]
 
-[ext_resource type="Script" path="res://Interact/Medkit.gd" id="1_saayn"]
+[ext_resource type="Script" uid="uid://dldjjtp5wkwd7" path="res://Interact/Medkit.gd" id="1_saayn"]
 [ext_resource type="AudioStream" uid="uid://d05fuhrsmtamn" path="res://Audio/Online Sources/Food Crunch.wav" id="2_6001t"]
 [ext_resource type="Texture2D" uid="uid://drtf7wqrd4c68" path="res://Models/Items/Medkit/Polygon_Texture.png" id="2_phgkx"]
 

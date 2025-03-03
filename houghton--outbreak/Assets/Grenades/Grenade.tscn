@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwecsqokybudu"]
 
-[ext_resource type="Script" path="res://Assets/Grenades/grenade.gd" id="1_3wvuf"]
+[ext_resource type="Script" uid="uid://ceitvftmhr7x5" path="res://Assets/Grenades/grenade.gd" id="1_3wvuf"]
 [ext_resource type="PackedScene" uid="uid://b4v8nus6b3vv5" path="res://Assets/Grenades/grenade_lowpoly.tscn" id="1_8gyfn"]
 [ext_resource type="PackedScene" uid="uid://brsqpacscgdbn" path="res://Shaders/Explosion/Explosion_Effect.tscn" id="2_711l1"]
 [ext_resource type="AudioStream" uid="uid://b8xsjrx5yrm5x" path="res://Audio/Online Sources/Grenade Explosion.wav" id="4_0tae7"]

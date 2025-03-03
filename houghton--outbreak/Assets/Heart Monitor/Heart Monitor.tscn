@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bqlp282g43yf0"]
 
-[ext_resource type="Shader" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_nf4tr"]
-[ext_resource type="Script" path="res://Assets/Heart Monitor/HeartBeat.gd" id="1_rjg5c"]
+[ext_resource type="Shader" uid="uid://bxy5u6giijvq1" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_nf4tr"]
+[ext_resource type="Script" uid="uid://clikyd8hq3lti" path="res://Assets/Heart Monitor/HeartBeat.gd" id="1_rjg5c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5ib2"]
 

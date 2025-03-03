@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvc265eeddex7"]
 
-[ext_resource type="Script" path="res://Assets/Heart Monitor/crt_effect.gd" id="1_i46lh"]
-[ext_resource type="Shader" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_r47ap"]
+[ext_resource type="Script" uid="uid://bknoitjkqeag4" path="res://Assets/Heart Monitor/crt_effect.gd" id="1_i46lh"]
+[ext_resource type="Shader" uid="uid://bxy5u6giijvq1" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_r47ap"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kod2o"]
 shader = ExtResource("1_r47ap")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://q8lujjtvw08b"]
 
-[ext_resource type="Script" path="res://Interact/Ammo.gd" id="1_lwypc"]
+[ext_resource type="Script" uid="uid://yjiqt7mmm4gq" path="res://Interact/Ammo.gd" id="1_lwypc"]
 [ext_resource type="AudioStream" uid="uid://cxkk0x7i3u4v8" path="res://Audio/Ammo Pickup SFX.wav" id="2_8cvaq"]
 [ext_resource type="Texture2D" uid="uid://bnspwb5waj7yb" path="res://Models/Items/Ammo/Ammo_Pack_00_AlbedoTransparency.png" id="3_72in8"]
 
