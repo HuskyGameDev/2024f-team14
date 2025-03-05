@@ -1,12 +1,11 @@
-[gd_scene load_steps=24 format=4 uid="uid://dl7sjdflmufvw"]
+[gd_scene load_steps=23 format=4 uid="uid://dl7sjdflmufvw"]
 
-[ext_resource type="Script" path="res://scripts/pistol.gd" id="1_fnodl"]
-[ext_resource type="Script" path="res://assets/ray_cast_3d.gd" id="2_ntdx4"]
+[ext_resource type="Script" uid="uid://c7bwksrvgt41k" path="res://scripts/pistol.gd" id="1_fnodl"]
+[ext_resource type="Script" uid="uid://c787t2u52yv7j" path="res://Assets/ray_cast_3d.gd" id="2_c6uwf"]
 [ext_resource type="ArrayMesh" uid="uid://421pgj2y8dg2" path="res://Models/pistol_model.obj" id="2_p3qul"]
-[ext_resource type="Animation" uid="uid://nh5rsvlj8e6p" path="res://Models/animations/muzzelflash.res" id="3_4wh3u"]
+[ext_resource type="Animation" uid="uid://nh5rsvlj8e6p" path="res://Models/Animations/muzzelflash.res" id="3_4wh3u"]
 [ext_resource type="AudioStream" uid="uid://crvca72w1mw8u" path="res://Audio/Gunshot SFX.wav" id="4_qslhe"]
 [ext_resource type="AudioStream" uid="uid://bdymh23va2prk" path="res://Audio/Online Sources/Pistol Reload.mp3" id="5_l17de"]
-[ext_resource type="AudioStream" uid="uid://bvau7pwyoli5a" path="res://Audio/Online Sources/Zombie Death.wav" id="6_2eaa1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehqet"]
 albedo_color = Color(1, 0, 0, 1)
@@ -106,8 +105,8 @@ resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_75u60"]
 _data = {
-"idle": SubResource("Animation_iysh7"),
-"muzzle_flash": ExtResource("3_4wh3u")
+&"idle": SubResource("Animation_iysh7"),
+&"muzzle_flash": ExtResource("3_4wh3u")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbn24"]
@@ -146,13 +145,15 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.817974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0186731, 0.118263, -0.284899)
 target_position = Vector3(0, 0, -30)
 collision_mask = 7
-script = ExtResource("2_ntdx4")
+hit_from_inside = true
+script = ExtResource("2_c6uwf")
 
 [node name="Laser Dot" type="MeshInstance3D" parent="RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00309201, 0.00167907, -1.14897)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00309201, 0.00167907, 0.00674474)
 mesh = SubResource("CylinderMesh_k62a0")
 
 [node name="shoot_timer" type="Timer" parent="."]
@@ -176,14 +177,14 @@ skeleton = NodePath("")
 transform = Transform3D(0, 1, 0, -1.43051e-06, 0, -1, -1, 0, 1.43051e-06, -5, 0, 0)
 
 [node name="Sphere" type="MeshInstance3D" parent="pistol_model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.336248, 1.11712, -1.71048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53934, 1.11712, -1.71048)
 visible = false
 mesh = SubResource("ArrayMesh_yb3t7")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pistol_model"]
 libraries = {
-"": SubResource("AnimationLibrary_75u60")
+&"": SubResource("AnimationLibrary_75u60")
 }
 speed_scale = 4.0
 
@@ -201,7 +202,3 @@ bus = &"SFX"
 [node name="ReloadSFX" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_l17de")
-
-[node name="DeathSFX" type="AudioStreamPlayer3D" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("6_2eaa1")

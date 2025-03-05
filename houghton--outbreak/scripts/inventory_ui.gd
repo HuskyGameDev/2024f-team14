@@ -4,7 +4,7 @@ extends Control
 @onready var invSlots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var invButtons: Array = $NinePatchRect/GridContainer.get_children()
 
-
+@onready var player = get_tree().get_first_node_in_group("player")
 
 signal pauseSignal
 signal resumeSignal
@@ -25,7 +25,7 @@ func move_children():
 #func equip_items():
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("P"):
 		if GameManager.debugLog:
 			if GameManager.STATE==GameManager.PAUSE:
@@ -49,6 +49,9 @@ func close():
 
 func _on_button_pressed() -> void:
 	print("item equipped!")
+	player.pistolEquipped = !player.pistolEquipped
+	player.pistol.visible = !player.pistol.visible
+	player.pistol.pistolEquipped = !player.pistol.pistolEquipped
 
 
 func _on_button_2_pressed() -> void:

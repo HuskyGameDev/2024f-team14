@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwecsqokybudu"]
+
+[ext_resource type="Script" uid="uid://ceitvftmhr7x5" path="res://Assets/Grenades/grenade.gd" id="1_3wvuf"]
+[ext_resource type="PackedScene" uid="uid://b4v8nus6b3vv5" path="res://Assets/Grenades/grenade_lowpoly.tscn" id="1_8gyfn"]
+[ext_resource type="PackedScene" uid="uid://brsqpacscgdbn" path="res://Shaders/Explosion/Explosion_Effect.tscn" id="2_711l1"]
+[ext_resource type="AudioStream" uid="uid://b8xsjrx5yrm5x" path="res://Audio/Online Sources/Grenade Explosion.wav" id="4_0tae7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_evygv"]
+bounce = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lmxqs"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g1lrb"]
+radius = 5.0
+
+[node name="Grenade" type="RigidBody3D"]
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_evygv")
+continuous_cd = true
+script = ExtResource("1_3wvuf")
+
+[node name="grenade_lowpoly" parent="." instance=ExtResource("1_8gyfn")]
+unique_name_in_owner = true
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.248005, 0)
+shape = SubResource("SphereShape3D_lmxqs")
+
+[node name="BlastRadius" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlastRadius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257017, 0)
+shape = SubResource("SphereShape3D_g1lrb")
+
+[node name="ExplosionEffect" parent="." instance=ExtResource("2_711l1")]
+unique_name_in_owner = true
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281342, 2.58128)
+visible = false
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_0tae7")
+volume_db = -4.048
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="ExplosionEffect"]

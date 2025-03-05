@@ -120,11 +120,12 @@ light_size = 0.25
 shadow_enabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.333333, 0, 0, 0, -1.45705e-08, 0.333333, 0, -0.333333, -1.45705e-08, 0.0149437, 3.01835, 0.00472641)
+transform = Transform3D(0.333333, 0, 0, 0, -1.45705e-08, 0.333333, 0, -0.333333, -1.45705e-08, 0.0149437, 2.93932, 0.00472641)
 light_color = Color(0.968627, 0.709804, 0, 1)
 light_energy = 25.0
 shadow_enabled = true
-spot_range = 15.1473
+spot_range = 25.0
+spot_angle = 65.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85378, 4.20071)

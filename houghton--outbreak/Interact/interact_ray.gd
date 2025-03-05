@@ -3,8 +3,6 @@ extends RayCast3D
 @onready var prompt = $Prompt
 
 
-
-
 func _physics_process(_delta):
 	prompt.text = ""
 	
