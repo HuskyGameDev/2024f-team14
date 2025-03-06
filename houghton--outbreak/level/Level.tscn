@@ -1,0 +1,206 @@
+[gd_scene load_steps=5 format=3 uid="uid://by4fqxds0lj63"]
+
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_fchar"]
+[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_orhty"]
+[ext_resource type="Script" uid="uid://8ctwr4u5m66u" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
+[ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="4_54de5"]
+
+[node name="Level" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+size = Vector3(150, 0.5, 300)
+
+[node name="InvisWallWest" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8774, 149.75)
+visible = false
+size = Vector3(150, 30, 0.5)
+
+[node name="InvisWallWest2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8774, -149.552)
+visible = false
+size = Vector3(150, 30, 0.5)
+
+[node name="WallBorderNorth" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4914, 14.7954, 0)
+size = Vector3(1, 30, 300)
+
+[node name="WallBorderSouth" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.4041, 14.7954, 0)
+size = Vector3(1, 30, 300)
+
+[node name="BldgWall1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 149.489)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 118.223)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 97.1228)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 56.7636)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 38.0301)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 14.4248)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -43.9215)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall8" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -76.9083)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall9" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -103.965)
+size = Vector3(30, 30, 1)
+
+[node name="BldgWall10" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -149.5)
+size = Vector3(30, 30, 1)
+
+[node name="BldgFrontWall1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 133.79)
+size = Vector3(1, 30, 31)
+
+[node name="BldgFrontWall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 107.66)
+size = Vector3(1, 30, 21)
+
+[node name="BldgFrontWall3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 77.0153)
+size = Vector3(1, 30, 41)
+
+[node name="BldgFrontWall4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 47.2398)
+size = Vector3(1, 30, 19)
+
+[node name="BldgFrontWall5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 26.2401)
+size = Vector3(1, 30, 24)
+
+[node name="BldgFrontWall6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -14.876)
+size = Vector3(1, 30, 58)
+
+[node name="BldgFrontWall7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -60.3098)
+size = Vector3(1, 30, 34)
+
+[node name="BldgFrontWall8" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -90.144)
+size = Vector3(1, 30, 28)
+
+[node name="BldgFrontWall9" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -126.913)
+size = Vector3(1, 30, 46)
+
+[node name="BldgRoof1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 134.231)
+size = Vector3(30, 1, 31)
+
+[node name="BldgRoof2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 107.606)
+size = Vector3(30, 1, 21)
+
+[node name="BldgRoof3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 77.0568)
+size = Vector3(30, 1, 41)
+
+[node name="BldgRoof4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 47.4293)
+size = Vector3(30, 1, 19)
+
+[node name="BldgRoof5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 25.9508)
+size = Vector3(30, 1, 24)
+
+[node name="BldgRoof6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -14.8008)
+size = Vector3(30, 1, 58)
+
+[node name="BldgRoof7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -60.2183)
+size = Vector3(30, 1, 34)
+
+[node name="BldgRoof8" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -90.2473)
+size = Vector3(30, 1, 28)
+
+[node name="BldgRoof9" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -126.675)
+size = Vector3(30, 1, 46)
+
+[node name="Player" parent="." instance=ExtResource("1_fchar")]
+transform = Transform3D(-0.00254814, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00254814, 0, 2, 0)
+invenItems = ExtResource("2_orhty")
+
+[node name="InventoryUI" type="Control" parent="Player"]
+process_mode = 3
+custom_minimum_size = Vector2(112, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 43.0
+offset_right = 112.0
+offset_bottom = 203.0
+script = ExtResource("3_2i2pc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player/InventoryUI"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 162.0
+
+[node name="GridContainer" type="GridContainer" parent="Player/InventoryUI/NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 159.0
+columns = 2
+
+[node name="InvSlots" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="InvSlots2" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="InvSlots3" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="InvSlots4" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="InvSlots5" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="InvSlots6" parent="Player/InventoryUI/NinePatchRect/GridContainer" instance=ExtResource("4_54de5")]
+layout_mode = 2
+
+[node name="GridContainer2" type="GridContainer" parent="Player/InventoryUI/NinePatchRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 110.0
+offset_bottom = 160.0
+columns = 2
+
+[node name="Button" type="Button" parent="Player/InventoryUI/NinePatchRect/GridContainer2"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Player/InventoryUI/NinePatchRect/GridContainer2"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+
+[connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button" to="Player/InventoryUI" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/InventoryUI/NinePatchRect/GridContainer2/Button2" to="Player/InventoryUI" method="_on_button_2_pressed"]
