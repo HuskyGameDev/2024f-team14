@@ -1,0 +1,191 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgqicxea4vakq"]
+
+[ext_resource type="Script" uid="uid://dlm5a6q86k8fm" path="res://Settings/settings.gd" id="1_tv1l3"]
+[ext_resource type="Script" uid="uid://bchgpmypn7t20" path="res://Settings/Controls.gd" id="6_1i75p"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7hbq6"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tv1l3")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.254902, 0.254902, 0.254902, 1)
+z_index = -1
+layout_mode = 2
+offset_right = 1155.0
+offset_bottom = 651.0
+texture = SubResource("CanvasTexture_7hbq6")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1094.0
+offset_top = 24.0
+offset_right = 1131.0
+offset_bottom = 55.0
+text = "Exit"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+offset_left = 76.0
+offset_top = 33.0
+offset_right = 1281.0
+offset_bottom = 794.0
+scale = Vector2(0.755, 0.755)
+theme_override_font_sizes/font_size = 30
+current_tab = 1
+
+[node name="Sound" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+metadata/_tab_index = 0
+
+[node name="Alignment" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+text = "
+
+"
+
+[node name="MasterHBox" type="HBoxContainer" parent="TabContainer/Sound"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="TabContainer/Sound/MasterHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Master Volume:"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Sound/MasterHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="Alignment2" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+text = "
+
+"
+
+[node name="MusicHBox" type="HBoxContainer" parent="TabContainer/Sound"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="TabContainer/Sound/MusicHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Music Volume:"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Sound/MusicHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="Alignment3" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+text = "
+
+"
+
+[node name="SFXHBox" type="HBoxContainer" parent="TabContainer/Sound"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="TabContainer/Sound/SFXHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Sound Effects 
+Volume:"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Sound/SFXHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="Alignment4" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+text = "
+
+"
+
+[node name="Alignment5" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+
+[node name="ResetSound" type="Button" parent="TabContainer/Sound"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Reset to Default"
+
+[node name="Alignment6" type="Label" parent="TabContainer/Sound"]
+layout_mode = 2
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+script = ExtResource("6_1i75p")
+action_items = Array[String](["UP", "DOWN", "LEFT", "RIGHT", "INTERACT", "MENU", "MAP", "OBJECTIVE", "SHIFT"])
+metadata/_tab_index = 1
+
+[node name="Alignment" type="Label" parent="TabContainer/Controls"]
+layout_mode = 2
+
+[node name="Alignment2" type="Label" parent="TabContainer/Controls"]
+layout_mode = 2
+
+[node name="CtrlGridContainer" type="GridContainer" parent="TabContainer/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="Alignment3" type="Label" parent="TabContainer/Controls"]
+layout_mode = 2
+
+[node name="Alignment4" type="Label" parent="TabContainer/Controls"]
+layout_mode = 2
+
+[node name="ResetControls" type="Button" parent="TabContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Reset to Default"
+
+[node name="Alignment5" type="Label" parent="TabContainer/Controls"]
+layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-420, -114)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="drag_ended" from="TabContainer/Sound/MasterHBox/MasterSlider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="value_changed" from="TabContainer/Sound/MasterHBox/MasterSlider" to="TabContainer/Sound" method="_on_master_slider_value_changed"]
+[connection signal="drag_ended" from="TabContainer/Sound/MusicHBox/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="value_changed" from="TabContainer/Sound/MusicHBox/MusicSlider" to="TabContainer/Sound" method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="TabContainer/Sound/SFXHBox/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="TabContainer/Sound/SFXHBox/SFXSlider" to="TabContainer/Sound" method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="TabContainer/Sound/ResetSound" to="TabContainer/Sound" method="_on_reset_sound_pressed"]
+[connection signal="pressed" from="TabContainer/Controls/ResetControls" to="TabContainer/Controls" method="_on_reset_controls_pressed"]
