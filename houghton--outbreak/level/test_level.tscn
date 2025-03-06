@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dwpsls5jnk4qd"]
 
-[ext_resource type="PackedScene" uid="uid://c2uajhpd6u58y" path="res://game_manager.tscn" id="1_0dg1n"]
+[ext_resource type="PackedScene" path="res://game_manager.tscn" id="1_0dg1n"]
 [ext_resource type="Shader" uid="uid://ksianunb0280" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
@@ -19,12 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://Assets/test_enemy.tscn" id="8_ke2hr"]
 [ext_resource type="Script" uid="uid://bcpnhcs8h1ytr" path="res://scripts/timer.gd" id="9_pbdyo"]
 [ext_resource type="Script" uid="uid://cgxnsrkp7a0fd" path="res://scripts/player_health.gd" id="10_vhnfx"]
-[ext_resource type="PackedScene" uid="uid://6k46qy1tkfwj" path="res://Interact/Spawner.tscn" id="11_pptao"]
+[ext_resource type="PackedScene" path="res://Interact/Spawner.tscn" id="11_pptao"]
 [ext_resource type="Script" uid="uid://bm2sosqkhhsc7" path="res://scripts/OptionsButton.gd" id="18_b7gc5"]
 [ext_resource type="Script" uid="uid://cgau1hh3m13w7" path="res://scripts/controlsPage.gd" id="18_i6v2r"]
 [ext_resource type="PackedScene" uid="uid://dls180jll8t8o" path="res://Assets/Street/Bench.tscn" id="21_2axxt"]
 [ext_resource type="PackedScene" uid="uid://cu2pln6b0r4j8" path="res://Assets/Street/Trash Bin.tscn" id="22_1s4jj"]
-[ext_resource type="PackedScene" uid="uid://c5oef5htj8xe" path="res://Interact/Medkit.tscn" id="24_1uixx"]
+[ext_resource type="PackedScene" path="res://Interact/Medkit.tscn" id="24_1uixx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nbsu"]
 shader = ExtResource("1_i0suc")

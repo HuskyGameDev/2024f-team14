@@ -197,7 +197,7 @@ func throwGrenade():
 		var grenadeInstance = grenade.instantiate()
 		grenadeInstance.position = $GrenadePos.global_position
 		get_tree().current_scene.add_child(grenadeInstance)
-			
+		
 		canThrow = false
 		$ThrowTimer.start()
 		
