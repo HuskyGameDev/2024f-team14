@@ -1,5 +1,8 @@
 extends Node
 
+var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
+var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
+var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
 
 var config = ConfigFile.new()
 const SETTINGS_FILE_PATH = "setting.ini"
@@ -13,11 +16,11 @@ func _ready():
 		config.set_value("keybinding", "move_backwards", "S")
 		config.set_value("keybinding", "turn_right", "D")
 		config.set_value("keybinding", "P", "P")
-		config.set_value("keybinding", "attack_or_shoot", "Left Mouse Button")
+		config.set_value("keybinding", "attack_or_shoot", "mouse_1")
 		config.set_value("keybinding", "reload", "R")
 		config.set_value("keybinding", "G", "G")
-		config.set_value("keybinding", "aim", "Right Mouse Button")
-		config.set_value("keybinding", "Target", "Middle Mouse Button")
+		config.set_value("keybinding", "aim", "mouse_2")
+		config.set_value("keybinding", "Target", "mouse_3")
 		config.set_value("keybinding", "Interact", "E")
 		config.set_value("keybinding", "Sprint", "Shift")
 		config.set_value("keybinding", "TurnAround", "C")
@@ -31,7 +34,10 @@ func _ready():
 		
 	else:
 		config.load(SETTINGS_FILE_PATH)
-		
+	
+	load_keybindings_from_settings()
+	load_audio_from_settings()
+	
 
 
 func save_keybinding(action: StringName, event : InputEvent):
@@ -78,13 +84,22 @@ func load_audio():
 	return audio_settings
 
 
-func save_gameplay(key: String, value):
-	config.set_value("gameplay", key, value)
+func load_keybindings_from_settings():
+	var keybindings = load_keybinding()
+	for action in keybindings.keys():
+		if action != "Escape":
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, keybindings[action])
+
+func load_audio_from_settings():
+	var audio_settings = load_audio()
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID,linear_to_db(audio_settings.master_volume))
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID,linear_to_db(audio_settings.music_volume))
+	AudioServer.set_bus_volume_db(SFX_BUS_ID,linear_to_db(audio_settings.sfx_volume))
+	
+
+func save_config():
 	config.save(SETTINGS_FILE_PATH)
 
-
-func load_gameplay():
-	var gameplay_settings = {}
-	for key in config.get_section_keys("gameplay"):
-		gameplay_settings[key] = config.get_value("gameplay", key)
-	return gameplay_settings
+func load_config():
+	config.load(SETTINGS_FILE_PATH)

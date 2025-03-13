@@ -55,12 +55,26 @@ func _on_reset_controls_pressed() -> void:
 	for x in control_grid_container.get_children():
 		control_grid_container.remove_child(x)
 	InputMap.load_from_project_settings()
-	var i = 0
-	for action in InputMap.get_actions():
-		print(action)
-		if i > 76:
-			ConfigManager.save_keybinding(action, InputMap.action_get_events(action)[0])
-		i += 1
+	
+	var config = ConfigManager.config
+	config.set_value("keybinding", "move_forwards", "W")
+	config.set_value("keybinding", "turn_left", "A")
+	config.set_value("keybinding", "move_backwards", "S")
+	config.set_value("keybinding", "turn_right", "D")
+	config.set_value("keybinding", "P", "P")
+	config.set_value("keybinding", "attack_or_shoot", "mouse_1")
+	config.set_value("keybinding", "reload", "R")
+	config.set_value("keybinding", "G", "G")
+	config.set_value("keybinding", "aim", "mouse_2")
+	config.set_value("keybinding", "Target", "mouse_3")
+	config.set_value("keybinding", "Interact", "E")
+	config.set_value("keybinding", "Sprint", "Shift")
+	config.set_value("keybinding", "TurnAround", "C")
+	config.set_value("keybinding", "Melee", "V")
+	
+	ConfigManager.save_config()
+	ConfigManager.load_config()
+	
 	load_keybindings_from_settings()
 	create_action_remap_items()
 	
