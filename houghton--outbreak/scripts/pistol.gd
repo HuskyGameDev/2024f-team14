@@ -37,6 +37,7 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
+	reserve_ammo = InventoryManager.get_item_quantity("Ammo", "Pistol Ammo")
 	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading and pistolEquipped:
 		shoot()
 	if Input.is_action_just_pressed("reload") and !is_reloading and pistolEquipped:

@@ -642,13 +642,13 @@ transform = Transform3D(-0.998605, 0, -0.0528067, 0, 1, 0, 0.0528067, 0, -0.9986
 
 [node name="Skeleton3D" parent="PM 10-31-24/Armature" index="0"]
 bones/1/position = Vector3(-0.0120782, 0.601476, 2.20209)
-bones/5/rotation = Quaternion(0.203327, 0.346631, -0.599148, 0.692478)
+bones/5/rotation = Quaternion(0.19571, 0.35455, -0.600752, 0.689267)
 bones/6/rotation = Quaternion(0.00113957, -2.29277e-06, -0.00123832, 0.999999)
-bones/7/rotation = Quaternion(-0.0248537, -0.380649, 0.0492806, 0.923071)
-bones/14/rotation = Quaternion(-0.137409, 2.55983e-12, -5.11071e-06, 0.990514)
-bones/16/rotation = Quaternion(0.224977, -0.313746, 0.622265, 0.680981)
+bones/7/rotation = Quaternion(-0.0372356, -0.380556, 0.0454626, 0.922889)
+bones/14/rotation = Quaternion(-0.137409, 2.54616e-12, -5.11071e-06, 0.990514)
+bones/16/rotation = Quaternion(0.232959, -0.305906, 0.619022, 0.684809)
 bones/17/rotation = Quaternion(0.00114044, 2.29448e-06, 0.00123927, 0.999999)
-bones/18/rotation = Quaternion(-0.00380004, 0.457309, -0.0736931, 0.886241)
+bones/18/rotation = Quaternion(-0.000242054, 0.458714, -0.0751287, 0.885402)
 bones/23/rotation = Quaternion(0.724072, 0.0208465, 0.688825, -0.0283754)
 bones/24/rotation = Quaternion(-0.00758763, -7.27189e-06, 0.207444, 0.978217)
 bones/25/rotation = Quaternion(-0.026392, 0.0288715, -0.413054, 0.909866)
@@ -656,21 +656,21 @@ bones/27/rotation = Quaternion(-0.716595, 0.0152318, 0.696994, 0.0214267)
 bones/27/scale = Vector3(1.00001, 1, 1.00005)
 bones/28/rotation = Quaternion(-0.00767768, 7.65035e-06, -0.20984, 0.977706)
 bones/29/rotation = Quaternion(-0.0173438, -0.0178741, 0.414666, 0.909633)
-bones/31/position = Vector3(0.856273, 0.656425, 2.29645)
-bones/31/rotation = Quaternion(0.103162, 0.6797, -0.699771, 0.194131)
+bones/31/position = Vector3(0.855474, 0.687959, 2.29507)
+bones/31/rotation = Quaternion(0.102563, 0.696758, -0.682434, 0.195687)
 bones/32/position = Vector3(0.297383, 0.684331, 0.217846)
 bones/32/rotation = Quaternion(0.632256, -0.314092, 0.635592, -0.312444)
 bones/33/position = Vector3(0.989722, 1.18814, 3.63696)
 bones/34/position = Vector3(0.278849, 0.171579, 1.26271)
-bones/35/position = Vector3(-0.796887, 0.568446, 2.24368)
-bones/35/rotation = Quaternion(0.0237861, -0.626979, 0.741147, 0.238815)
+bones/35/position = Vector3(-0.802607, 0.534251, 2.24583)
+bones/35/rotation = Quaternion(0.0230013, -0.614316, 0.751406, 0.239742)
 bones/36/position = Vector3(-0.297383, 0.684331, 0.217846)
 bones/36/rotation = Quaternion(-0.632256, -0.314092, 0.635592, 0.312444)
 bones/37/position = Vector3(-0.989722, 1.18814, 3.63696)
 bones/38/position = Vector3(-0.278849, 0.171579, 1.26271)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PM 10-31-24/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.870908, -0.422569, -0.250907, 0.365845, -0.898359, 0.243121, -0.32814, 0.119943, 0.936983, -0.819622, -0.0516587, 0.0586076)
+transform = Transform3D(-0.869941, -0.427111, -0.246533, 0.36003, -0.891681, 0.274377, -0.337018, 0.149932, 0.929483, -0.824911, -0.0465669, 0.0939322)
 bone_name = "Palm R"
 bone_idx = 19
 
@@ -733,7 +733,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.287743, 0.358665, 0.377034, 1)
+color = Color(0.148396, 0.192647, 0.204093, 1)
 
 [node name="Label" type="Label" parent="InventoryUI"]
 anchors_preset = 5

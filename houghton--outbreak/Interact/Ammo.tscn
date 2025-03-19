@@ -80,5 +80,6 @@ skeleton = NodePath("")
 unique_name_in_owner = true
 stream = ExtResource("2_8cvaq")
 volume_db = 1.523
+bus = &"SFX"
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]

@@ -11,6 +11,7 @@ extends Control
 
 @onready var usage_panel = $UsagePanel
 
+@onready var item_button = $ItemButton
 
 #Slot Item
 var item = null
@@ -33,8 +34,10 @@ func _on_item_button_mouse_exited() -> void:
 func set_empty():
 	icon.texture = null
 	quantity_label.text = ""
+	item_button.disabled = true
 
 func set_item(new_item):
+	item_button.disabled = false
 	item = new_item
 	icon.texture = new_item["texture"]
 	quantity_label.text = str(item["quantity"])
@@ -45,3 +48,12 @@ func set_item(new_item):
 	else:
 		item_effect.text = ""
 	
+
+func _on_use_button_pressed() -> void:
+	if item["name"] == "Medkit":
+		InventoryManager.player_node.increment_health(50)
+		InventoryManager.remove_item("Consumable", "Medkit", 1)
+
+
+func _on_discard_button_pressed() -> void:
+	InventoryManager.remove_item(item["type"], item["name"], item["quantity"])
