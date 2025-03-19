@@ -56,6 +56,8 @@ shadow_mesh = SubResource("ArrayMesh_kc4yv")
 
 [node name="Ammo" type="StaticBody3D"]
 script = ExtResource("1_lwypc")
+prompt_message = null
+prompt_input = null
 
 [node name="InventoryItem" parent="." instance=ExtResource("2_hg6b0")]
 unique_name_in_owner = true

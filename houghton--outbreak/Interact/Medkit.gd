@@ -5,3 +5,4 @@ func _on_interacted(body: Variant) -> void:
 	body.increment_health(50)
 	$"%AudioStreamPlayer3D".play()
 	visible = false
+	$InventoryItem.pickup_item()

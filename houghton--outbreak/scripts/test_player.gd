@@ -1,9 +1,9 @@
 extends CharacterBody3D
 var DEBUG = false
 
-@onready var settingsMenu = preload("res://Settings/settingsMenu.tscn")
-
 @export var invenItems: inventory
+@onready var inventory_ui = $InventoryUI
+@onready var settings_ui = $SettingsUI
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
 @onready var animationPlayer = $"PM 10-31-24/AnimationPlayer"
@@ -43,15 +43,15 @@ var current_health: int
 func _ready() -> void:
 	#Will initially grant max health to the player
 	current_health = MAX_HEALTH
+	InventoryManager.set_player_reference(self)
+	pistol.add_ammo_to_inventory()
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Escape") and GameManager.STATE != GameManager.MENU:
-		GameManager.menu()
-		var settings = settingsMenu.instantiate()
-		add_child(settings)
 
 
 func _physics_process(delta: float) -> void:
+	if get_tree().paused:
+		return
+	
 	
 	#Applies gravity if necessary
 	animtree.advance(delta * 0)
@@ -181,7 +181,7 @@ func turn_around(delta, time):
 
 #Gain ammo
 func increment_ammo():
-	pistol.reserve_ammo += 12
+	pistol.reserve_ammo += 20
 
 #Gain health
 func increment_health(amount):
@@ -248,3 +248,14 @@ func _on_throw_timer_timeout() -> void:
 
 func _on_melee_timer_timeout() -> void:
 	canMelee = true
+
+#Menu Handlers
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("P"):
+		if !(get_tree().paused and !inventory_ui.visible):
+			inventory_ui.visible = !inventory_ui.visible
+			get_tree().paused = !get_tree().paused
+	elif event.is_action_pressed("Escape"):
+		if !(get_tree().paused and !settings_ui.visible):
+			settings_ui.visible = !settings_ui.visible
+			get_tree().paused = !get_tree().paused

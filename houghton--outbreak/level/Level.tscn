@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://by4fqxds0lj63"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_fchar"]
-[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_orhty"]
+[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/Old/PlayerInventory.tres" id="2_orhty"]
 [ext_resource type="Script" uid="uid://8ctwr4u5m66u" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
 [ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="4_54de5"]
 

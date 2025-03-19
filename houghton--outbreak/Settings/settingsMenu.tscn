@@ -25,14 +25,6 @@ offset_right = 1155.0
 offset_bottom = 651.0
 texture = SubResource("CanvasTexture_7hbq6")
 
-[node name="ExitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1094.0
-offset_top = 24.0
-offset_right = 1131.0
-offset_bottom = 55.0
-text = "Exit"
-
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
 offset_left = 76.0
@@ -184,7 +176,6 @@ layout_mode = 2
 [node name="AudioTest" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="drag_ended" from="TabContainer/Sound/MasterHBox/MasterSlider" to="TabContainer/Sound" method="_on_master_slider_drag_ended"]
 [connection signal="value_changed" from="TabContainer/Sound/MasterHBox/MasterSlider" to="TabContainer/Sound" method="_on_master_slider_value_changed"]
 [connection signal="drag_ended" from="TabContainer/Sound/MusicHBox/MusicSlider" to="TabContainer/Sound" method="_on_music_slider_drag_ended"]
