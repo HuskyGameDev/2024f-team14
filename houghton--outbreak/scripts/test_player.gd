@@ -1,6 +1,8 @@
 extends CharacterBody3D
 var DEBUG = false
 
+@onready var settingsMenu = preload("res://Settings/settingsMenu.tscn")
+
 @export var invenItems: inventory
 @onready var animtree = $AnimationTree
 @onready var states = animtree["parameters/playback"]
@@ -35,11 +37,19 @@ var targetTurn = null
 var MAX_HEALTH: int = 100
 var current_health: int
 
+
 #signal player_hit
 
 func _ready() -> void:
 	#Will initially grant max health to the player
 	current_health = MAX_HEALTH
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Escape") and GameManager.STATE != GameManager.MENU:
+		GameManager.menu()
+		var settings = settingsMenu.instantiate()
+		add_child(settings)
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -197,7 +207,7 @@ func throwGrenade():
 		var grenadeInstance = grenade.instantiate()
 		grenadeInstance.position = $GrenadePos.global_position
 		get_tree().current_scene.add_child(grenadeInstance)
-			
+		
 		canThrow = false
 		$ThrowTimer.start()
 		

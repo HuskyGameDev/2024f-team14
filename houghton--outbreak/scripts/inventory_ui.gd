@@ -28,7 +28,7 @@ func move_children():
 func _process(_delta):
 	if Input.is_action_just_released("P"):
 		if GameManager.debugLog:
-			if GameManager.STATE==GameManager.PAUSE:
+			if GameManager.STATE==GameManager.MENU and visible:
 				close()
 				if GameManager.debugLog: print("emitting resume")
 				GameManager.STATE = GameManager.PLAY
@@ -36,7 +36,7 @@ func _process(_delta):
 			elif GameManager.STATE==GameManager.PLAY:
 				open()
 				if GameManager.debugLog: print("emitting pause")
-				GameManager.STATE = GameManager.PAUSE
+				GameManager.STATE = GameManager.MENU
 				pauseSignal.emit()
 
 

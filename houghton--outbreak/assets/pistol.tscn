@@ -145,7 +145,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0186731, 0.118263, -0.284899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0269057, 0.118263, -0.284899)
 target_position = Vector3(0, 0, -30)
 collision_mask = 7
 hit_from_inside = true
@@ -153,7 +153,7 @@ script = ExtResource("2_c6uwf")
 
 [node name="Laser Dot" type="MeshInstance3D" parent="RayCast3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00309201, 0.00167907, 0.00674474)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000654411, 0.00167907, 0.00674474)
 mesh = SubResource("CylinderMesh_k62a0")
 
 [node name="shoot_timer" type="Timer" parent="."]
@@ -177,7 +177,7 @@ skeleton = NodePath("")
 transform = Transform3D(0, 1, 0, -1.43051e-06, 0, -1, -1, 0, 1.43051e-06, -5, 0, 0)
 
 [node name="Sphere" type="MeshInstance3D" parent="pistol_model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53934, 1.11712, -1.71048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24014, 1.11712, -1.71048)
 visible = false
 mesh = SubResource("ArrayMesh_yb3t7")
 skeleton = NodePath("")

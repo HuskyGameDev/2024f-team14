@@ -97,6 +97,9 @@ transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -34.84
 [node name="Ammo" parent="." instance=ExtResource("8_dsmyp")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -10.677, 2.27203, 3.23067)
 
+[node name="Ammo2" parent="." instance=ExtResource("8_dsmyp")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 4.95488, 1.17674, 3.26876)
+
 [node name="Medkit" parent="." instance=ExtResource("24_1uixx")]
 transform = Transform3D(-0.113203, 0.323475, -0.939441, 0, 0.945519, 0.325568, 0.993572, 0.0368554, -0.107036, 6.6614, 2.27255, -3.55196)
 
@@ -343,10 +346,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -266.055
-offset_right = 142.0
-offset_bottom = 146.945
+offset_left = -126.0
+offset_top = -203.0
+offset_right = 158.0
+offset_bottom = 262.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Controls:
@@ -357,6 +360,7 @@ Middle Mouse: Target (When Aiming)
 
 E: Interact
 P: Pause/Inventory
+Escape: Menu
 G: Throw Grenade
 G + Right Click: Drop Grenade
 C: Turn Around
