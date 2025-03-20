@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4v8nus6b3vv5"]
+
+[ext_resource type="PackedScene" uid="uid://dxo1bmq0k8047" path="res://Models/Grenades/Grenade1/grenade_lowpoly.FBX" id="1_3tkl5"]
+[ext_resource type="Texture2D" uid="uid://bdhkccm0dfksp" path="res://Models/Grenades/Grenade1/textures/grenade_lowpoly_grenade_lowpoly_AlbedoTransparency.png" id="2_ogk24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygkp"]
+albedo_texture = ExtResource("2_ogk24")
+
+[node name="grenade_lowpoly" instance=ExtResource("1_3tkl5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="grenade_lowpoly" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_aygkp")

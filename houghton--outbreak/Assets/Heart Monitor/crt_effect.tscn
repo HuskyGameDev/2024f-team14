@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvc265eeddex7"]
+
+[ext_resource type="Script" uid="uid://bknoitjkqeag4" path="res://Assets/Heart Monitor/crt_effect.gd" id="1_i46lh"]
+[ext_resource type="Shader" uid="uid://bxy5u6giijvq1" path="res://Assets/Heart Monitor/screen_effect.gdshader" id="1_r47ap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kod2o"]
+shader = ExtResource("1_r47ap")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6460w"]
+size = Vector2(1920, 1080)
+center_offset = Vector3(960, 540, 0)
+
+[node name="CRT Effect" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_i46lh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_kod2o")
+mesh = SubResource("QuadMesh_6460w")

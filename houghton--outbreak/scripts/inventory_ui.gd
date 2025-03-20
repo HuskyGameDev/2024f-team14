@@ -4,8 +4,9 @@ extends Control
 @onready var invSlots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var invButtons: Array = $NinePatchRect/GridContainer.get_children()
 
+@onready var player = get_tree().get_first_node_in_group("player")
 
-
+signal inventory_updated
 signal pauseSignal
 signal resumeSignal
 
@@ -25,10 +26,10 @@ func move_children():
 #func equip_items():
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("P"):
 		if GameManager.debugLog:
-			if GameManager.STATE==GameManager.PAUSE:
+			if GameManager.STATE==GameManager.MENU and visible:
 				close()
 				if GameManager.debugLog: print("emitting resume")
 				GameManager.STATE = GameManager.PLAY
@@ -36,9 +37,21 @@ func _process(delta):
 			elif GameManager.STATE==GameManager.PLAY:
 				open()
 				if GameManager.debugLog: print("emitting pause")
-				GameManager.STATE = GameManager.PAUSE
+				GameManager.STATE = GameManager.MENU
 				pauseSignal.emit()
 
+
+func add_item():
+	inventory_updated.emit()
+	pass
+
+func remove_item():
+	inventory_updated.emit()
+	pass
+
+func increase_inventory_size():
+	inventory_updated.emit()
+	pass
 
 func open():
 	visible = true
@@ -46,9 +59,11 @@ func open():
 func close():
 	visible = false
 
-
 func _on_button_pressed() -> void:
 	print("item equipped!")
+	player.pistolEquipped = !player.pistolEquipped
+	player.pistol.visible = !player.pistol.visible
+	player.pistol.pistolEquipped = !player.pistol.pistolEquipped
 
 
 func _on_button_2_pressed() -> void:

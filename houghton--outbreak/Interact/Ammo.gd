@@ -6,3 +6,4 @@ func _on_interacted(body: Variant) -> void:
 	body.increment_ammo()
 	$"%AudioStreamPlayer3D".play()
 	visible = false
+	$InventoryItem.pickup_item()

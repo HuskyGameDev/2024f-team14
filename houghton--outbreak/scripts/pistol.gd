@@ -11,6 +11,7 @@ var reserve_ammo: int
 
 var can_fire: bool = true
 var is_reloading: bool = false
+var pistolEquipped = true
 
 @onready var shoot_timer: Timer = $shoot_timer
 @onready var reload_timer: Timer = $reload_timer
@@ -19,7 +20,6 @@ var is_reloading: bool = false
 @onready var gunshotSFX = $GunshotSFX
 @onready var reloadSFX = $ReloadSFX
 @onready var ammoDisplay = $AmmoDisplay
-@onready var zombieDeathSFX = $DeathSFX
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 func _ready() -> void:
@@ -35,10 +35,12 @@ func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_delay_complete)
 	reload_timer.timeout.connect(_on_reload_complete)
 	
+
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading:
+	reserve_ammo = InventoryManager.get_item_quantity("Ammo", "Pistol Ammo")
+	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading and pistolEquipped:
 		shoot()
-	if Input.is_action_just_pressed("reload") and !is_reloading:
+	if Input.is_action_just_pressed("reload") and !is_reloading and pistolEquipped:
 		reload()
 	ammoDisplay.text = "Current Ammo: " + str(current_ammo) + "\nReserve Ammo: " + str(reserve_ammo)
 
@@ -62,12 +64,7 @@ func shoot():
 			var target = ray_cast_3d.get_collider()
 			if target != null and target.is_in_group("enemies"):
 				target.chasing = true
-				target.health -= damage
-				if target.health <= 0:
-					target.death()
-					zombieDeathSFX.play()
-				else:
-					target.playHurtSFX()
+				target.hit(10)
 		
 	
 func reload():
@@ -81,9 +78,13 @@ func _on_reload_complete():
 	var loaded_ammo = mag_size - current_ammo
 	current_ammo += loaded_ammo
 	reserve_ammo -= loaded_ammo
+	InventoryManager.remove_item("Ammo", "Pistol Ammo", loaded_ammo)
 	is_reloading = false
 	
 func _on_shoot_delay_complete():
 	can_fire = true
 	$pistol_model/Sphere.hide()
 	states.travel("idle")
+
+func add_ammo_to_inventory():
+	$InventoryItem.pickup_item()

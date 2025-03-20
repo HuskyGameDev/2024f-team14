@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
-[ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
+[ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
 [ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="4_1ydlv"]
 
@@ -108,9 +108,7 @@ size = Vector3(14.9521, 0.450195, 17.4457)
 
 [node name="Test Enemy" parent="NavigationRegion3D" instance=ExtResource("4_1ydlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65573, 2.4057, 6.1882)
-player_path = NodePath("../../Test Player")
 
-[connection signal="player_hit" from="Test Player" to="UI Scene" method="_on_test_player_player_hit"]
 [connection signal="body_entered" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="enter_trigger"]
 [connection signal="body_exited" from="Camera1(inside)/Area3D" to="Camera1(inside)/Area3D" method="exit_trigger"]
 [connection signal="body_entered" from="Camera2(outside)/Area3D" to="Camera2(outside)/Area3D" method="enter_trigger"]
