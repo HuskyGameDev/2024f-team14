@@ -31,7 +31,8 @@ func remove_item(item_type, item_name, quantity):
 		if inventory[i] != null and inventory[i]["type"]  == item_type and inventory[i]["name"] == item_name:
 			inventory[i]["quantity"] = str(int(inventory[i]["quantity"]) - int(quantity))
 			if int(inventory[i]["quantity"]) <= 0:
-				inventory[i] = null
+				inventory.remove_at(i)
+				inventory.resize(inventorySize)
 			inventory_updated.emit()
 			return true
 	return false

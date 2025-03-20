@@ -1,7 +1,6 @@
 extends CharacterBody3D
 var DEBUG = false
 
-@export var invenItems: inventory
 @onready var inventory_ui = $InventoryUI
 @onready var settings_ui = $SettingsUI
 @onready var animtree = $AnimationTree

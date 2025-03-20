@@ -1,11 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dwpsls5jnk4qd"]
+[gd_scene load_steps=30 format=3 uid="uid://dwpsls5jnk4qd"]
 
 [ext_resource type="PackedScene" uid="uid://c2uajhpd6u58y" path="res://game_manager.tscn" id="1_0dg1n"]
 [ext_resource type="Shader" uid="uid://ksianunb0280" path="res://Shaders/SkyShader.gdshader" id="1_i0suc"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Street/Traffic Light.tscn" id="2_64k0f"]
-[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/Old/PlayerInventory.tres" id="2_vv285"]
 [ext_resource type="PackedScene" uid="uid://wixobdp5tftd" path="res://Assets/Street/Street Light.tscn" id="3_f7n4m"]
 [ext_resource type="PackedScene" uid="uid://bca233md6u1jc" path="res://Shaders/Water/Water.tscn" id="3_v4wfd"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
@@ -104,7 +103,6 @@ transform = Transform3D(-0.113203, 0.323475, -0.939441, 0, 0.945519, 0.325568, 0
 [node name="Player" parent="." instance=ExtResource("1_lg7yx")]
 unique_name_in_owner = true
 transform = Transform3D(-0.00254814, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00254814, 0, 2, 0)
-invenItems = ExtResource("2_vv285")
 
 [node name="Spawner" parent="." instance=ExtResource("11_pptao")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.6461, 2, 1.59544)
