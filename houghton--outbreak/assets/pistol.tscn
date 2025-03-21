@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=4 uid="uid://dl7sjdflmufvw"]
 
-[ext_resource type="Script" path="res://scripts/pistol.gd" id="1_fnodl"]
-[ext_resource type="Script" path="res://Assets/ray_cast_3d.gd" id="2_c6uwf"]
+[ext_resource type="Script" uid="uid://c7bwksrvgt41k" path="res://scripts/pistol.gd" id="1_fnodl"]
+[ext_resource type="Script" uid="uid://c787t2u52yv7j" path="res://Assets/ray_cast_3d.gd" id="2_c6uwf"]
 [ext_resource type="PackedScene" uid="uid://bgphd5tkbopna" path="res://Items and Inventories/Inventory_Item.tscn" id="2_fleub"]
 [ext_resource type="ArrayMesh" uid="uid://421pgj2y8dg2" path="res://Models/pistol_model.obj" id="2_p3qul"]
 [ext_resource type="Animation" uid="uid://nh5rsvlj8e6p" path="res://Models/animations/muzzelflash.res" id="3_4wh3u"]
@@ -107,8 +107,8 @@ resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_75u60"]
 _data = {
-"idle": SubResource("Animation_iysh7"),
-"muzzle_flash": ExtResource("3_4wh3u")
+&"idle": SubResource("Animation_iysh7"),
+&"muzzle_flash": ExtResource("3_4wh3u")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbn24"]

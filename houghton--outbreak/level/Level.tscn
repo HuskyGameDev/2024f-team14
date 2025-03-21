@@ -1,14 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2p2xgexeg3a8"]
-[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_fchar"]
-[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/PlayerInventory.tres" id="2_orhty"]
-[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
-[ext_resource type="PackedScene" uid="uid://delxoyhkl7rdn" path="res://level/inv_slots.tscn" id="4_54de5"]
-[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/Old/PlayerInventory.tres" id="2_orhty"]
+[gd_scene load_steps=4 format=3 uid="uid://d2p2xgexeg3a8"]
+
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_fchar"]
 [ext_resource type="Script" uid="uid://8ctwr4u5m66u" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
 [ext_resource type="PackedScene" uid="uid://6k46qy1tkfwj" path="res://Interact/Spawner.tscn" id="4_s6u1s"]
-[ext_resource type="Resource" uid="uid://dcb50ttm3h73r" path="res://Items and Inventories/Old/PlayerInventory.tres" id="2_orhty"]
-[ext_resource type="Script" uid="uid://8ctwr4u5m66u" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
-[ext_resource type="PackedScene" uid="uid://6k46qy1tkfwj" path="res://Interact/Spawner.tscn" id="4_s6u1s"]
+
 [node name="Level" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -313,7 +308,6 @@ size = Vector3(30, 1, 46)
 
 [node name="Player" parent="." instance=ExtResource("1_fchar")]
 transform = Transform3D(-0.00254814, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00254814, -37.216, 1.53696, 136.258)
-invenItems = ExtResource("2_orhty")
 
 [node name="InventoryUI2" type="Control" parent="Player"]
 process_mode = 3
