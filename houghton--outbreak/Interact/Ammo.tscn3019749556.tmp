@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://cxkk0x7i3u4v8" path="res://Audio/Ammo Pickup SFX.wav" id="2_8cvaq"]
 [ext_resource type="PackedScene" uid="uid://bgphd5tkbopna" path="res://Items and Inventories/Inventory_Item.tscn" id="2_hg6b0"]
 [ext_resource type="Texture2D" uid="uid://bnspwb5waj7yb" path="res://Models/Items/Ammo/Ammo_Pack_00_AlbedoTransparency.png" id="3_72in8"]
-[ext_resource type="Texture2D" uid="uid://blswklydiv177" path="res://Items and Inventories/Ammo.jpg" id="3_rb05p"]
+[ext_resource type="Texture2D" uid="uid://b4dnpnv24w0h4" path="res://Textures/dummyItem1_small.png" id="3_rb05p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ralb4"]
 size = Vector3(0.401855, 0.21994, 0.217133)
@@ -56,6 +56,8 @@ shadow_mesh = SubResource("ArrayMesh_kc4yv")
 
 [node name="Ammo" type="StaticBody3D"]
 script = ExtResource("1_lwypc")
+prompt_message = null
+prompt_input = null
 
 [node name="InventoryItem" parent="." instance=ExtResource("2_hg6b0")]
 unique_name_in_owner = true
@@ -80,6 +82,5 @@ skeleton = NodePath("")
 unique_name_in_owner = true
 stream = ExtResource("2_8cvaq")
 volume_db = 1.523
-bus = &"SFX"
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]

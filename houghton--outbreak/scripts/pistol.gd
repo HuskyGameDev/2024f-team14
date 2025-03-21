@@ -35,7 +35,9 @@ func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_delay_complete)
 	reload_timer.timeout.connect(_on_reload_complete)
 	
+
 func _process(_delta: float) -> void:
+	reserve_ammo = InventoryManager.get_item_quantity("Ammo", "Pistol Ammo")
 	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading and pistolEquipped:
 		shoot()
 	if Input.is_action_just_pressed("reload") and !is_reloading and pistolEquipped:
@@ -76,9 +78,13 @@ func _on_reload_complete():
 	var loaded_ammo = mag_size - current_ammo
 	current_ammo += loaded_ammo
 	reserve_ammo -= loaded_ammo
+	InventoryManager.remove_item("Ammo", "Pistol Ammo", loaded_ammo)
 	is_reloading = false
 	
 func _on_shoot_delay_complete():
 	can_fire = true
 	$pistol_model/Sphere.hide()
 	states.travel("idle")
+
+func add_ammo_to_inventory():
+	$InventoryItem.pickup_item()

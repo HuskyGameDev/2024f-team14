@@ -23,6 +23,11 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/game_manager.gd"
 ConfigManager="*res://Settings/ConfigManager.gd"
+InventoryManager="*res://Items and Inventories/InventoryManager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [filesystem]
 

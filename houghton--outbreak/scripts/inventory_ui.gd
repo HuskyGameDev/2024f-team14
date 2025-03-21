@@ -6,6 +6,7 @@ extends Control
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
+signal inventory_updated
 signal pauseSignal
 signal resumeSignal
 
@@ -40,12 +41,23 @@ func _process(_delta):
 				pauseSignal.emit()
 
 
+func add_item():
+	inventory_updated.emit()
+	pass
+
+func remove_item():
+	inventory_updated.emit()
+	pass
+
+func increase_inventory_size():
+	inventory_updated.emit()
+	pass
+
 func open():
 	visible = true
 
 func close():
 	visible = false
-
 
 func _on_button_pressed() -> void:
 	print("item equipped!")

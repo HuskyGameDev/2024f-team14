@@ -8,11 +8,11 @@ var maxEnemies = 5
 var totalEnemies = 0
 var spawns = true
 
+var pauseReason = ""
 
 func _ready() -> void:
 	totalEnemies = get_tree().get_node_count_in_group("enemies")
 	
-
 
 func _process(_delta: float) -> void:
 	totalEnemies = 0
@@ -21,22 +21,12 @@ func _process(_delta: float) -> void:
 			totalEnemies += 1
 
 
-func pause():
+func pause(reason: String = ""):
 	STATE = PAUSE
+	pauseReason = reason
 	get_tree().paused = true
 
-func menu():
-	STATE = MENU
-	get_tree().paused = true
 
 func resume():
 	STATE = PLAY
 	get_tree().paused = false
-
-
-func _on_inventory_ui_pause_signal() -> void:
-	pause()
-
-
-func _on_inventory_ui_resume_signal() -> void:
-	resume()
