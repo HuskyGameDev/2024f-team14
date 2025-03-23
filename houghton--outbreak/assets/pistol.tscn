@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dl7sjdflmufvw"]
+[gd_scene load_steps=26 format=4 uid="uid://dl7sjdflmufvw"]
 
 [ext_resource type="Script" uid="uid://c7bwksrvgt41k" path="res://scripts/pistol.gd" id="1_fnodl"]
 [ext_resource type="Script" uid="uid://c787t2u52yv7j" path="res://Assets/ray_cast_3d.gd" id="2_c6uwf"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://crvca72w1mw8u" path="res://Audio/Gunshot SFX.wav" id="4_qslhe"]
 [ext_resource type="AudioStream" uid="uid://bdymh23va2prk" path="res://Audio/Online Sources/Pistol Reload.mp3" id="5_l17de"]
 [ext_resource type="Texture2D" uid="uid://blswklydiv177" path="res://Items and Inventories/Ammo.jpg" id="8_fleub"]
+[ext_resource type="Texture2D" uid="uid://b6utk3tt8pjux" path="res://Textures/pistol_image_small.png" id="9_kg830"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehqet"]
 albedo_color = Color(1, 0, 0, 1)
@@ -186,7 +187,7 @@ skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pistol_model"]
 libraries = {
-"": SubResource("AnimationLibrary_75u60")
+&"": SubResource("AnimationLibrary_75u60")
 }
 speed_scale = 4.0
 
@@ -206,10 +207,20 @@ unique_name_in_owner = true
 stream = ExtResource("5_l17de")
 bus = &"SFX"
 
-[node name="InventoryItem" parent="." instance=ExtResource("2_fleub")]
+[node name="StartingAmmo" parent="." instance=ExtResource("2_fleub")]
 unique_name_in_owner = true
 visible = false
 item_type = "Ammo"
 item_name = "Pistol Ammo"
 item_texture = ExtResource("8_fleub")
+item_effect = "Ammo for pistol"
 item_quantity = 128
+
+[node name="StartingPistol" parent="." instance=ExtResource("2_fleub")]
+unique_name_in_owner = true
+visible = false
+item_type = "Weapons"
+item_name = "Pistol"
+item_texture = ExtResource("9_kg830")
+item_effect = "Pistol you can shoot"
+item_quantity = 1

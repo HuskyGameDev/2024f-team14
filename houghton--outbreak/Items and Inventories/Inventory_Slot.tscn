@@ -148,6 +148,24 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ey5i7")
 
+[node name="PanelMarker" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = -73.0
+
+[node name="IconMarker" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 77.0
+offset_top = 75.0
+offset_right = 77.0
+offset_bottom = 75.0
+
 [connection signal="pressed" from="UsagePanel/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="pressed" from="UsagePanel/DiscardButton" to="." method="_on_discard_button_pressed"]
 [connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]

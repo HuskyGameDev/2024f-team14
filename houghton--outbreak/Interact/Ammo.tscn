@@ -63,6 +63,7 @@ visible = false
 item_type = "Ammo"
 item_name = "Pistol Ammo"
 item_texture = ExtResource("3_rb05p")
+item_effect = "Ammo for pistol"
 item_quantity = "20"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

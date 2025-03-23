@@ -38,14 +38,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	reserve_ammo = InventoryManager.get_item_quantity("Ammo", "Pistol Ammo")
-	if Input.is_action_just_pressed("attack_or_shoot") and can_fire and !is_reloading and pistolEquipped:
+	if Input.is_action_just_pressed("Primary Fire") and can_fire and !is_reloading and pistolEquipped:
 		shoot()
-	if Input.is_action_just_pressed("reload") and !is_reloading and pistolEquipped:
+	if Input.is_action_just_pressed("Reload") and !is_reloading and pistolEquipped:
 		reload()
 	ammoDisplay.text = "Current Ammo: " + str(current_ammo) + "\nReserve Ammo: " + str(reserve_ammo)
 
 func can_shoot():
-	return current_ammo > 0 && Input.is_action_pressed("aim")
+	return current_ammo > 0 && Input.is_action_pressed("Secondary Fire (Aim)")
 
 func can_reload():
 	return current_ammo < mag_size and reserve_ammo > 0
@@ -86,5 +86,6 @@ func _on_shoot_delay_complete():
 	$pistol_model/Sphere.hide()
 	states.travel("idle")
 
-func add_ammo_to_inventory():
-	$InventoryItem.pickup_item()
+func add_starting_inventory():
+	$StartingAmmo.pickup_item()
+	$StartingPistol.pickup_item()

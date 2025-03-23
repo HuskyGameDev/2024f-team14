@@ -8,7 +8,7 @@ var DEBUG = false
 @onready var animationPlayer = $"PM 10-31-24/AnimationPlayer"
 
 @onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
-var pistolEquipped = true
+var equipped = "Pistol"
 
 @onready var hurtSFX = $HurtSFX
 @onready var deathSFX = $DeathSFX
@@ -43,7 +43,8 @@ func _ready() -> void:
 	#Will initially grant max health to the player
 	current_health = MAX_HEALTH
 	InventoryManager.set_player_reference(self)
-	pistol.add_ammo_to_inventory()
+	pistol.add_starting_inventory()
+	add_starting_inventory()
 
 
 
@@ -61,7 +62,6 @@ func _physics_process(delta: float) -> void:
 	character_movement(delta)
 
 func character_movement(delta: float):
-	
 	var current_y_velocity = velocity.y
 	current_ammo = pistol.current_ammo
 	reserve_ammo = pistol.reserve_ammo
@@ -71,12 +71,12 @@ func character_movement(delta: float):
 		return
 	
 	
-	if Input.is_action_pressed("move_forwards") and Input.is_action_pressed("move_backwards"):
+	if Input.is_action_pressed("Move Forward") and Input.is_action_pressed("Move Backward"):
 		velocity.x = 0
 		velocity.z = 0
 		states.travel("idlepose")
 
-	elif Input.is_action_pressed("move_forwards"):
+	elif Input.is_action_pressed("Move Forward"):
 		var forwardVector = -Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -forwardVector * FORWARD_SPEED
 		animtree.advance(delta * 1.5)
@@ -85,24 +85,24 @@ func character_movement(delta: float):
 			velocity *= 1.5
 			animtree.advance(delta * 1.7)
 		
-		if (pistolEquipped):
+		if (equipped == "Pistol"):
 			states.travel("walkGun")
-		else:
+		elif (equipped == "None"):
 			states.travel("walkNoGun")
 		
-	elif Input.is_action_pressed("move_backwards"):
+	elif Input.is_action_pressed("Move Backward"):
 		var backwardVector = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
 		velocity = -backwardVector * BACKWARD_SPEED
 		animtree.advance(delta * 1)
-		if (pistolEquipped):
+		if (equipped == "Pistol"):
 			states.travel("walkGunBackwards")
-		else:
+		elif (equipped == "None"):
 			states.travel("walkNoGunBackwards")
-	elif Input.is_action_pressed("aim") and pistolEquipped:
+	elif Input.is_action_pressed("Secondary Fire (Aim)") and equipped == "Pistol":
 		velocity.x = 0
 		velocity.z = 0
 		states.travel("PistolActionAim")
-		if Input.is_action_pressed("attack_or_shoot") && current_ammo != 0 && !pistol.is_reloading:
+		if Input.is_action_pressed("Primary Fire") && current_ammo != 0 && !pistol.is_reloading:
 			states.travel("pistolActionShootTimer")
 		
 		if Input.is_action_just_pressed("Target"):
@@ -122,25 +122,25 @@ func character_movement(delta: float):
 	
 	
 	# If moving back while turning left, turn right
-	if Input.is_action_pressed("turn_left") and Input.is_action_pressed("move_backwards"):
+	if Input.is_action_pressed("Turn Left") and Input.is_action_pressed("Move Backward"):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
-	elif Input.is_action_pressed("turn_left"):
+	elif Input.is_action_pressed("Turn Left"):
 		rotation.y += input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 
 	# If moving back while turning right, turn left
-	if Input.is_action_pressed("turn_right") and Input.is_action_pressed("move_backwards"):
+	if Input.is_action_pressed("Turn Right") and Input.is_action_pressed("Move Backward"):
 		rotation.y += input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 		
 		
-	elif Input.is_action_pressed("turn_right"):
+	elif Input.is_action_pressed("Turn Right"):
 		rotation.y -= input.y + TURNING_SPEED *turning_sensitivity
 		velocity.y -= delta*GRAVITY_CONSTANT
 	
-	elif Input.is_action_just_pressed("TurnAround") and !turning:
+	elif Input.is_action_just_pressed("Turn Around") and !turning:
 		targetTurn = rotation.y + PI
 		turning = true
 		
@@ -202,16 +202,21 @@ func hit(damage):
 
 #Grenade Throwing
 func throwGrenade():
-	if Input.is_action_just_released("G") && canThrow:
+	if Input.is_action_just_pressed("Primary Fire") and canThrow and equipped == "Grenade":
 		var grenadeInstance = grenade.instantiate()
 		grenadeInstance.position = $GrenadePos.global_position
 		get_tree().current_scene.add_child(grenadeInstance)
+		
+		InventoryManager.remove_item("Weapons", "Grenade", 1)
+		
+		if (InventoryManager.get_item_quantity("Weapons", "Grenade") == 0):
+			unequip("Grenade")
 		
 		canThrow = false
 		$ThrowTimer.start()
 		
 		#Drop Grenade
-		if Input.is_action_pressed("aim"):
+		if Input.is_action_pressed("Secondary Fire (Aim)"):
 			var force = -0.5
 			var upDirection = 0.0
 			
@@ -231,7 +236,7 @@ func throwGrenade():
 
 #Melee Attack
 func meleeAttack():
-	if Input.is_action_just_released("Melee") && canMelee:
+	if Input.is_action_just_pressed("Primary Fire") && canMelee && equipped == "Knife":
 		$"Knife Sound".play()
 		var nearest = get_nearest_enemy()
 		if nearest != null:
@@ -240,6 +245,25 @@ func meleeAttack():
 		
 		canMelee = false
 		$MeleeTimer.start()
+
+func equip(Equip):
+	equipped = Equip
+	if (equipped == "Pistol"):
+		pistol.visible = true
+		pistol.pistolEquipped = true
+	
+	if (equipped == "Grenade"):
+		pass
+	
+	if (equipped == "Knife"):
+		pass
+
+func unequip(unEquip):
+	equipped = "None"
+	
+	pistol.visible = false
+	pistol.pistolEquipped = false
+	
 
 
 func _on_throw_timer_timeout() -> void:
@@ -250,7 +274,7 @@ func _on_melee_timer_timeout() -> void:
 
 #Menu Handlers
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("P"):
+	if event.is_action_pressed("Inventory"):
 		if !(get_tree().paused and !inventory_ui.visible):
 			inventory_ui.visible = !inventory_ui.visible
 			get_tree().paused = !get_tree().paused
@@ -258,3 +282,7 @@ func _input(event: InputEvent) -> void:
 		if !(get_tree().paused and !settings_ui.visible):
 			settings_ui.visible = !settings_ui.visible
 			get_tree().paused = !get_tree().paused
+
+func add_starting_inventory():
+	$StartingGrenades.pickup_item()
+	$StartingKnife.pickup_item()
