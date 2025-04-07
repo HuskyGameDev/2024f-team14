@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c236hnxd362lg"
-path="res://.godot/imported/Screenshot 2025-03-20 220650.png-e1dd53496d826210cb432933599bdba3.ctex"
+uid="uid://d326yp4smfgbc"
+path.s3tc="res://.godot/imported/building_front_5.png-4581e6c3338335b4be69a69834649b5b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Textures/Screenshot 2025-03-20 220650.png"
-dest_files=["res://.godot/imported/Screenshot 2025-03-20 220650.png-e1dd53496d826210cb432933599bdba3.ctex"]
+source_file="res://Textures/building_front_5.png"
+dest_files=["res://.godot/imported/building_front_5.png-4581e6c3338335b4be69a69834649b5b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

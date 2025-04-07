@@ -1,15 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2p2xgexeg3a8"]
+[gd_scene load_steps=18 format=3 uid="uid://d2p2xgexeg3a8"]
 
-[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_fchar"]
+[ext_resource type="Texture2D" uid="uid://fdmk6swxqbem" path="res://Textures/building_front_1.png" id="1_86hre"]
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_fchar"]
+[ext_resource type="Texture2D" uid="uid://cbp5qfi4vxxjv" path="res://Textures/building_front_2.png" id="2_2w4b2"]
 [ext_resource type="Script" uid="uid://8ctwr4u5m66u" path="res://scripts/inventory_ui.gd" id="3_2i2pc"]
+[ext_resource type="Texture2D" uid="uid://brmb5sy2tyeyg" path="res://Textures/building_front_3.png" id="3_42fi0"]
+[ext_resource type="Texture2D" uid="uid://brrilbnugfa22" path="res://Textures/building_front_4.png" id="4_1gubu"]
 [ext_resource type="PackedScene" uid="uid://6k46qy1tkfwj" path="res://Interact/Spawner.tscn" id="4_s6u1s"]
+[ext_resource type="Texture2D" uid="uid://d326yp4smfgbc" path="res://Textures/building_front_5.png" id="5_gn4e2"]
+[ext_resource type="Texture2D" uid="uid://c3onob2g06575" path="res://Textures/building_front_6.png" id="6_72mp3"]
+[ext_resource type="Texture2D" uid="uid://cln13vjrnihoe" path="res://Textures/building_front_7.png" id="7_q66v6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h662"]
+albedo_texture = ExtResource("1_86hre")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmfh3"]
+albedo_texture = ExtResource("2_2w4b2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go2ox"]
+albedo_texture = ExtResource("3_42fi0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgcpm"]
+albedo_texture = ExtResource("4_1gubu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks2l4"]
+albedo_texture = ExtResource("5_gn4e2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ncv"]
+albedo_texture = ExtResource("6_72mp3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66hjk"]
+albedo_texture = ExtResource("7_q66v6")
 
 [node name="Level" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
-size = Vector3(150, 0.5, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0699, 0, 2.69686)
+size = Vector3(83.8602, 0.5, 294.73)
 
 [node name="InvisWallWest" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8774, 149.75)
@@ -21,293 +50,159 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8774, -149.552)
 visible = false
 size = Vector3(150, 30, 0.5)
 
-[node name="WallBorderNorth" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4914, 14.7954, 0)
-size = Vector3(1, 30, 300)
+[node name="WallBorderNorth1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4914, 10.4061, 53.352)
+size = Vector3(1, 20, 192.482)
+
+[node name="WallBorderNorth2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4914, 20.2941, -93.9531)
+size = Vector3(1, 39.7761, 102.368)
 
 [node name="WallBorderSouth" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.4041, 14.7954, 0)
-size = Vector3(1, 30, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37142, 10.2735, 2.67748)
+size = Vector3(1, 20, 294.73)
 
-[node name="BldgWall1" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 149.489)
-size = Vector3(30, 30, 1)
+[node name="SideWall0" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 10.3703, 149.489)
+size = Vector3(30, 20, 1)
 
-[node name="BldgWall2" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 118.223)
-size = Vector3(30, 30, 1)
+[node name="Roof" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 19.6488, 53.7038)
+size = Vector3(30, 1.44287, 192.57)
 
-[node name="BldgWall3" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 97.1228)
-size = Vector3(30, 30, 1)
+[node name="Roof2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9962, 39.4707, -93.7963)
+size = Vector3(30, 1.44287, 101.829)
 
-[node name="BldgWall4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 56.7636)
-size = Vector3(30, 30, 1)
+[node name="SideWall1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 10.3703, 95.0718)
+size = Vector3(30, 20, 1)
 
-[node name="BldgWall5" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 38.0301)
-size = Vector3(30, 30, 1)
-
-[node name="BldgWall6" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, 14.4248)
-size = Vector3(30, 30, 1)
-
-[node name="BldgWall7" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -43.9215)
-size = Vector3(30, 30, 1)
-
-[node name="BldgWall8" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -76.9083)
-size = Vector3(30, 30, 1)
-
-[node name="BldgWall9" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -103.965)
-size = Vector3(30, 30, 1)
-
-[node name="BldgWall10" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 14.8318, -149.5)
-size = Vector3(30, 30, 1)
-
-[node name="BldgFrontWall1" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 143.512)
-size = Vector3(1, 30, 11.5566)
-
-[node name="BldgFrontWall10" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 126.261)
-size = Vector3(1, 30, 15.6514)
-
-[node name="BldgFrontWall11" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, 135.909)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall12" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, 135.909)
+[node name="Funnel10" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.673258, 0, 0.739408, 0, 1, 0, -0.739408, 0, 0.673258, -60.3995, 7.50554, 73.4244)
 visible = false
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+collision_layer = 4
+size = Vector3(42.7639, 14.2705, 1)
 
-[node name="BldgFrontWall2" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 103.737)
-size = Vector3(1, 30, 12.4896)
-
-[node name="BldgFrontWall21" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 116.098)
-size = Vector3(1, 30, 5.00327)
-
-[node name="BldgFrontWall22" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, 111.794)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall23" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, 111.798)
+[node name="Funnel11" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-0.620026, 0, 0.784582, 0, 1, 0, -0.784582, 0, -0.620026, -54.338, 7.50554, 38.0905)
 visible = false
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+collision_layer = 4
+size = Vector3(30, 14.271, 1)
 
-[node name="BldgFrontWall3" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 63.3341)
-size = Vector3(1, 30, 13.6377)
+[node name="SideWall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 10.3703, 25.6832)
+size = Vector3(30, 20, 1)
 
-[node name="BldgFrontWall31" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 85.7889)
-size = Vector3(1, 30, 23.9465)
+[node name="SideWall3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 10.3703, 2.80382)
+size = Vector3(30, 20, 1)
 
-[node name="BldgFrontWall32" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, 71.9861)
-size = Vector3(1, 23.043, 3.66774)
+[node name="SideWall4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 20.2808, -42.9984)
+size = Vector3(30, 39.821, 1)
 
-[node name="BldgFrontWall33" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, 71.9867)
+[node name="SideWall5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 20.2808, -90.3492)
+size = Vector3(30, 39.821, 1)
+
+[node name="Funnel12" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.673258, 0, 0.739408, 0, 1, 0, -0.739408, 0, 0.673258, -60.3995, 7.50554, -96.4292)
 visible = false
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+collision_layer = 4
+size = Vector3(42.7639, 14.2705, 1)
 
-[node name="BldgFrontWall4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 41.804)
-size = Vector3(1, 30, 8.12842)
-
-[node name="BldgFrontWall41" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 53.1307)
-size = Vector3(1, 30, 7.20044)
-
-[node name="BldgFrontWall42" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, 47.696)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall43" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, 47.6978)
+[node name="Funnel13" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-0.620026, 0, 0.784582, 0, 1, 0, -0.784582, 0, -0.620026, -54.338, 7.50554, -133.069)
 visible = false
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+collision_layer = 4
+size = Vector3(30, 14.271, 1)
 
-[node name="BldgFrontWall5" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 16.526)
-size = Vector3(1, 30, 4.57178)
+[node name="SideWall6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5171, 20.2808, -144.071)
+size = Vector3(30, 39.821, 1)
 
-[node name="BldgFrontWall51" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 30.1886)
-size = Vector3(1, 30, 15.4506)
-
-[node name="BldgFrontWall52" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, 20.6384)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall53" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, 20.637)
-visible = false
+[node name="FrontWall1" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 122.648)
+material_override = SubResource("StandardMaterial3D_1h662")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+size = Vector3(1, 54.66, 20)
 
-[node name="BldgFrontWall6" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -35.2986)
-size = Vector3(1, 30, 17.1548)
-
-[node name="BldgFrontWall61" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, 1.88424)
-size = Vector3(1, 30, 25.4597)
-
-[node name="BldgFrontWall62" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -18.7699)
-size = Vector3(1, 30, 8.60754)
-
-[node name="BldgFrontWall63" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -24.8891)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall64" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -12.652)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall65" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -12.6221)
+[node name="CollisionWall10" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 145.11)
 visible = false
+material_override = SubResource("StandardMaterial3D_1h662")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+size = Vector3(1, 9.73714, 20)
 
-[node name="BldgFrontWall66" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -24.8906)
+[node name="CollisionWall11" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 114.836)
 visible = false
+material_override = SubResource("StandardMaterial3D_1h662")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+size = Vector3(1, 39.0359, 20)
 
-[node name="BldgFrontWall7" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -64.7106)
-size = Vector3(1, 30, 25.1983)
+[node name="FrontWall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 74.389)
+material_override = SubResource("StandardMaterial3D_gmfh3")
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 41.89, 20)
 
-[node name="BldgFrontWall71" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -45.8818)
-size = Vector3(1, 30, 5.14926)
+[node name="FrontWall3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 39.7161)
+material_override = SubResource("StandardMaterial3D_go2ox")
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 27.52, 20)
 
-[node name="BldgFrontWall72" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -50.2838)
-size = Vector3(1, 23.043, 3.66774)
+[node name="FrontWall4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, 14.3491)
+material_override = SubResource("StandardMaterial3D_lgcpm")
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 23.22, 20)
 
-[node name="BldgFrontWall73" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -50.2598)
+[node name="FrontWall5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 10.3138, -19.8783)
+material_override = SubResource("StandardMaterial3D_ks2l4")
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 45.26, 20)
+
+[node name="FrontWall6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 20.1947, -66.5169)
+material_override = SubResource("StandardMaterial3D_t6ncv")
+use_collision = true
+size = Vector3(1, 48.08, 40)
+
+[node name="CollisionWall20" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 20.1947, -54.7195)
 visible = false
+material_override = SubResource("StandardMaterial3D_t6ncv")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+size = Vector3(1, 24.4852, 40)
 
-[node name="BldgFrontWall8" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -85.1066)
-size = Vector3(1, 30, 17.9252)
-
-[node name="BldgFrontWall81" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -100.954)
-size = Vector3(1, 30, 6.44229)
-
-[node name="BldgFrontWall82" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -95.9014)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall83" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -95.9094)
+[node name="CollisionWall21" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 20.1947, -81.0044)
 visible = false
+material_override = SubResource("StandardMaterial3D_t6ncv")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
+size = Vector3(1, 19.1429, 40)
 
-[node name="BldgFrontWall9" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -143.05)
-size = Vector3(1, 30, 13.7256)
-
-[node name="BldgFrontWall91" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -128.083)
-size = Vector3(1, 30, 8.91139)
-
-[node name="BldgFrontWall92" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 14.8318, -111.754)
-size = Vector3(1, 30, 16.4081)
-
-[node name="BldgFrontWall93" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -121.789)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall94" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 18.3103, -134.368)
-size = Vector3(1, 23.043, 3.66774)
-
-[node name="BldgFrontWall95" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -121.804)
-visible = false
+[node name="FrontWall7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45.0096, 20.1881, -117.607)
+material_override = SubResource("StandardMaterial3D_66hjk")
 use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
-
-[node name="BldgFrontWall96" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.972, 3.5204, -134.336)
-visible = false
-use_collision = true
-collision_layer = 2
-size = Vector3(1, 6.53052, 3.66774)
-
-[node name="BldgRoof1" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 134.231)
-size = Vector3(30, 1, 31)
-
-[node name="BldgRoof2" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 107.606)
-size = Vector3(30, 1, 21)
-
-[node name="BldgRoof3" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 77.0568)
-size = Vector3(30, 1, 41)
-
-[node name="BldgRoof4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 47.4293)
-size = Vector3(30, 1, 19)
-
-[node name="BldgRoof5" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, 25.9508)
-size = Vector3(30, 1, 24)
-
-[node name="BldgRoof6" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -14.8008)
-size = Vector3(30, 1, 58)
-
-[node name="BldgRoof7" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -60.2183)
-size = Vector3(30, 1, 34)
-
-[node name="BldgRoof8" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -90.2473)
-size = Vector3(30, 1, 28)
-
-[node name="BldgRoof9" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8631, 29.3403, -126.675)
-size = Vector3(30, 1, 46)
+collision_layer = 3
+size = Vector3(1, 54.1, 40)
 
 [node name="Player" parent="." instance=ExtResource("1_fchar")]
-transform = Transform3D(-0.00254814, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00254814, -37.216, 1.53696, 136.258)
+transform = Transform3D(-0.00254814, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00254814, -41.0268, 1.53696, 136.258)
 
 [node name="InventoryUI2" type="Control" parent="Player"]
 process_mode = 3
@@ -320,19 +215,7 @@ offset_bottom = 203.0
 script = ExtResource("3_2i2pc")
 
 [node name="Spawner" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -53.0221, 1.3312, 31.0421)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -68.4779, 4.46977, 54.9214)
 
 [node name="Spawner2" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -53.0221, 1.3312, 86.5193)
-
-[node name="Spawner3" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.8914, 1.3312, 123.266)
-
-[node name="Spawner4" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -51.4988, 1.3312, -83.5013)
-
-[node name="Spawner5" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -51.4988, 1.3312, -73.9863)
-
-[node name="Spawner6" parent="." instance=ExtResource("4_s6u1s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -51.4988, 1.3312, -73.9863)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -68.4779, 4.46977, -122.958)
