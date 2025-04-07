@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b08suw6wuuwwf" path="res://scripts/test_player.gd" id="1_ysei2"]
 [ext_resource type="PackedScene" uid="uid://dy064h4f5x2qb" path="res://Interact/interact_ray.tscn" id="2_lw2o7"]
-[ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://Assets/pistol.tscn" id="2_s1o4x"]
+[ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://assets/pistol.tscn" id="2_s1o4x"]
 [ext_resource type="PackedScene" uid="uid://d8ph4nt7hhy3" path="res://Models/PM 10-31-24.glb" id="3_k5jfj"]
 [ext_resource type="Animation" uid="uid://tkuxp1tgpsud" path="res://Models/animations/PistolActionAim.res" id="4_t6pkv"]
 [ext_resource type="Animation" uid="uid://cv2e508t2cp12" path="res://Models/animations/pistolActionShoot.res" id="5_do3do"]
