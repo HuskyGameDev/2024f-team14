@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2p2xgexeg3a8"]
+[gd_scene load_steps=20 format=3 uid="uid://d2p2xgexeg3a8"]
 
+[ext_resource type="Texture2D" uid="uid://eralbcf13yp1" path="res://Textures/Screenshot (244).png" id="1_2w4b2"]
 [ext_resource type="Texture2D" uid="uid://fdmk6swxqbem" path="res://Textures/building_front_1.png" id="1_86hre"]
 [ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_fchar"]
 [ext_resource type="Texture2D" uid="uid://cbp5qfi4vxxjv" path="res://Textures/building_front_2.png" id="2_2w4b2"]
@@ -10,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://d326yp4smfgbc" path="res://Textures/building_front_5.png" id="5_gn4e2"]
 [ext_resource type="Texture2D" uid="uid://c3onob2g06575" path="res://Textures/building_front_6.png" id="6_72mp3"]
 [ext_resource type="Texture2D" uid="uid://cln13vjrnihoe" path="res://Textures/building_front_7.png" id="7_q66v6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42fi0"]
+albedo_texture = ExtResource("1_2w4b2")
+uv1_scale = Vector3(20, 130, 100)
+uv2_scale = Vector3(50, 15, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h662"]
 albedo_texture = ExtResource("1_86hre")
@@ -37,8 +43,13 @@ albedo_texture = ExtResource("7_q66v6")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0699, 0, 2.69686)
-size = Vector3(83.8602, 0.5, 294.73)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.9281, 0, 2.69686)
+material_override = SubResource("StandardMaterial3D_42fi0")
+size = Vector3(294.73, 0.5, 53.577)
+
+[node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.654, 0, 2.69686)
+size = Vector3(30.1479, 0.5, 294.73)
 
 [node name="InvisWallWest" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8774, 149.75)
