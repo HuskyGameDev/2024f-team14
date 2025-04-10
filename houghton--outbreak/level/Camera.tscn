@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkkj40yls1xa8"]
+
+[ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="1_dpsjt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bj4qa"]
+size = Vector3(0.001, 4.91235, 3.10785)
+
+[node name="Camera" type="Camera3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-0.135996, 0.776752, -10.9717, 10.9974, 0.208762, -0.12154, 0.199643, -10.9706, -0.779147, -0.299615, 7.05946, -0.0836444)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dpsjt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, -1.86265e-09, 1.62981e-09, 0, 1, -1.49012e-08, 6.98492e-10, 0, 1, -1.17474, -0.0223001, 0.0129824)
+shape = SubResource("BoxShape3D_bj4qa")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="exit_trigger"]

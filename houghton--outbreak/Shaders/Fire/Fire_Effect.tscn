@@ -136,7 +136,6 @@ radius = 0.7
 height = 3.0
 
 [node name="Fire Effect" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000534058, 0.319399, -0.000610352)
 script = ExtResource("1_xr4w4")
 
 [node name="StaticFlame" type="GPUParticles3D" parent="."]
