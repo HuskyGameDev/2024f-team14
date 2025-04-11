@@ -14,3 +14,5 @@ func _on_timer_timeout() -> void:
 		spawn.walkForward = true
 		spawn.walkTimer.start()
 		spawn.add_to_group("enemies")
+			
+			

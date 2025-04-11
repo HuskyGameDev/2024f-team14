@@ -1,6 +1,6 @@
 [gd_scene load_steps=61 format=3 uid="uid://djmqij828p3ey"]
 
-[ext_resource type="Script" uid="uid://b08suw6wuuwwf" path="res://scripts/test_player.gd" id="1_ysei2"]
+[ext_resource type="Script" path="res://scripts/test_player.gd" id="1_ysei2"]
 [ext_resource type="PackedScene" uid="uid://dy064h4f5x2qb" path="res://Interact/interact_ray.tscn" id="2_lw2o7"]
 [ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://assets/pistol.tscn" id="2_s1o4x"]
 [ext_resource type="PackedScene" uid="uid://d8ph4nt7hhy3" path="res://Models/PM 10-31-24.glb" id="3_k5jfj"]
@@ -457,11 +457,11 @@ tracks/27/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3chgn"]
 _data = {
-&"PistolActionAim": ExtResource("4_t6pkv"),
-&"idlepose": SubResource("Animation_qpu3s"),
-&"pistolActionShoot": ExtResource("5_do3do"),
-&"walkGun": ExtResource("6_o57fo"),
-&"walkNoGun": SubResource("Animation_oulvp")
+"PistolActionAim": ExtResource("4_t6pkv"),
+"idlepose": SubResource("Animation_qpu3s"),
+"pistolActionShoot": ExtResource("5_do3do"),
+"walkGun": ExtResource("6_o57fo"),
+"walkNoGun": SubResource("Animation_oulvp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fhm2q"]
@@ -682,7 +682,7 @@ transform = Transform3D(0.991018, -0.119987, 0.0590479, 0.0753736, 0.136434, -0.
 
 [node name="AnimationPlayer" parent="PM 10-31-24" index="1"]
 libraries = {
-&"": SubResource("AnimationLibrary_3chgn")
+"": SubResource("AnimationLibrary_3chgn")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
