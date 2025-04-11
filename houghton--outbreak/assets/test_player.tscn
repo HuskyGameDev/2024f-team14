@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b08suw6wuuwwf" path="res://scripts/test_player.gd" id="1_ysei2"]
 [ext_resource type="PackedScene" uid="uid://dy064h4f5x2qb" path="res://Interact/interact_ray.tscn" id="2_lw2o7"]
-[ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://Assets/pistol.tscn" id="2_s1o4x"]
+[ext_resource type="PackedScene" uid="uid://dl7sjdflmufvw" path="res://assets/pistol.tscn" id="2_s1o4x"]
 [ext_resource type="PackedScene" uid="uid://d8ph4nt7hhy3" path="res://Models/PM 10-31-24.glb" id="3_k5jfj"]
 [ext_resource type="Animation" uid="uid://tkuxp1tgpsud" path="res://Models/animations/PistolActionAim.res" id="4_t6pkv"]
 [ext_resource type="Animation" uid="uid://cv2e508t2cp12" path="res://Models/animations/pistolActionShoot.res" id="5_do3do"]
@@ -645,13 +645,13 @@ transform = Transform3D(-0.998605, 0, -0.0528067, 0, 1, 0, 0.0528067, 0, -0.9986
 
 [node name="Skeleton3D" parent="PM 10-31-24/Armature" index="0"]
 bones/1/position = Vector3(-0.0120782, 0.601476, 2.20209)
-bones/5/rotation = Quaternion(0.202053, 0.347943, -0.599421, 0.691958)
+bones/5/rotation = Quaternion(0.183749, 0.367218, -0.603142, 0.683818)
 bones/6/rotation = Quaternion(0.00113957, -2.29277e-06, -0.00123832, 0.999999)
-bones/7/rotation = Quaternion(-0.0268964, -0.380628, 0.0486529, 0.923056)
-bones/14/rotation = Quaternion(-0.132072, 0.273361, -0.0379269, 0.952047)
-bones/16/rotation = Quaternion(0.226291, -0.312449, 0.621737, 0.681625)
+bones/7/rotation = Quaternion(-0.0569133, -0.380544, 0.0393182, 0.922172)
+bones/14/rotation = Quaternion(-0.137409, 2.54616e-12, -5.11071e-06, 0.990514)
+bones/16/rotation = Quaternion(0.245731, -0.293567, 0.613647, 0.690559)
 bones/17/rotation = Quaternion(0.00114044, 2.29448e-06, 0.00123927, 0.999999)
-bones/18/rotation = Quaternion(-0.00320953, 0.457531, -0.073926, 0.88611)
+bones/18/rotation = Quaternion(0.00537964, 0.461156, -0.0775044, 0.883911)
 bones/23/rotation = Quaternion(0.724072, 0.0208465, 0.688825, -0.0283754)
 bones/24/rotation = Quaternion(-0.00758763, -7.27189e-06, 0.207444, 0.978217)
 bones/25/rotation = Quaternion(-0.026392, 0.0288715, -0.413054, 0.909866)
@@ -659,21 +659,21 @@ bones/27/rotation = Quaternion(-0.716595, 0.0152318, 0.696994, 0.0214267)
 bones/27/scale = Vector3(1.00001, 1, 1.00005)
 bones/28/rotation = Quaternion(-0.00767768, 7.65035e-06, -0.20984, 0.977706)
 bones/29/rotation = Quaternion(-0.0173438, -0.0178741, 0.414666, 0.909633)
-bones/31/position = Vector3(0.856141, 0.661625, 2.29622)
-bones/31/rotation = Quaternion(0.103067, 0.682542, -0.696939, 0.194395)
+bones/31/position = Vector3(0.854198, 0.738255, 2.29287)
+bones/31/rotation = Quaternion(0.101485, 0.723038, -0.654021, 0.197922)
 bones/32/position = Vector3(0.297383, 0.684331, 0.217846)
 bones/32/rotation = Quaternion(0.632256, -0.314092, 0.635592, -0.312444)
 bones/33/position = Vector3(0.989722, 1.18814, 3.63696)
 bones/34/position = Vector3(0.278849, 0.171579, 1.26271)
-bones/35/position = Vector3(-0.79783, 0.562808, 2.24403)
-bones/35/rotation = Quaternion(0.0236561, -0.624885, 0.742867, 0.238974)
+bones/35/position = Vector3(-0.81173, 0.479711, 2.24927)
+bones/35/rotation = Quaternion(0.0217406, -0.593839, 0.767307, 0.241085)
 bones/36/position = Vector3(-0.297383, 0.684331, 0.217846)
 bones/36/rotation = Quaternion(-0.632256, -0.314092, 0.635592, 0.312444)
 bones/37/position = Vector3(-0.989722, 1.18814, 3.63696)
 bones/38/position = Vector3(-0.278849, 0.171579, 1.26271)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PM 10-31-24/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.870747, -0.423326, -0.250189, 0.364904, -0.897325, 0.2483, -0.329613, 0.124912, 0.935817, -0.820512, -0.0508785, 0.0644473)
+transform = Transform3D(-0.868539, -0.434043, -0.239261, 0.350216, -0.879067, 0.323402, -0.350697, 0.197094, 0.915514, -0.83286, -0.0366895, 0.14972)
 bone_name = "Palm R"
 bone_idx = 19
 
@@ -776,6 +776,10 @@ item_name = "Knife"
 item_texture = ExtResource("17_ln601")
 item_effect = "Survival knife for attacking"
 item_quantity = 1
+
+[node name="BloodPos" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.228, 0)
 
 [connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timer_timeout"]
 [connection signal="timeout" from="MeleeTimer" to="." method="_on_melee_timer_timeout"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxe32fgdkbxlh"]
+
+[ext_resource type="Script" uid="uid://s2aig5k0jrfv" path="res://scripts/TitleScreen.gd" id="1_f0qvy"]
+[ext_resource type="Texture2D" uid="uid://b77rssv4tc7dj" path="res://Textures/HoughtonOutbreakTitleBG.png" id="2_rf8m1"]
+
+[sub_resource type="SystemFont" id="SystemFont_s4wj5"]
+font_names = PackedStringArray("Rockwell")
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_qf65s"]
+default_font = SubResource("SystemFont_s4wj5")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f0qvy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -199.0
+offset_right = 45.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_qf65s")
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -118.0
+offset_right = 45.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_qf65s")
+text = "Quit Game"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_rf8m1")
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_start_button_pressed"]

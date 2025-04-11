@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Houghton: Outbreak"
-run/main_scene="uid://d2p2xgexeg3a8"
+run/main_scene="uid://dxe32fgdkbxlh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

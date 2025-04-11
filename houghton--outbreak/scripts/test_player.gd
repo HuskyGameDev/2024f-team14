@@ -32,10 +32,12 @@ var canThrow = true
 var canMelee = true
 var turning = false
 var targetTurn = null
+var playerDead = false
 
 var MAX_HEALTH: int = 100
 var current_health: int
 
+var bloodEffect = preload("res://Shaders/Blood/Blood_Effect.tscn")
 
 #signal player_hit
 
@@ -192,8 +194,17 @@ func hit(damage):
 	
 	if current_health <= 0:
 		current_health = 0
-		if !deathSFX.playing:
+		#Activate only on first instance of death
+		if (!deathSFX.playing && playerDead == false):
 			deathSFX.play()
+			playerDead = true
+			var bloodInstance = bloodEffect.instantiate()
+			bloodInstance.position = $BloodPos.global_position
+			get_tree().current_scene.add_child(bloodInstance)
+			bloodInstance.explode("Explosion")
+			$"PM 10-31-24".visible = false
+			await get_tree().create_timer(4).timeout
+			get_tree().change_scene_to_file("res://level/death_screen.tscn")
 	else:
 		if !hurtSFX.playing:
 			hurtSFX.play()
