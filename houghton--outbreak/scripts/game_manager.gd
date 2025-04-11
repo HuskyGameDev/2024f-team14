@@ -8,9 +8,9 @@ var maxEnemies = 5
 var totalEnemies = 0
 var spawns = true
 
-var waveCount = 1
+var waveCount = 5
 var waveLock = 0 #false by default
-var waveMax = 1
+var waveMax = 5
 var wave = 1 #based on each number of waves there are
 
 var pauseReason = ""
