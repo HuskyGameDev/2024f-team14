@@ -33,6 +33,7 @@ var dead = false
 @export var player = null
 
 
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	health = max_health
@@ -132,6 +133,8 @@ func _on_test_player_player_hit() -> void:
 	pass # Replace with function body.
 
 func death():
+	print("Enemy down")
+	GameManager.waveCount -= 1
 	dead = true
 	var bloodInstance = bloodEffect.instantiate()
 	bloodInstance.position = $BloodPos.global_position
