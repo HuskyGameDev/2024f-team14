@@ -1,27 +1,27 @@
 [gd_scene load_steps=79 format=3 uid="uid://d2p2xgexeg3a8"]
 
 [ext_resource type="Texture2D" uid="uid://eralbcf13yp1" path="res://Textures/Screenshot (244).png" id="1_2w4b2"]
-[ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_42fi0"]
+[ext_resource type="Shader" uid="uid://ksianunb0280" path="res://Shaders/SkyShader.gdshader" id="1_42fi0"]
 [ext_resource type="Texture2D" uid="uid://fdmk6swxqbem" path="res://Textures/building_front_1.png" id="1_86hre"]
-[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_fchar"]
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_fchar"]
 [ext_resource type="Texture2D" uid="uid://cbp5qfi4vxxjv" path="res://Textures/building_front_2.png" id="2_2w4b2"]
-[ext_resource type="Script" path="res://scripts/camera_trigger.gd" id="2_q66v6"]
+[ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="2_q66v6"]
 [ext_resource type="Texture2D" uid="uid://brmb5sy2tyeyg" path="res://Textures/building_front_3.png" id="3_42fi0"]
 [ext_resource type="Texture2D" uid="uid://brrilbnugfa22" path="res://Textures/building_front_4.png" id="4_1gubu"]
 [ext_resource type="PackedScene" uid="uid://6k46qy1tkfwj" path="res://Interact/Spawner.tscn" id="4_s6u1s"]
 [ext_resource type="Texture2D" uid="uid://d326yp4smfgbc" path="res://Textures/building_front_5.png" id="5_gn4e2"]
 [ext_resource type="Texture2D" uid="uid://c3onob2g06575" path="res://Textures/building_front_6.png" id="6_72mp3"]
 [ext_resource type="Texture2D" uid="uid://cln13vjrnihoe" path="res://Textures/building_front_7.png" id="7_q66v6"]
-[ext_resource type="PackedScene" uid="uid://wixobdp5tftd" path="res://assets/Street/Street Light.tscn" id="11_86hre"]
-[ext_resource type="PackedScene" uid="uid://dls180jll8t8o" path="res://assets/Street/Bench.tscn" id="13_1vhm7"]
-[ext_resource type="Script" path="res://scripts/timer.gd" id="13_72mp3"]
-[ext_resource type="Script" path="res://scripts/player_health.gd" id="14_q66v6"]
-[ext_resource type="PackedScene" uid="uid://usrkdvyd0qni" path="res://assets/Street/Mailbox.tscn" id="15_1h662"]
-[ext_resource type="Script" path="res://scripts/controlsPage.gd" id="15_1vhm7"]
-[ext_resource type="Script" path="res://scripts/OptionsButton.gd" id="16_1h662"]
-[ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://assets/Street/Traffic Light.tscn" id="16_gmfh3"]
-[ext_resource type="PackedScene" uid="uid://cu2pln6b0r4j8" path="res://assets/Street/Trash Bin.tscn" id="17_go2ox"]
-[ext_resource type="Script" path="res://Shaders/Fire/fire_effect.gd" id="18_6atq7"]
+[ext_resource type="PackedScene" uid="uid://wixobdp5tftd" path="res://Assets/Street/Street Light.tscn" id="11_86hre"]
+[ext_resource type="PackedScene" uid="uid://dls180jll8t8o" path="res://Assets/Street/Bench.tscn" id="13_1vhm7"]
+[ext_resource type="Script" uid="uid://bcpnhcs8h1ytr" path="res://scripts/timer.gd" id="13_72mp3"]
+[ext_resource type="Script" uid="uid://cgxnsrkp7a0fd" path="res://scripts/player_health.gd" id="14_q66v6"]
+[ext_resource type="PackedScene" uid="uid://usrkdvyd0qni" path="res://Assets/Street/Mailbox.tscn" id="15_1h662"]
+[ext_resource type="Script" uid="uid://cgau1hh3m13w7" path="res://scripts/controlsPage.gd" id="15_1vhm7"]
+[ext_resource type="Script" uid="uid://bm2sosqkhhsc7" path="res://scripts/OptionsButton.gd" id="16_1h662"]
+[ext_resource type="PackedScene" uid="uid://p0el2ac8wlsm" path="res://Assets/Street/Traffic Light.tscn" id="16_gmfh3"]
+[ext_resource type="PackedScene" uid="uid://cu2pln6b0r4j8" path="res://Assets/Street/Trash Bin.tscn" id="17_go2ox"]
+[ext_resource type="Script" uid="uid://ds08xfvyyxfp6" path="res://Shaders/Fire/fire_effect.gd" id="18_6atq7"]
 [ext_resource type="PackedScene" uid="uid://csjebvsdmxbma" path="res://Shaders/Fire/Fire_Effect.tscn" id="18_lgcpm"]
 [ext_resource type="Shader" uid="uid://j1vimvg1iqgf" path="res://Shaders/Fire/FireShader.tres" id="19_xm34g"]
 [ext_resource type="Texture2D" uid="uid://dpiakin8jn14o" path="res://Shaders/Fire/GAP_Fire_Textures/Voronoi01.png" id="20_au1xf"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://br3yaxuyudrf6" path="res://Shaders/Fire/GAP_Fire_Textures/Flame02.png" id="22_f74ha"]
 [ext_resource type="Shader" uid="uid://cupcfch382xpr" path="res://Shaders/Fire/SimpleParticles.tres" id="23_jvq5w"]
 [ext_resource type="Texture2D" uid="uid://op0rugfhyfe7" path="res://Shaders/Fire/GAP_Fire_Textures/Flare00.PNG" id="24_06nnm"]
-[ext_resource type="Script" path="res://Shaders/Fire/FireLight.gd" id="25_7qksc"]
+[ext_resource type="Script" uid="uid://c28kusw8xhedn" path="res://Shaders/Fire/FireLight.gd" id="25_7qksc"]
 [ext_resource type="AudioStream" uid="uid://dy04tbawnr8ea" path="res://Audio/Online Sources/Fire Crackling.wav" id="26_6p8mh"]
 [ext_resource type="AudioStream" uid="uid://duh42qvy84hku" path="res://Audio/Online Sources/Fire Sizzle.wav" id="27_7o57b"]
 [ext_resource type="Material" uid="uid://dfkgrljx34ogt" path="res://Shaders/Water/Water.tres" id="29_o2an8"]
@@ -114,10 +114,10 @@ albedo_texture = ExtResource("7_q66v6")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("19_xm34g")
-shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
-shader_parameter/DissolveAmount = 0.505
 shader_parameter/MainTex = ExtResource("21_o2an8")
+shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
 shader_parameter/DissolveTexture = ExtResource("20_au1xf")
+shader_parameter/DissolveAmount = 0.505
 
 [sub_resource type="Curve" id="Curve_l2aoa"]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.68254, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
@@ -136,10 +136,10 @@ emission_curve = SubResource("CurveTexture_4h7kj")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7kjb"]
 render_priority = 0
 shader = ExtResource("19_xm34g")
-shader_parameter/DissolveTiling = Vector2(1, 1)
-shader_parameter/DissolveAmount = 0.0
 shader_parameter/MainTex = ExtResource("22_f74ha")
+shader_parameter/DissolveTiling = Vector2(1, 1)
 shader_parameter/DissolveTexture = ExtResource("20_au1xf")
+shader_parameter/DissolveAmount = 0.0
 
 [sub_resource type="Curve" id="Curve_f5mga"]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0]

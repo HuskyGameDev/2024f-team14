@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwpsls5jnk4qd"]
 
-[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://assets/test_player.tscn" id="1_lg7yx"]
+[ext_resource type="PackedScene" uid="uid://djmqij828p3ey" path="res://Assets/test_player.tscn" id="1_lg7yx"]
 [ext_resource type="Script" uid="uid://chm0eev586ipb" path="res://scripts/camera_trigger.gd" id="2_2r25l"]
 [ext_resource type="PackedScene" uid="uid://blrtg7c3skl1l" path="res://level/test_area.tscn" id="3_wh8uq"]
-[ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://assets/test_enemy.tscn" id="4_1ydlv"]
+[ext_resource type="PackedScene" uid="uid://cjqi0f3r118nc" path="res://Assets/test_enemy.tscn" id="4_1ydlv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278v1"]
 
