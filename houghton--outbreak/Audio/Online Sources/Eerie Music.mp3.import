@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcx7oda2wl610"
+path="res://.godot/imported/Eerie Music.mp3-d0790ba866bafa5a0874aa8134cfba52.mp3str"
+
+[deps]
+
+source_file="res://Audio/Online Sources/Eerie Music.mp3"
+dest_files=["res://.godot/imported/Eerie Music.mp3-d0790ba866bafa5a0874aa8134cfba52.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

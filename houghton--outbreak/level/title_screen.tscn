@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxe32fgdkbxlh"]
+[gd_scene load_steps=6 format=3 uid="uid://dxe32fgdkbxlh"]
 
 [ext_resource type="Script" uid="uid://s2aig5k0jrfv" path="res://scripts/TitleScreen.gd" id="1_f0qvy"]
 [ext_resource type="Texture2D" uid="uid://b77rssv4tc7dj" path="res://Textures/HoughtonOutbreakTitleBG.png" id="2_rf8m1"]
+[ext_resource type="AudioStream" uid="uid://dcx7oda2wl610" path="res://Audio/Online Sources/Eerie Music.mp3" id="3_t746g"]
 
 [sub_resource type="SystemFont" id="SystemFont_s4wj5"]
 font_names = PackedStringArray("Rockwell")
@@ -59,6 +60,11 @@ text = "Quit Game"
 position = Vector2(576, 324)
 texture = ExtResource("2_rf8m1")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t746g")
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]

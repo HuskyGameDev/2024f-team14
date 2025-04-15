@@ -54,6 +54,7 @@ visible = false
 [node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_0tae7")
 volume_db = -4.048
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

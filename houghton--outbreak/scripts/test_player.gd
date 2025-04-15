@@ -7,13 +7,16 @@ var DEBUG = false
 @onready var states = animtree["parameters/playback"]
 @onready var animationPlayer = $"PM 10-31-24/AnimationPlayer"
 
-@onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/BoneAttachment3D/pistol"
-var equipped = "Pistol"
+@onready var pistol = $"PM 10-31-24/Armature/Skeleton3D/Right Palm/Pistol"
+@onready var grenade = get_tree().get_first_node_in_group("Grenade")
+@onready var knife = get_tree().get_first_node_in_group("Knife")
 
 @onready var hurtSFX = $HurtSFX
 @onready var deathSFX = $DeathSFX
 
-var grenade = preload("res://Assets/Grenades/Grenade.tscn")
+var grenadeScene = preload("res://Assets/Grenades/Grenade.tscn")
+var equipped = "Pistol"
+
 
 var current_ammo: int
 var reserve_ammo: int
@@ -54,6 +57,8 @@ func _physics_process(delta: float) -> void:
 	if get_tree().paused:
 		return
 	
+	if playerDead:
+		return
 	
 	#Applies gravity if necessary
 	animtree.advance(delta * 0)
@@ -89,7 +94,7 @@ func character_movement(delta: float):
 		
 		if (equipped == "Pistol"):
 			states.travel("walkGun")
-		elif (equipped == "None"):
+		else:
 			states.travel("walkNoGun")
 		
 	elif Input.is_action_pressed("Move Backward"):
@@ -98,7 +103,7 @@ func character_movement(delta: float):
 		animtree.advance(delta * 1)
 		if (equipped == "Pistol"):
 			states.travel("walkGunBackwards")
-		elif (equipped == "None"):
+		else:
 			states.travel("walkNoGunBackwards")
 	elif Input.is_action_pressed("Secondary Fire (Aim)") and equipped == "Pistol":
 		velocity.x = 0
@@ -147,11 +152,23 @@ func character_movement(delta: float):
 		turning = true
 		
 		
-	throwGrenade()
 	
-	meleeAttack()
-	
-	move_and_slide()
+	if Input.is_action_pressed("Secondary Fire (Aim)") && equipped == "Knife":
+		states.travel("Knife Ready")
+		
+		if (Input.is_action_just_pressed("Primary Fire") && canMelee):
+			states.travel("KnifeSwing")
+			
+	elif Input.is_action_just_pressed("Primary Fire") && equipped == "Grenade" && canThrow:
+		canThrow = false
+		$ThrowTimer.start()
+		states.travel("LobThrowGrenade")
+	elif Input.is_action_just_pressed("Secondary Fire (Aim)") && equipped == "Grenade" && canThrow:
+		canThrow = false
+		$ThrowTimer.start()
+		states.travel("UnderGrenadeThrow")
+	else:
+		move_and_slide()
 
 #Returns enemy closest to the player's looking direction when called.
 func get_nearest_enemy():
@@ -203,6 +220,7 @@ func hit(damage):
 			get_tree().current_scene.add_child(bloodInstance)
 			bloodInstance.explode("Explosion")
 			$"PM 10-31-24".visible = false
+			get_node("CollisionShape3D").disabled = true
 			await get_tree().create_timer(4).timeout
 			get_tree().change_scene_to_file("res://level/death_screen.tscn")
 	else:
@@ -212,50 +230,46 @@ func hit(damage):
 	#emit_signal("player_hit")
 
 #Grenade Throwing
-func throwGrenade():
-	if Input.is_action_just_pressed("Primary Fire") and canThrow and equipped == "Grenade":
-		var grenadeInstance = grenade.instantiate()
-		grenadeInstance.position = $GrenadePos.global_position
-		get_tree().current_scene.add_child(grenadeInstance)
+func throwGrenade(type):
+	var grenadeInstance = grenadeScene.instantiate()
+	grenadeInstance.position = grenade.global_position
+	get_tree().current_scene.add_child(grenadeInstance)
 		
-		InventoryManager.remove_item("Weapons", "Grenade", 1)
+	InventoryManager.remove_item("Weapons", "Grenade", 1)
 		
-		if (InventoryManager.get_item_quantity("Weapons", "Grenade") == 0):
-			unequip("Grenade")
+	if (InventoryManager.get_item_quantity("Weapons", "Grenade") == 0):
+		unequip("Grenade")
 		
-		canThrow = false
-		$ThrowTimer.start()
+	
+	#Drop Grenade
+	if type == "underhand":
+		var force = -3.5
+		var upDirection = 0.0
+			
+		var playerRotation = global_transform.basis.z.normalized()
+			
+		grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
 		
-		#Drop Grenade
-		if Input.is_action_pressed("Secondary Fire (Aim)"):
-			var force = -0.5
-			var upDirection = 0.0
+	
+	#Throw Grenade
+	elif type == "overhand":
+		var force = -10
+		var upDirection = 3.5
 			
-			var playerRotation = global_transform.basis.z.normalized()
+		var playerRotation = global_transform.basis.z.normalized()
 			
-			grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
-		
-		#Throw Grenade
-		else:
-			
-			var force = -10
-			var upDirection = 3.5
-			
-			var playerRotation = global_transform.basis.z.normalized()
-			
-			grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
+		grenadeInstance.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
 
 #Melee Attack
 func meleeAttack():
-	if Input.is_action_just_pressed("Primary Fire") && canMelee && equipped == "Knife":
-		$"Knife Sound".play()
-		var nearest = get_nearest_enemy()
-		if nearest != null:
-			if global_position.distance_to(nearest.global_position) < MELEE_RANGE:
-				nearest.hit(8)
+	$"Knife Sound".play()
+	var nearest = get_nearest_enemy()
+	if nearest != null:
+		if global_position.distance_to(nearest.global_position) < MELEE_RANGE:
+			nearest.hit(8)
 		
-		canMelee = false
-		$MeleeTimer.start()
+	canMelee = false
+	$MeleeTimer.start()
 
 func equip(Equip):
 	equipped = Equip
@@ -264,16 +278,18 @@ func equip(Equip):
 		pistol.pistolEquipped = true
 	
 	if (equipped == "Grenade"):
-		pass
+		grenade.visible = true
 	
 	if (equipped == "Knife"):
-		pass
+		knife.visible = true
 
 func unequip(unEquip):
 	equipped = "None"
 	
 	pistol.visible = false
 	pistol.pistolEquipped = false
+	grenade.visible = false
+	knife.visible = false
 	
 
 

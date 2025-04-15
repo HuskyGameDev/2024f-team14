@@ -242,6 +242,10 @@ orientation = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gn4e2")
 
+[node name="Particle Floor Collision" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(0.999877, 0, -0.0157073, 0, 1, 0, 0.0157073, 0, 0.999877, -18.2679, 0, 16.013)
+size = Vector3(80.2152, 1, 321.576)
+
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="Camera1" type="Camera3D" parent="Cameras"]

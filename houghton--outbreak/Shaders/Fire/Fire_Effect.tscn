@@ -196,6 +196,7 @@ bus = &"SFX"
 [node name="FireSizzle" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("10_yb4ib")
+bus = &"SFX"
 
 [node name="Hitbox" type="Area3D" parent="."]
 unique_name_in_owner = true
